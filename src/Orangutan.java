@@ -6,8 +6,8 @@ public class Orangutan extends Animal {
 
     @Override
     protected void hitByPanda(Panda panda) {
-
         pullThis = panda;
+        panda.setCanMoveAlone(true);
     }
 
     @Override

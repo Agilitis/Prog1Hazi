@@ -3,6 +3,7 @@ public class Panda extends Animal {
     @Override
     protected void hitByOrangutan(Orangutan orangutan) {
         orangutan.setPullThis(this);
+        canMoveAlone = false;
     }
 
     @Override

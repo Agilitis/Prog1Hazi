@@ -17,6 +17,7 @@ public class Couch extends Thing {
         doEvent();
 
         //if someone is sleeping
+        sleepingPanda.setCanMoveAlone(true);
         sleepingPanda.move(field.getNeighbours()[0]);
     }
 }

@@ -3,5 +3,4 @@ public class VendingMachine extends Thing {
     public void pandaListenedToEvent(Panda panda) {
         panda.getScared();
     }
-
 }

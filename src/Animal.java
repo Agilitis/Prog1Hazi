@@ -6,6 +6,12 @@ public abstract class Animal  extends GameObject{
 
     protected Animal pullThis;
 
+    public void setCanMoveAlone(boolean canMoveAlone) {
+        this.canMoveAlone = canMoveAlone;
+    }
+
+    protected boolean canMoveAlone;
+
     protected void replaceField(Field newPlace){
         field.removeGameObject();
         if(pullThis != null){
@@ -19,8 +25,10 @@ public abstract class Animal  extends GameObject{
             pullThis = null;
         }
     }
-    protected void move(Field moveHere){
-        moveHere.acceptAnimal(this);
+    protected void move(Field moveHere) {
+        if(canMoveAlone) {
+            moveHere.acceptAnimal(this);
+        }
     }
     protected abstract void hitByOrangutan(Orangutan orangutan);
     protected abstract void hitByPanda(Panda panda);
