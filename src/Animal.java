@@ -13,6 +13,14 @@ public abstract class Animal extends GameObject {
         this.pullThis = pullThis;
     }
 
+    public Animal getPullThis() {
+        return pullThis;
+    }
+
+    public boolean canMoveAlone() {
+        return canMoveAlone;
+    }
+
     Animal pullThis;
 
     void setCanMoveAlone(boolean canMoveAlone) {

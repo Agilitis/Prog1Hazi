@@ -1,4 +1,20 @@
 public class SleepyPanda extends Panda {
+    public int getStamina() {
+        return stamina;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public boolean isSleepy() {
+        return isSleepy;
+    }
+
+    public void setSleepy(boolean sleepy) {
+        isSleepy = sleepy;
+    }
+
     private int stamina;
     private boolean isSleepy = false;
 
@@ -17,8 +33,8 @@ public class SleepyPanda extends Panda {
     }
 
     void refreshPanda(){
-        isSleepy = false;
-        stamina = 20;
+        setSleepy(false);
+        setStamina(20);
     }
 
     @Override
