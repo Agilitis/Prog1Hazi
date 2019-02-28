@@ -1,23 +1,30 @@
 public class Couch extends Thing {
 
-    private Panda sleepingPanda;
+    private SleepyPanda restingPanda;
 
-    @Override
-    public void pandaListenedToEvent(Panda panda) {
-        panda.putToSleep(this);
-    }
 
-    public void setSleepingPanda(Panda sleepingPanda) {
-        this.sleepingPanda = sleepingPanda;
+    public void setRestingPanda(SleepyPanda restingPanda) {
+        this.restingPanda = restingPanda;
     }
 
     @Override
-    public void tick(){
-        //normal event
-        doEvent();
+    public void tick() {
+        if(counter-- <= 0){
+            if(restingPanda != null){
+                Field wakeUpHere = field.getNeighbours()[0];
+                restingPanda.move(wakeUpHere);
+                restingPanda.refreshPanda();
+            }
+            doEvent();
+            counter = 20;
+        }
+    }
 
-        //if someone is sleeping
-        sleepingPanda.setCanMoveAlone(true);
-        sleepingPanda.move(field.getNeighbours()[0]);
+    @Override
+    void doEvent() {
+        for(Field neighbour : field.getNeighbours()){
+            GameObject gameObject = neighbour.getGameObject();
+            gameObject.restingSpotAvailable(this);
+        }
     }
 }

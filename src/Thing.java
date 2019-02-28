@@ -1,14 +1,15 @@
 public abstract class Thing extends GameObject {
-
-    protected void doEvent(){
-        GameObject objectToNotify = field.getNeighbours()[0].getGameObject();
-        objectToNotify.eventHappened(this);
-    }
+    protected int counter;
 
     @Override
-    public void tick(){
-        doEvent();
+    public void tick() {
+        if(counter-- <= 0){
+            doEvent();
+            counter = 20;
+        }
     }
 
-    public abstract void pandaListenedToEvent(Panda panda);
+    abstract void doEvent();
+
 }
+

@@ -1,42 +1,59 @@
-public abstract class Animal  extends GameObject{
+public abstract class Animal extends GameObject {
+    public int getPointValue() {
+        return pointValue;
+    }
 
-    public void setPullThis(Animal pullThis) {
+    public void setPointValue(int pointValue) {
+        this.pointValue = pointValue;
+    }
+
+    protected int pointValue;
+
+    void setPullThis(Animal pullThis) {
         this.pullThis = pullThis;
     }
 
-    protected Animal pullThis;
+    Animal pullThis;
 
-    public void setCanMoveAlone(boolean canMoveAlone) {
+    void setCanMoveAlone(boolean canMoveAlone) {
         this.canMoveAlone = canMoveAlone;
     }
 
-    protected boolean canMoveAlone;
+    boolean canMoveAlone;
 
-    protected void replaceField(Field newPlace){
+    protected void replaceField(Field newPlace) {
         field.removeGameObject();
-        if(pullThis != null){
+
+        if (pullThis != null) {
             pullThis.replaceField(field);
         }
+
         field = newPlace;
     }
-    protected void releaseHands(){
-        if(pullThis!= null){
+
+    void releaseHands() {
+        if (pullThis != null) {
             pullThis.releaseHands();
             pullThis = null;
         }
     }
-    protected void move(Field moveHere) {
-        if(canMoveAlone) {
+
+    void move(Field moveHere) {
+        if (canMoveAlone) {
             moveHere.acceptAnimal(this);
         }
     }
-    protected abstract void hitByOrangutan(Orangutan orangutan);
-    protected abstract void hitByPanda(Panda panda);
-    protected Field[] getStepOptions(){ return new Field[0];}
 
-    @Override
-    protected void die() {
-        field.removeGameObject();
-        pullThis = null;
+    protected abstract void hitByOrangutan(Orangutan orangutan);
+
+    protected abstract void hitByPanda(Panda panda);
+
+    Field[] getStepOptions() {
+        return new Field[0];
     }
+
+    protected abstract void die();
+
+
+    public abstract void goToZoo();
 }

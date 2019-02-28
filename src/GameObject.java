@@ -9,4 +9,16 @@ public abstract class GameObject implements ITickable {
     protected void replaceField(Field newField){
         field = newField;
     }
+
+    public void restingSpotAvailable(Couch couch) {
+
+    }
+
+    void chocolateVendingMachineBeepSoundPlayed(){
+
+    }
+
+    void arcadeMachineRingSoundPlayed(){
+
+    }
 }
