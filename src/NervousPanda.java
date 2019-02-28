@@ -1,6 +1,6 @@
 public class NervousPanda extends Panda {
 
-    public void getScared(){
+    public void scare(){
         if (pullThis != null){
             pullThis.releaseHands();
         }

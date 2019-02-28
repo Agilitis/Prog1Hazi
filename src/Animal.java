@@ -15,7 +15,7 @@ public abstract class Animal  extends GameObject{
     protected void replaceField(Field newPlace){
         field.removeGameObject();
         if(pullThis != null){
-            pullThis.move(field);
+            pullThis.replaceField(field);
         }
         field = newPlace;
     }
