@@ -7,11 +7,6 @@ public class Couch extends Thing {
         panda.putToSleep(this);
     }
 
-    @Override
-    protected void eventHappened(Thing thing) {
-
-    }
-
     public void setSleepingPanda(Panda sleepingPanda) {
         this.sleepingPanda = sleepingPanda;
     }

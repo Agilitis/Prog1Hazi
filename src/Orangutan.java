@@ -16,11 +16,6 @@ public class Orangutan extends Animal {
     }
 
     @Override
-    protected void eventHappened(Thing thing) {
-
-    }
-
-    @Override
     public void tick() {
 
     }

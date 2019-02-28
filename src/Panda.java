@@ -23,7 +23,7 @@ public class Panda extends Animal {
     @Override
     public void tick() {
         //some logic to define when
-        //witch field exactly need to be defined
+        //witch field exactly needs to be defined
         move(getStepOptions()[0]);
     }
     protected void putToSleep(Couch sleepHere){}

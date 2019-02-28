@@ -4,8 +4,4 @@ public class Machine extends Thing {
         panda.getJumpScared();
     }
 
-    @Override
-    protected void eventHappened(Thing thing) {
-
-    }
 }
