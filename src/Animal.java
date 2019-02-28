@@ -1,5 +1,5 @@
 public abstract class Animal extends GameObject {
-    public int getPointValue() {
+    int getPointValue() {
         return pointValue;
     }
 
@@ -7,7 +7,7 @@ public abstract class Animal extends GameObject {
         this.pointValue = pointValue;
     }
 
-    protected int pointValue;
+    private int pointValue;
 
     void setPullThis(Animal pullThis) {
         this.pullThis = pullThis;
@@ -17,7 +17,7 @@ public abstract class Animal extends GameObject {
 
     void setCanMoveAlone(boolean canMoveAlone) {
         this.canMoveAlone = canMoveAlone;
-    }
+}
 
     boolean canMoveAlone;
 

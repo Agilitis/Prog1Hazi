@@ -9,8 +9,5 @@ public class BigPanda extends Panda {
         this.scare();
     }
 
-    @Override
-    protected void eventHappened(Thing thing) {
-    }
 
 }

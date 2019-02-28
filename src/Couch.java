@@ -3,7 +3,7 @@ public class Couch extends Thing {
     private SleepyPanda restingPanda;
 
 
-    public void setRestingPanda(SleepyPanda restingPanda) {
+    void setRestingPanda(SleepyPanda restingPanda) {
         this.restingPanda = restingPanda;
     }
 

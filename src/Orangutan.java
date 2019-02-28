@@ -18,6 +18,14 @@ public class Orangutan extends Animal {
     }
 
     @Override
+    public void goToZoo() {
+        field.removeGameObject();
+        if(pullThis != null){
+            pullThis.goToZoo();
+        }
+    }
+
+    @Override
     protected void hitByAnimal(Animal animal) {
         animal.hitByOrangutan(this);
     }

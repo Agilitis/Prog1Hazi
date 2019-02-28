@@ -16,12 +16,15 @@ public class SleepyPanda extends Panda {
         }
     }
 
-    public void refreshPanda(){
+    void refreshPanda(){
         isSleepy = false;
+        stamina = 20;
     }
 
     @Override
     public void restingSpotAvailable(Couch couch) {
-        putToRest(couch);
+        if(isSleepy){
+            putToRest(couch);
+        }
     }
 }

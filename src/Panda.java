@@ -35,10 +35,6 @@ public class Panda extends Animal {
         animal.hitByPanda(this);
     }
 
-    @Override
-    protected void eventHappened(Thing thing) {
-
-    }
 
     @Override
     public void tick() {

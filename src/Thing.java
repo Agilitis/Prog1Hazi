@@ -1,5 +1,5 @@
 public abstract class Thing extends GameObject {
-    protected int counter;
+    int counter;
 
     @Override
     public void tick() {
