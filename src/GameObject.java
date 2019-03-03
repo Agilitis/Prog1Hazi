@@ -9,6 +9,10 @@ public abstract class GameObject implements ITickable {
         field = newField;
     }
 
+	public Field getField {
+		return field;
+	}
+
     public void restingSpotAvailable(Couch couch) {
 
     }

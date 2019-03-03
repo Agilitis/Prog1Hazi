@@ -42,4 +42,8 @@ public class Field {
     void removeGameObject() {
         gameObject = null;
     }
+
+	public void setGameObject(GameObject gameObject) {
+		this.gameObject = gameObject;
+	}
 }

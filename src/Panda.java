@@ -1,6 +1,9 @@
 public class Panda extends Animal {
     protected Animal pulledBy;
 
+	public void setPulledBy(Animal animal) {
+		pulledBy = animal;
+	}
 
     @Override
     protected void hitByOrangutan(Orangutan orangutan) {
