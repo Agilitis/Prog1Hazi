@@ -1,3 +1,5 @@
+package Internal;
+
 public class NervousPanda extends Panda {
 
     public void scare() {

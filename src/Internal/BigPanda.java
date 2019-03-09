@@ -1,3 +1,5 @@
+package Internal;
+
 public class BigPanda extends Panda {
 
     public void scare() {

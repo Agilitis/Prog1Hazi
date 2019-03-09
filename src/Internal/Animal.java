@@ -1,3 +1,5 @@
+package Internal;
+
 public abstract class Animal extends GameObject {
     int getPointValue() {
         return pointValue;
@@ -9,7 +11,7 @@ public abstract class Animal extends GameObject {
 
     private int pointValue;
 
-    void setPullThis(Animal pullThis) {
+    void setPullThis(Panda pullThis) {
         this.pullThis = pullThis;
     }
 
@@ -21,7 +23,7 @@ public abstract class Animal extends GameObject {
         return canMoveAlone;
     }
 
-    Animal pullThis;
+    Panda pullThis;
 
     void setCanMoveAlone(boolean canMoveAlone) {
         this.canMoveAlone = canMoveAlone;

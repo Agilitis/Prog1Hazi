@@ -1,3 +1,5 @@
+package Internal;
+
 public class SleepyPanda extends Panda {
     public int getStamina() {
         return stamina;

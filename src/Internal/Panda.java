@@ -1,3 +1,5 @@
+package Internal;
+
 public class Panda extends Animal {
     protected Animal pulledBy;
 

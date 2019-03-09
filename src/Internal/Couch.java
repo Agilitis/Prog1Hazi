@@ -1,3 +1,5 @@
+package Internal;
+
 public class Couch extends Thing {
 
     private SleepyPanda restingPanda;

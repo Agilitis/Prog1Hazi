@@ -1,3 +1,5 @@
+package Internal;
+
 public class ChocolateVendingMachine extends Thing {
 
     @Override

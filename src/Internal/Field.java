@@ -1,3 +1,5 @@
+package Internal;
+
 public class Field {
 
     protected Field[] neighBours;

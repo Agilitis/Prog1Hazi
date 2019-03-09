@@ -1,3 +1,5 @@
+package Internal;
+
 public abstract class Thing extends GameObject {
     int counter;
 
