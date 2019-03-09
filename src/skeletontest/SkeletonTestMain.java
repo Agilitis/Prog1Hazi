@@ -1,10 +1,12 @@
 package skeletontest;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class SkeletonTestMain {
 
-    public static final String EXCEPTION_TEXT = "This test case has not been implemented yet!";
+    private static final String EXCEPTION_TEXT = "This test case has not been implemented yet!";
 
     public static void main(String... args){
         handleTests();
@@ -20,7 +22,7 @@ public class SkeletonTestMain {
                 "5.Animal uses Teleport alone\n"+
                 "6.Orangutan uses Teleport while pulling Pandas\n"+
                 "7.Orangutan steps while pulling Pandas\n"+
-                "8.Orangutan steps on Finish pulling Pandas\n"+
+                "8.Orangutan steps on Finish, pulling Pandas\n"+
                 "9.Couch fire its event\n"+
                 "10.ChocolateVendingMachine fire its event\n"+
                 "11.ArcadeMachine fire its event.\n"+
@@ -30,51 +32,26 @@ public class SkeletonTestMain {
 
     private static void handleTests(){
         int userChoice;
-        while (true) {
+        Map<Integer, Runnable> testCases = new HashMap<>();
+        testCases.put(1, SkeletonTestMain::animalStepsScenario);
+        testCases.put(2, SkeletonTestMain::animalHitsPandaScenario);
+        testCases.put(3, SkeletonTestMain::animalHitsOrangutanScenario);
+        testCases.put(4, SkeletonTestMain::animalHitsThingScenario);
+        testCases.put(5, SkeletonTestMain::animalUsesTeleportAloneScenario);
+        testCases.put(6, SkeletonTestMain::orangutanUsesTeleportWhilePullingPandasScenario);
+        testCases.put(7, SkeletonTestMain::orangutanStepsWhilePullingPandasScenario);
+        testCases.put(8, SkeletonTestMain::orangutanStepsOnFinishWhilePullingPandasScenario);
+        testCases.put(9, SkeletonTestMain::couchFireItsEventScenario);
+        testCases.put(11, SkeletonTestMain::arcadeMachineFireItsEventScenario);
+        testCases.put(12, SkeletonTestMain::brokenFieldGetsSteppedOnScenario);
+
+        while(true){
             displayTestOptions();
             userChoice = getTestScenarioFromUser();
-            switch (userChoice) {
-                case 0:
-                    return;
-                case 1:
-                    animalStepsScenario();
-                    break;
-                case 2:
-                    animalHitsPandaScenario();
-                    break;
-                case 3:
-                    animalHitsOrangutanScenario();
-                    break;
-                case 4:
-                    animalHitsThingScenario();
-                    break;
-                case 5:
-                    animalUsesTeleportAloneScenario();
-                    break;
-                case 6:
-                    orangutanUsesTeleportWhilePullingPandasScenario();
-                    break;
-                case 7:
-                    orangutanStepsWhilePullingPandasScenario();
-                    break;
-                case 8:
-                    orangutanStepsOnFinishWhilePullingPandasScenario();
-                    break;
-                case 9:
-                    couchFireItsEventScenario();
-                    break;
-                case 10:
-                    chocolateVendingMachineFireItsEventScenario();
-                    break;
-                case 11:
-                    arcadeMachineFireItsEventScenario();
-                    break;
-                case 12:
-                    brokenFieldGetsSteppedOnScenario();
-                    break;
-                    default:
-                        break;
+            if(userChoice == 0){
+                break;
             }
+            testCases.get(userChoice).run();
         }
     }
 
