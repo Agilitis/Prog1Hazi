@@ -1,4 +1,4 @@
-package Internal;
+package internal;
 
 public abstract class GameObject implements ITickable {
 

@@ -1,12 +1,12 @@
-package Internal;
+package internal;
 
-public class ChocolateVendingMachine extends Thing {
+public class ArcadeMachine extends Thing {
 
     @Override
     void doEvent() {
         for(Field neighbour : field.getNeighbours()){
             GameObject gameObject = neighbour.getGameObject();
-            gameObject.chocolateVendingMachineBeepSoundPlayed();
+            gameObject.arcadeMachineRingSoundPlayed();
         }
     }
 }

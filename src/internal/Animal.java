@@ -1,4 +1,4 @@
-package Internal;
+package internal;
 
 public abstract class Animal extends GameObject {
     int getPointValue() {

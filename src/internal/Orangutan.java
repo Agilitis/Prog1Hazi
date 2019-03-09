@@ -1,4 +1,4 @@
-package Internal;
+package internal;
 
 public class Orangutan extends Animal {
 
@@ -6,6 +6,7 @@ public class Orangutan extends Animal {
 
     @Override
     protected void hitByOrangutan(Orangutan orangutan) {
+        //This is left blank in order to emphasize that an Orangutan hitBy an Orangutan does NOTHING.
     }
 
     @Override
@@ -44,7 +45,9 @@ public class Orangutan extends Animal {
         animal.hitByOrangutan(this);
     }
 
+
     @Override
     public void tick() {
+        throw new UnsupportedOperationException("Not yet tickable");
     }
 }

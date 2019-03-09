@@ -1,9 +1,10 @@
-package SkeletonTest;
+package skeletontest;
 
-import Internal.*;
 import java.util.Scanner;
 
 public class SkeletonTestMain {
+
+    public static final String EXCEPTION_TEXT = "This test case has not been implemented yet!";
 
     public static void main(String... args){
         handleTests();
@@ -60,16 +61,16 @@ public class SkeletonTestMain {
                     orangutanStepsOnFinishWhilePullingPandasScenario();
                     break;
                 case 9:
-                    CouchFireItsEventScenario();
+                    couchFireItsEventScenario();
                     break;
                 case 10:
-                    ChocolateVendingMachineFireItsEventScenario();
+                    chocolateVendingMachineFireItsEventScenario();
                     break;
                 case 11:
-                    ArcadeMachineFireItsEventScenario();
+                    arcadeMachineFireItsEventScenario();
                     break;
                 case 12:
-                    BrokenFieldGetsSteppedOnScenario();
+                    brokenFieldGetsSteppedOnScenario();
                     break;
                     default:
                         break;
@@ -77,51 +78,63 @@ public class SkeletonTestMain {
         }
     }
 
-    private static void BrokenFieldGetsSteppedOnScenario() {
+    private static void brokenFieldGetsSteppedOnScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
-    private static void ArcadeMachineFireItsEventScenario() {
+    private static void arcadeMachineFireItsEventScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
-    private static void ChocolateVendingMachineFireItsEventScenario() {
+    private static void chocolateVendingMachineFireItsEventScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
-    private static void CouchFireItsEventScenario() {
+    private static void couchFireItsEventScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
     private static void orangutanStepsOnFinishWhilePullingPandasScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
     private static void orangutanStepsWhilePullingPandasScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
     private static void orangutanUsesTeleportWhilePullingPandasScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
     private static void animalUsesTeleportAloneScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
     private static void animalHitsThingScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
     private static void animalHitsOrangutanScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
     private static void animalHitsPandaScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
     }
 
     private static void animalStepsScenario() {
+        throw new UnsupportedOperationException(EXCEPTION_TEXT);
     }
 
     private static int getTestScenarioFromUser() {

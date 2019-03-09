@@ -1,4 +1,4 @@
-package Internal;
+package internal;
 
 public class Couch extends Thing {
 

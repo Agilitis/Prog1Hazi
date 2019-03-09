@@ -1,4 +1,4 @@
-package Internal;
+package internal;
 
 public class Panda extends Animal {
     protected Animal pulledBy;
@@ -16,6 +16,7 @@ public class Panda extends Animal {
 
     @Override
     protected void hitByPanda(Panda panda) {
+	    //Pandas don't do anythin when hit by another panda. Intentionally left BLANK.
 
     }
 
@@ -49,8 +50,11 @@ public class Panda extends Animal {
     }
 
     protected void putToRest(Couch sleepHere) {
+	    //Virutal function, we cannot create Panda objects anyway.
     }
 
     protected void scare() {
+        //Virutal function, we cannot create Panda objects anyway.
+
     }
 }

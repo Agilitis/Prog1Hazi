@@ -1,4 +1,4 @@
-package Internal;
+package internal;
 
 public class FinishField extends Field {
 
