@@ -7,51 +7,39 @@ import java.util.Scanner;
 public class SkeletonTestMain {
 
     private static final String EXCEPTION_TEXT = "This test case has not been implemented yet!";
+    private static TestCaseStore testCases = new TestCaseStore();
 
-    public static void main(String... args){
+    public static void main(String... args) {
+        testFixtures();
         handleTests();
     }
 
-    private static void displayTestOptions() {
-        System.out.println(
-                "0.Exit\n"+
-                "1.Animal steps\n"+ //nm szettem külön mert itt nm kell szetvalasztani a panda es az o. lepeset
-                "2.Animal hits panda\n"+
-                "3.Animal hits orangutan\n"+
-                "4.Animal hits Thing\n"+
-                "5.Animal uses Teleport alone\n"+
-                "6.Orangutan uses Teleport while pulling Pandas\n"+
-                "7.Orangutan steps while pulling Pandas\n"+
-                "8.Orangutan steps on Finish, pulling Pandas\n"+
-                "9.Couch fire its event\n"+
-                "10.ChocolateVendingMachine fire its event\n"+
-                "11.ArcadeMachine fire its event.\n"+
-                "12.Broken Field gets stepped on\n"
-        );
+    private static void testFixtures() {
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalStepsScenario, "Animal Steps Scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsPandaScenario, "Animal hits panda scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsOrangutanScenario, "Animal hits orangutan scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsThingScenario, "Animal hits thing scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalUsesTeleportAloneScenario, "Animal uses teleport alone scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanUsesTeleportWhilePullingPandasScenario, "Orangutan uses teleport while pulling panda scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanStepsWhilePullingPandasScenario, "Orangutan steps while pulling pandas scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanStepsOnFinishWhilePullingPandasScenario, "Orangutan steps on finish while pulling panda scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::couchFireItsEventScenario, "Couch fires its event scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::arcadeMachineFireItsEventScenario, "Arcade machine fires its event scneario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::brokenFieldGetsSteppedOnScenario, "Broken field gets stepped on scenario"));
     }
 
-    private static void handleTests(){
-        int userChoice;
-        Map<Integer, Runnable> testCases = new HashMap<>();
-        testCases.put(1, SkeletonTestMain::animalStepsScenario);
-        testCases.put(2, SkeletonTestMain::animalHitsPandaScenario);
-        testCases.put(3, SkeletonTestMain::animalHitsOrangutanScenario);
-        testCases.put(4, SkeletonTestMain::animalHitsThingScenario);
-        testCases.put(5, SkeletonTestMain::animalUsesTeleportAloneScenario);
-        testCases.put(6, SkeletonTestMain::orangutanUsesTeleportWhilePullingPandasScenario);
-        testCases.put(7, SkeletonTestMain::orangutanStepsWhilePullingPandasScenario);
-        testCases.put(8, SkeletonTestMain::orangutanStepsOnFinishWhilePullingPandasScenario);
-        testCases.put(9, SkeletonTestMain::couchFireItsEventScenario);
-        testCases.put(11, SkeletonTestMain::arcadeMachineFireItsEventScenario);
-        testCases.put(12, SkeletonTestMain::brokenFieldGetsSteppedOnScenario);
 
-        while(true){
-            displayTestOptions();
+
+    private static void handleTests() {
+        int userChoice;
+
+        while (true) {
+            testCases.displayTestOptions();
             userChoice = getTestScenarioFromUser();
-            if(userChoice == 0){
+            if (userChoice == 0) {
                 break;
             }
-            testCases.get(userChoice).run();
+            testCases.run(userChoice);
         }
     }
 
