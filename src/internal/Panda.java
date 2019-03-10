@@ -13,7 +13,8 @@ public class Panda extends Animal {
 
     @Override
     protected void hitByOrangutan(Orangutan orangutan) {
-        logger.log(this + " has been hit by " + orangutan + " !");
+        logger.log(this+".hitByOrangutan(" + orangutan + ")");
+
         orangutan.setPullThis(this);
         pulledBy = orangutan;
         canMoveAlone = false;
@@ -21,7 +22,7 @@ public class Panda extends Animal {
 
     @Override
     protected void hitByPanda(Panda panda) {
-        logger.log("Panda was hit by another Panda, doing nothing!");
+        logger.log(this+".hitByPanda(" + panda + ")");
 	    //Pandas don't do anythin when hit by another panda. Intentionally left BLANK.
 
     }
@@ -29,14 +30,16 @@ public class Panda extends Animal {
     //They don't actually die, but go to a nice place.
     @Override
     protected void die() {
-        logger.log("Panda 'died'. Not actually dead.");
+        logger.log(this+".die()");
         field.removeGameObject();
-        pulledBy.releaseHands();
+        if(pulledBy != null){
+            pulledBy.releaseHands();
+        }
     }
 
     @Override
     public void goToZoo() {
-        logger.log("Panda went to Zoo.");
+        logger.log(this+".goToZoo()");
         if(pullThis != null){
             pullThis.goToZoo();
         }

@@ -16,7 +16,8 @@ public abstract class Animal extends GameObject {
     private int pointValue;
 
     public void setPullThis(Panda pullThis) {
-        logger.log(this + " is now pulling: " + pullThis);
+        logger.log(this+".setPullThis(" + pullThis + ")");
+
         pullThis.setPulledBy(this);
         this.pullThis = pullThis;
         pullThis.canMoveAlone = false;
@@ -41,11 +42,16 @@ public abstract class Animal extends GameObject {
     @Override
     protected void replaceField(Field newField) {
         this.field.removeGameObject();
-        logger.log(this + " is moving to new field.");
+        logger.log(this + ".replaceField("+newField+")");
+
+        if(newField.getLife()>1){
+            newField.sufferDamage(1);
+        }else{
+            this.die();
+        }
         if (this.pullThis != null) {
             this.pullThis.replaceField(field);
         }
-
         this.field = newField;
         this.field.setGameObject(this);
     }
@@ -58,7 +64,8 @@ public abstract class Animal extends GameObject {
     }
 
     public void move(Field moveHere) {
-        logger.log(this + " is trying to move here: " + moveHere);
+        logger.log(this+".move(" + moveHere + ")");
+
         if (canMoveAlone) {
             moveHere.acceptAnimal(this);
 

@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SkeletonTestMain {
-
+    private static final Scanner scanner = new Scanner(System.in);
     private static final String EXCEPTION_TEXT = "This test case has not been implemented yet!";
     private static TestCaseStore testCases = new TestCaseStore();
 
@@ -28,7 +28,6 @@ public class SkeletonTestMain {
         testCases.addTestCase(new TestCase(SkeletonTestMain::arcadeMachineFiresItsEvent, "Arcade machine fires its event scneario"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::chocolateVendingMachineFiresItsEvent, "Choclate vending machine fires its event."));
         testCases.addTestCase(new TestCase(SkeletonTestMain::brokenFieldGetsSteppedOn, "Broken field gets stepped on scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::pandaHitsPanda, "Panda hits panda scenario"));
     }
 
 
@@ -37,17 +36,18 @@ public class SkeletonTestMain {
 
         while (true) {
             testCases.displayTestOptions();
-            userChoice = getTestScenarioFromUser() - 1;
+            userChoice = getTestScenarioFromUser();
             if (userChoice == 0) {
                 break;
             }
-            testCases.run(userChoice);
+            testCases.run(userChoice-1);
         }
     }
 
     private static void brokenFieldGetsSteppedOn() {
         Field field1 = new Field(true, 10);
-        Field field2 = new Field(true, 0);
+        Field field2 = new Field(true, 2);
+        field2.sufferDamage(2);
         Panda panda1 = new SleepyPanda(field1);
         panda1.move(field2);
 
@@ -135,8 +135,8 @@ public class SkeletonTestMain {
         Field field4 = new Field(false, 20);
         Teleport teleport = new Teleport(false, 20);
         Teleport teleport2 = new Teleport(false, 20);
-        Field field5 = new Field(true, 10);
-
+        Field field5 = new Field(true, 2);
+        Field field6 = new Field(false, 10);
         Panda panda1 = new SleepyPanda(field1);
         Panda panda2 = new BigPanda(field2);
         Panda panda3 = new NervousPanda(field3);
@@ -154,6 +154,11 @@ public class SkeletonTestMain {
 
 
         orangutan.move(teleport);
+        System.out.println("Step one more with orangutan? (Y/N)");
+        String answer = scanner.nextLine();
+        if(answer.equals("Y")){
+            orangutan.move(field6);
+        }
     }
 
     private static void animalUsesTeleportAlone() {
@@ -185,41 +190,46 @@ public class SkeletonTestMain {
     private static void animalHitsOrangutan() {
         Field field1 = new Field(false, 20);
         Field field2 = new Field(false, 20);
-
         Orangutan orangutan = new Orangutan(field1);
-        Panda panda = new SleepyPanda(field2);
 
-        panda.move(field1);
+        System.out.println("Hit by Panda? (Y/N)");
+        String answer = scanner.nextLine();
+        hitByAnimalPrompt(field1, field2, answer);
+    }
+
+    private static void hitByAnimalPrompt(Field field1, Field field2, String answer) {
+        if(answer.equals("Y")){
+            Panda panda2 = new BigPanda(field2);
+            panda2.move(field1);
+        }else{
+            Orangutan orangutan2 = new Orangutan(field2);
+            orangutan2.move(field1);
+        }
     }
 
     private static void animalHitsPanda() {
         Field field1 = new Field(false, 10);
         Field field2 = new Field(false, 20);
-
-        Orangutan orangutan = new Orangutan(field2);
         Panda panda = new SleepyPanda(field1);
 
-        orangutan.move(field1);
+        System.out.println("Hit by Panda? (Y/N)");
+        String answer = scanner.nextLine();
+        hitByAnimalPrompt(field1, field2, answer);
     }
 
     private static void animalSteps() {
-        Field field1 = new Field(false, 10);
-        Field field2 = new Field(false, 20);
-
+        Field field1 = new Field(true, 10);
+        Field field2 = new Field(true, 20);
+        System.out.println("Step on broken field? (Y/N)");
+        String answer = scanner.nextLine();
+        if(answer.equals("Y")){
+            field2.sufferDamage(20);
+        }
         Panda panda = new SleepyPanda(field1);
 
         panda.move(field2);
     }
 
-    private static void pandaHitsPanda(){
-        Field field1 = new Field(false, 10);
-        Field field2 = new Field(false, 20);
-
-        Panda panda1 = new SleepyPanda(field1);
-        Panda panda2 = new BigPanda(field2);
-
-        panda1.move(field2);
-    }
 
 
     private static int getTestScenarioFromUser() {

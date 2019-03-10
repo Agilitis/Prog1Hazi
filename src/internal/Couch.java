@@ -28,7 +28,8 @@ public class Couch extends Thing {
 
     @Override
     public void doEvent() {
-        logger.log("Restin spot available at: " + this.field + " by " + this.hashCode());
+        logger.log(this+".doEvent(" + ")");
+
         for (Field neighbour : field.getNeighbours()) {
             GameObject gameObject = neighbour.getGameObject();
             gameObject.restingSpotAvailable(this);

@@ -9,12 +9,14 @@ public class Orangutan extends Animal {
 
     @Override
     protected void hitByOrangutan(Orangutan orangutan) {
+        logger.log(this+".hitByOrangutan(" + orangutan + ")");
         //This is left blank in order to emphasize that an Orangutan hitBy an Orangutan does NOTHING.
     }
 
     @Override
     protected void hitByPanda(Panda panda) {
-		if (pullThis != null) {
+        logger.log(this+".hitByPanda(" + panda + ")");
+        if (pullThis != null) {
 			pullThis.setPulledBy(panda);
 			panda.setPullThis(pullThis);
 		}
@@ -22,7 +24,7 @@ public class Orangutan extends Animal {
         panda.replaceField(this.field);
         this.replaceField(tmp);
 
-        pullThis = panda;
+        setPullThis(panda);
 		pullThis.setPulledBy(this);
         pullThis.setCanMoveAlone(false);
 
@@ -43,7 +45,7 @@ public class Orangutan extends Animal {
 
     @Override
     protected void hitByAnimal(Animal animal) {
-        logger.log(this + " has been hit by " + animal + " hitting back!");
+        logger.log(this+".hitByAnimal(" + animal+ ")");
         animal.hitByOrangutan(this);
     }
 
@@ -52,4 +54,6 @@ public class Orangutan extends Animal {
     public void tick() {
         throw new UnsupportedOperationException("Not yet tickable");
     }
+
+
 }

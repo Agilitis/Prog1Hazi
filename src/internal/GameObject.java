@@ -5,6 +5,10 @@ import utility.Logger;
 public abstract class GameObject implements ITickable {
     Logger logger = new Logger();
 
+    public void setField(Field field) {
+        this.field = field;
+    }
+
     protected Field field;
 
     public GameObject(Field field) {
@@ -13,7 +17,8 @@ public abstract class GameObject implements ITickable {
     }
 
     protected void hitByAnimal(Animal animal){
-        logger.log(this + " was hit by Animal. Doing nothing!");
+        logger.log(this+".hitByAnimal(" + animal + ")");
+
     }
 
     protected void replaceField(Field newField){

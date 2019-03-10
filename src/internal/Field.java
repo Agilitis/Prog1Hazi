@@ -8,7 +8,18 @@ public class Field {
     Logger logger = new Logger();
     ArrayList<Field> neighBours = new ArrayList<>();
     private boolean isDamagable;
+
+    public int getLife() {
+        return life;
+    }
+
     private int life;
+
+    private void setBroken(boolean broken) {
+        logger.log(this+".setBroken(" + true + ")");
+        isBroken = broken;
+    }
+
     private boolean isBroken;
     private GameObject gameObject;
 
@@ -17,35 +28,30 @@ public class Field {
         this.life = life;
     }
 
-    public void addNeighbour(Field neighbour){
+    public void addNeighbour(Field neighbour) {
         neighBours.add(neighbour);
     }
 
     public void acceptAnimal(Animal animal) {
-        logger.log("Trying to accept animal: " + animal);
+        logger.log(this+".acceptAnimal(" + animal + ")");
         if (!isBroken) {
             if (gameObject != null) {
-                logger.log("Animal: " + animal + " has hit a gameObject: " + gameObject);
                 gameObject.hitByAnimal(animal);
-            }
-            else {
-                logger.log("Accepting animal without any problem: " + animal);
+            } else {
                 gameObject = animal;
                 animal.replaceField(this);
-                sufferDamage(1);
             }
-        }
-        else {
-            logger.log("Animal stepped on broken field.");
+        } else {
             animal.die();
         }
     }
 
-    void sufferDamage(int damage) {
+    public void sufferDamage(int damage) {
         if (isDamagable) {
+            logger.log(this+".sufferDamage(" + damage + ")");
             life -= damage;
-            if (life <= 0) {
-                isBroken = true;
+            if (life <= 1) {
+                setBroken(true);
             }
         }
     }
@@ -62,7 +68,12 @@ public class Field {
         gameObject = null;
     }
 
-	public void setGameObject(GameObject gameObject) {
-		this.gameObject = gameObject;
-	}
+    public void setGameObject(GameObject gameObject) {
+        if (this.gameObject != null && this.gameObject != gameObject) {
+            logger.log("Warning: Replacing !" + gameObject + "  " + this.gameObject);
+        }
+        this.gameObject = gameObject;
+    }
+
+
 }
