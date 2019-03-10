@@ -31,7 +31,6 @@ public class SkeletonTestMain {
     }
 
 
-
     private static void handleTests() {
         int userChoice;
 
@@ -41,21 +40,21 @@ public class SkeletonTestMain {
             if (userChoice == 0) {
                 break;
             }
-            testCases.run(userChoice-1);
+            testCases.run(userChoice - 1);
         }
     }
 
     private static void brokenFieldGetsSteppedOnScenario() {
-        Field field1 = new Field( true, 10);
-        Field field2 = new Field( true, 0);
+        Field field1 = new Field(true, 10);
+        Field field2 = new Field(true, 0);
         Panda panda1 = new SleepyPanda(field1);
         panda1.move(field2);
 
     }
 
     private static void arcadeMachineFiresItsEventScenario() {
-        Field field1 = new Field( false, 20);
-        Field field2 = new Field( false, 20);
+        Field field1 = new Field(false, 20);
+        Field field2 = new Field(false, 20);
 
         field1.addNeighbour(field2);
         field2.addNeighbour(field1);
@@ -66,8 +65,8 @@ public class SkeletonTestMain {
     }
 
     private static void chocolateVendingMachineFiresItsEventScenario() {
-        Field field1 = new Field( false, 20);
-        Field field2 = new Field( false, 20);
+        Field field1 = new Field(false, 20);
+        Field field2 = new Field(false, 20);
 
         field1.addNeighbour(field2);
         field2.addNeighbour(field1);
@@ -78,8 +77,8 @@ public class SkeletonTestMain {
     }
 
     private static void couchFiresItsEventScenario() {
-        Field field1 = new Field( false, 20);
-        Field field2 = new Field( false, 20);
+        Field field1 = new Field(false, 20);
+        Field field2 = new Field(false, 20);
 
         field1.addNeighbour(field2);
         field2.addNeighbour(field1);
@@ -91,50 +90,132 @@ public class SkeletonTestMain {
     }
 
     private static void orangutanStepsOnFinishWhilePullingPandasScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field(false, 20);
+        Field field2 = new Field(false, 20);
+        Field field3 = new Field(false, 20);
+        Field field4 = new Field(false, 20);
+        Field finishField = new FinishField(false, 20);
 
+        Panda panda1 = new SleepyPanda(field1);
+        Panda panda2 = new BigPanda(field2);
+        Panda panda3 = new NervousPanda(field3);
+        Orangutan orangutan = new Orangutan(field4);
+
+        orangutan.setPullThis(panda3);
+        panda3.setPullThis(panda2);
+        panda2.setPullThis(panda1);
+
+        orangutan.move(finishField);
     }
 
     private static void orangutanStepsWhilePullingPandasScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field(false, 20);
+        Field field2 = new Field(false, 20);
+        Field field3 = new Field(false, 20);
+        Field field4 = new Field(false, 20);
+        Field field5 = new Field(false, 20);
 
+        Panda panda1 = new SleepyPanda(field1);
+        Panda panda2 = new BigPanda(field2);
+        Panda panda3 = new NervousPanda(field3);
+        Orangutan orangutan = new Orangutan(field4);
+
+        orangutan.setPullThis(panda3);
+        panda3.setPullThis(panda2);
+        panda2.setPullThis(panda1);
+
+        orangutan.move(field5);
     }
 
     private static void orangutanUsesTeleportWhilePullingPandasScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field(false, 20);
+        Field field2 = new Field(false, 20);
+        Field field3 = new Field(false, 20);
+        Field field4 = new Field(false, 20);
+        Teleport teleport = new Teleport(false, 20);
+        Teleport teleport2 = new Teleport(false, 20);
+        Field field5 = new Field(true, 10);
 
+        Panda panda1 = new SleepyPanda(field1);
+        Panda panda2 = new BigPanda(field2);
+        Panda panda3 = new NervousPanda(field3);
+        Orangutan orangutan = new Orangutan(field4);
+
+        teleport.addTeleportNeighbour(teleport2);
+
+        teleport2.addTeleportNeighbour(teleport);
+
+        teleport2.addNeighbour(field5);
+
+        orangutan.setPullThis(panda3);
+        panda3.setPullThis(panda2);
+        panda2.setPullThis(panda1);
+
+
+        orangutan.move(teleport);
     }
 
     private static void animalUsesTeleportAloneScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
 
+
+        Field field4 = new Field(false, 20);
+        Teleport teleport = new Teleport(false, 20);
+        Teleport teleport2 = new Teleport(false, 20);
+        Field field5 = new Field(true, 10);
+
+        Orangutan orangutan = new Orangutan(field4);
+        teleport.addTeleportNeighbour(teleport2);
+        teleport2.addTeleportNeighbour(teleport);
+        teleport2.addNeighbour(field5);
+
+        orangutan.move(teleport);
     }
 
     private static void animalHitsThingScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field(false, 20);
+        Field field2 = new Field(false, 20);
 
+        Couch couch = new Couch(field1);
+        Panda panda = new SleepyPanda(field2);
+
+        panda.move(field1);
     }
 
     private static void animalHitsOrangutanScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field(false, 20);
+        Field field2 = new Field(false, 20);
 
+        Orangutan orangutan = new Orangutan(field1);
+        Panda panda = new SleepyPanda(field2);
+
+        panda.move(field1);
     }
 
     private static void animalHitsPandaScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field(false, 10);
+        Field field2 = new Field(false, 20);
 
+        Orangutan orangutan = new Orangutan(field2);
+        Panda panda = new SleepyPanda(field1);
+
+        orangutan.move(field1);
     }
 
     private static void animalStepsScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field(false, 10);
+        Field field2 = new Field(false, 20);
+
+        Panda panda = new SleepyPanda(field1);
+
+        panda.move(field2);
     }
 
     private static int getTestScenarioFromUser() {
         Scanner reader = new Scanner(System.in);
         int readValue;
-        try{
+        try {
             readValue = reader.nextInt();
-        }catch(InputMismatchException e){
+        } catch (InputMismatchException e) {
             readValue = 0;
             System.err.println("We can only handle number imputs. Please next time running the program consider using numbers only.");
         }

@@ -22,13 +22,14 @@ public class Field {
     }
 
     public void acceptAnimal(Animal animal) {
-        logger.log("Accepting animal: " + animal.hashCode());
+        logger.log("Trying to accept animal: " + animal);
         if (!isBroken) {
             if (gameObject != null) {
+                logger.log("Animal: " + animal + " has hit a gameObject: " + gameObject);
                 gameObject.hitByAnimal(animal);
             }
             else {
-                logger.log("Accepting animal without any problem: " + animal.hashCode());
+                logger.log("Accepting animal without any problem: " + animal);
                 gameObject = animal;
                 animal.replaceField(this);
                 sufferDamage(1);

@@ -13,7 +13,7 @@ public class Panda extends Animal {
 
     @Override
     protected void hitByOrangutan(Orangutan orangutan) {
-        logger.log("Panda was hit by an Orangutan!");
+        logger.log(this + " has been hit by " + orangutan + " !");
         orangutan.setPullThis(this);
         pulledBy = orangutan;
         canMoveAlone = false;

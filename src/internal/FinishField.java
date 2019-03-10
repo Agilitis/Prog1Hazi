@@ -9,6 +9,7 @@ public class FinishField extends Field {
 
     @Override
     public void acceptAnimal(Animal animal) {
+        logger.log("Accepting animal: "+ animal + " sending it to zoo!");
         animal.goToZoo();
     }
 }

@@ -12,7 +12,9 @@ public abstract class GameObject implements ITickable {
         this.field.setGameObject(this);
     }
 
-    protected void hitByAnimal(Animal animal){}
+    protected void hitByAnimal(Animal animal){
+        logger.log(this + " was hit by Animal. Doing nothing!");
+    }
 
     protected void replaceField(Field newField){
         field = newField;

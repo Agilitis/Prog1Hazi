@@ -18,16 +18,14 @@ public class Orangutan extends Animal {
 			pullThis.setPulledBy(panda);
 			panda.setPullThis(pullThis);
 		}
-        setPullThis(panda);
-		panda.setPulledBy(this);
-        panda.setCanMoveAlone(false);
-		
-		Field tmp = panda.getField();
-		panda.replaceField(field);
-		replaceField(tmp);
+        Field tmp = panda.getField();
+        panda.replaceField(this.field);
+        this.replaceField(tmp);
 
-		panda.getField().setGameObject(panda);
-		field.setGameObject(this);
+        pullThis = panda;
+		pullThis.setPulledBy(this);
+        pullThis.setCanMoveAlone(false);
+
     }
 
     @Override
@@ -45,6 +43,7 @@ public class Orangutan extends Animal {
 
     @Override
     protected void hitByAnimal(Animal animal) {
+        logger.log(this + " has been hit by " + animal + " hitting back!");
         animal.hitByOrangutan(this);
     }
 
