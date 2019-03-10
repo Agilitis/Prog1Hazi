@@ -16,18 +16,19 @@ public class SkeletonTestMain {
     }
 
     private static void testFixtures() {
-        testCases.addTestCase(new TestCase(SkeletonTestMain::animalStepsScenario, "Animal Steps Scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsPandaScenario, "Animal hits panda scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsOrangutanScenario, "Animal hits orangutan scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsThingScenario, "Animal hits thing scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::animalUsesTeleportAloneScenario, "Animal uses teleport alone scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanUsesTeleportWhilePullingPandasScenario, "Orangutan uses teleport while pulling panda scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanStepsWhilePullingPandasScenario, "Orangutan steps while pulling pandas scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanStepsOnFinishWhilePullingPandasScenario, "Orangutan steps on finish while pulling panda scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::couchFiresItsEventScenario, "Couch fires its event scenario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::arcadeMachineFiresItsEventScenario, "Arcade machine fires its event scneario"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::chocolateVendingMachineFiresItsEventScenario, "Choclate vending machine fires its event."));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::brokenFieldGetsSteppedOnScenario, "Broken field gets stepped on scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalSteps, "Animal Steps Scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsPanda, "Animal hits panda scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsOrangutan, "Animal hits orangutan scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsThing, "Animal hits thing scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::animalUsesTeleportAlone, "Animal uses teleport alone scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanUsesTeleportWhilePullingPandas, "Orangutan uses teleport while pulling panda scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanStepsWhilePullingPandas, "Orangutan steps while pulling pandas scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanStepsOnFinishWhilePullingPandas, "Orangutan steps on finish while pulling panda scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::couchFiresItsEvent, "Couch fires its event scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::arcadeMachineFiresItsEvent, "Arcade machine fires its event scneario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::chocolateVendingMachineFiresItsEvent, "Choclate vending machine fires its event."));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::brokenFieldGetsSteppedOn, "Broken field gets stepped on scenario"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::pandaHitsPanda, "Panda hits panda scenario"));
     }
 
 
@@ -36,15 +37,15 @@ public class SkeletonTestMain {
 
         while (true) {
             testCases.displayTestOptions();
-            userChoice = getTestScenarioFromUser();
+            userChoice = getTestScenarioFromUser() - 1;
             if (userChoice == 0) {
                 break;
             }
-            testCases.run(userChoice - 1);
+            testCases.run(userChoice);
         }
     }
 
-    private static void brokenFieldGetsSteppedOnScenario() {
+    private static void brokenFieldGetsSteppedOn() {
         Field field1 = new Field(true, 10);
         Field field2 = new Field(true, 0);
         Panda panda1 = new SleepyPanda(field1);
@@ -52,7 +53,7 @@ public class SkeletonTestMain {
 
     }
 
-    private static void arcadeMachineFiresItsEventScenario() {
+    private static void arcadeMachineFiresItsEvent() {
         Field field1 = new Field(false, 20);
         Field field2 = new Field(false, 20);
 
@@ -64,7 +65,7 @@ public class SkeletonTestMain {
         arc1.doEvent();
     }
 
-    private static void chocolateVendingMachineFiresItsEventScenario() {
+    private static void chocolateVendingMachineFiresItsEvent() {
         Field field1 = new Field(false, 20);
         Field field2 = new Field(false, 20);
 
@@ -76,7 +77,7 @@ public class SkeletonTestMain {
         choc1.doEvent();
     }
 
-    private static void couchFiresItsEventScenario() {
+    private static void couchFiresItsEvent() {
         Field field1 = new Field(false, 20);
         Field field2 = new Field(false, 20);
 
@@ -89,7 +90,7 @@ public class SkeletonTestMain {
 
     }
 
-    private static void orangutanStepsOnFinishWhilePullingPandasScenario() {
+    private static void orangutanStepsOnFinishWhilePullingPandas() {
         Field field1 = new Field(false, 20);
         Field field2 = new Field(false, 20);
         Field field3 = new Field(false, 20);
@@ -108,7 +109,7 @@ public class SkeletonTestMain {
         orangutan.move(finishField);
     }
 
-    private static void orangutanStepsWhilePullingPandasScenario() {
+    private static void orangutanStepsWhilePullingPandas() {
         Field field1 = new Field(false, 20);
         Field field2 = new Field(false, 20);
         Field field3 = new Field(false, 20);
@@ -127,7 +128,7 @@ public class SkeletonTestMain {
         orangutan.move(field5);
     }
 
-    private static void orangutanUsesTeleportWhilePullingPandasScenario() {
+    private static void orangutanUsesTeleportWhilePullingPandas() {
         Field field1 = new Field(false, 20);
         Field field2 = new Field(false, 20);
         Field field3 = new Field(false, 20);
@@ -155,7 +156,7 @@ public class SkeletonTestMain {
         orangutan.move(teleport);
     }
 
-    private static void animalUsesTeleportAloneScenario() {
+    private static void animalUsesTeleportAlone() {
 
 
         Field field4 = new Field(false, 20);
@@ -171,7 +172,7 @@ public class SkeletonTestMain {
         orangutan.move(teleport);
     }
 
-    private static void animalHitsThingScenario() {
+    private static void animalHitsThing() {
         Field field1 = new Field(false, 20);
         Field field2 = new Field(false, 20);
 
@@ -181,7 +182,7 @@ public class SkeletonTestMain {
         panda.move(field1);
     }
 
-    private static void animalHitsOrangutanScenario() {
+    private static void animalHitsOrangutan() {
         Field field1 = new Field(false, 20);
         Field field2 = new Field(false, 20);
 
@@ -191,7 +192,7 @@ public class SkeletonTestMain {
         panda.move(field1);
     }
 
-    private static void animalHitsPandaScenario() {
+    private static void animalHitsPanda() {
         Field field1 = new Field(false, 10);
         Field field2 = new Field(false, 20);
 
@@ -201,7 +202,7 @@ public class SkeletonTestMain {
         orangutan.move(field1);
     }
 
-    private static void animalStepsScenario() {
+    private static void animalSteps() {
         Field field1 = new Field(false, 10);
         Field field2 = new Field(false, 20);
 
@@ -209,6 +210,17 @@ public class SkeletonTestMain {
 
         panda.move(field2);
     }
+
+    private static void pandaHitsPanda(){
+        Field field1 = new Field(false, 10);
+        Field field2 = new Field(false, 20);
+
+        Panda panda1 = new SleepyPanda(field1);
+        Panda panda2 = new BigPanda(field2);
+
+        panda1.move(field2);
+    }
+
 
     private static int getTestScenarioFromUser() {
         Scanner reader = new Scanner(System.in);
@@ -221,4 +233,5 @@ public class SkeletonTestMain {
         }
         return readValue;
     }
+
 }
