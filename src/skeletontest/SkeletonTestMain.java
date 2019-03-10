@@ -1,5 +1,7 @@
 package skeletontest;
 
+import internal.*;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -39,27 +41,52 @@ public class SkeletonTestMain {
             if (userChoice == 0) {
                 break;
             }
-            testCases.run(userChoice);
+            testCases.run(userChoice-1);
         }
     }
 
     private static void brokenFieldGetsSteppedOnScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field( true, 10);
+        Field field2 = new Field( true, 0);
+        Panda panda1 = new SleepyPanda(field1);
+        panda1.move(field2);
 
     }
 
     private static void arcadeMachineFiresItsEventScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field( false, 20);
+        Field field2 = new Field( false, 20);
 
+        field1.addNeighbour(field2);
+        field2.addNeighbour(field1);
+
+        Panda panda1 = new NervousPanda(field1);
+        ArcadeMachine arc1 = new ArcadeMachine(field2);
+        arc1.doEvent();
     }
 
     private static void chocolateVendingMachineFiresItsEventScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field( false, 20);
+        Field field2 = new Field( false, 20);
 
+        field1.addNeighbour(field2);
+        field2.addNeighbour(field1);
+
+        Panda panda1 = new BigPanda(field1);
+        ChocolateVendingMachine choc1 = new ChocolateVendingMachine(field2);
+        choc1.doEvent();
     }
 
     private static void couchFiresItsEventScenario() {
-        throw new UnsupportedOperationException(EXCEPTION_TEXT);
+        Field field1 = new Field( false, 20);
+        Field field2 = new Field( false, 20);
+
+        field1.addNeighbour(field2);
+        field2.addNeighbour(field1);
+
+        Panda panda1 = new SleepyPanda(field1);
+        Couch couch1 = new Couch(field2);
+        couch1.doEvent();
 
     }
 

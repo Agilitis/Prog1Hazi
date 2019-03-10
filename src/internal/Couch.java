@@ -4,6 +4,10 @@ public class Couch extends Thing {
 
     private SleepyPanda restingPanda;
 
+    public Couch(Field field) {
+        super(field);
+    }
+
 
     void setRestingPanda(SleepyPanda restingPanda) {
         this.restingPanda = restingPanda;
@@ -11,9 +15,9 @@ public class Couch extends Thing {
 
     @Override
     public void tick() {
-        if(counter-- <= 0){
-            if(restingPanda != null){
-                Field wakeUpHere = field.getNeighbours()[0];
+        if (counter-- <= 0) {
+            if (restingPanda != null) {
+                Field wakeUpHere = field.getNeighbours().get(0);
                 restingPanda.move(wakeUpHere);
                 restingPanda.refreshPanda();
             }
@@ -23,8 +27,9 @@ public class Couch extends Thing {
     }
 
     @Override
-    void doEvent() {
-        for(Field neighbour : field.getNeighbours()){
+    public void doEvent() {
+        logger.log("Restin spot available at: " + this.field + " by " + this.hashCode());
+        for (Field neighbour : field.getNeighbours()) {
             GameObject gameObject = neighbour.getGameObject();
             gameObject.restingSpotAvailable(this);
         }

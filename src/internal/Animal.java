@@ -1,6 +1,10 @@
 package internal;
 
 public abstract class Animal extends GameObject {
+    public Animal(Field field) {
+        super(field);
+    }
+
     int getPointValue() {
         return pointValue;
     }
@@ -29,7 +33,7 @@ public abstract class Animal extends GameObject {
         this.canMoveAlone = canMoveAlone;
 }
 
-    boolean canMoveAlone;
+    boolean canMoveAlone = true;
 
     protected void replaceField(Field newPlace) {
         field.removeGameObject();
@@ -48,7 +52,8 @@ public abstract class Animal extends GameObject {
         }
     }
 
-    void move(Field moveHere) {
+    public void move(Field moveHere) {
+        logger.log("Animal moving here: " + moveHere.hashCode());
         if (canMoveAlone) {
             moveHere.acceptAnimal(this);
         }

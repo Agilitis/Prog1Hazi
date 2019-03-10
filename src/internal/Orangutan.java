@@ -3,6 +3,9 @@ package internal;
 public class Orangutan extends Animal {
 
 
+    public Orangutan(Field field) {
+        super(field);
+    }
 
     @Override
     protected void hitByOrangutan(Orangutan orangutan) {
