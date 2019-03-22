@@ -5,16 +5,26 @@ import internal.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Osztaly mely magaban foglalja a teszteseteket es menedzseli a tesztek futasat.
+ */
 public class SkeletonTestMain {
     private static final Scanner scanner = new Scanner(System.in);
     private static final String EXCEPTION_TEXT = "This test case has not been implemented yet!";
     private static TestCaseStore testCases = new TestCaseStore();
 
+    /**
+     * A main fgveny. A program belepesi pontja, elindítja a tesztesetek futasat illetve a menu megjeleniteset.
+     * @param args a szokvanyos main parameter
+     */
     public static void main(String... args) {
         testFixtures();
         handleTests();
     }
 
+    /**
+     * Fgveny mely a kivant tesztesetekkel feltolti a tesztek kollekciojat.
+     */
     private static void testFixtures() {
         testCases.addTestCase(new TestCase(SkeletonTestMain::animalSteps, "Animal Steps Scenario"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::animalHitsPanda, "Animal hits panda scenario"));
@@ -30,7 +40,10 @@ public class SkeletonTestMain {
         testCases.addTestCase(new TestCase(SkeletonTestMain::brokenFieldGetsSteppedOn, "Broken field gets stepped on scenario"));
     }
 
-
+    /**
+     * Kiírja a teszteseteket, meghívja a fgvenyt mely visszaadja a felhasznalo valaszat es elinditja azt
+     * 0 eseten kilep.
+     */
     private static void handleTests() {
         int userChoice;
 
@@ -231,7 +244,11 @@ public class SkeletonTestMain {
     }
 
 
-
+    /**
+     * Ez a fgveny valositja meg tenylegesen a kommunikaciot a felhasznaloval, a standard inputrol
+     * beolvas egy szamot es azt visszaadja
+     * @return  A felhasznalotol bekert adat
+     */
     private static int getTestScenarioFromUser() {
         Scanner reader = new Scanner(System.in);
         int readValue;
