@@ -182,13 +182,13 @@ public class SkeletonTestMain {
 
     /**
      * A fgvény azt a sccenáriót valósítja meg, mikor egy orángután aki egy sor pandát húz maga után rálép egy üres,
-     * de ép mezőre. A pandák mind előrrébb lépnek egyet. Ez egy álltalános semmilyen extra körülményt nem tartalmazó lépés.
+     * de összetört mezőre. A pandák mind előrrébb lépnek egyet. Ez egy álltalános semmilyen extra körülményt nem tartalmazó lépés.
      */
     private static void orangutanWithPandasStepsOnNonBokenEmptyField(){
         //initialise
-        Field f0 = new Field();
-        Field f1 = new Field();
-        Field f3 = new Field();
+        Field f0 = new Field(false, 20);
+        Field f1 = new Field(false, 10);
+        Field f3 = new Field(false,1);
 
         Orangutan o = new Orangutan(f0);
 
@@ -213,9 +213,9 @@ public class SkeletonTestMain {
      * Egy orángután rálép egy összetört mezőre, ahol meghal és szétszakad mögötte a lánc.
      */
     private static void orangutanWithPandasStepsOnBokenEmptyField(){
-        Field f0 = new Field();
-        Field f1 = new Field();
-        Field f3 = new Field();
+        Field f0 = new Field(false, 20);
+        Field f1 = new Field(false, 10);
+        Field f3 = new Field(true,1);
 
         Orangutan o = new Orangutan(f0);
 
