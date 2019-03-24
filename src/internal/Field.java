@@ -9,6 +9,8 @@ public class Field {
     ArrayList<Field> neighBours = new ArrayList<>();
     private boolean isDamagable;
 
+    public Field(){}
+
     public int getLife() {
         return life;
     }

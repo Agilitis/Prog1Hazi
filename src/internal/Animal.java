@@ -5,6 +5,8 @@ public abstract class Animal extends GameObject {
         super(field);
     }
 
+    public Animal(){}
+
     int getPointValue() {
         return pointValue;
     }

@@ -5,6 +5,8 @@ import utility.Logger;
 public abstract class GameObject implements ITickable {
     Logger logger = new Logger();
 
+    public GameObject(){}
+
     public void setField(Field field) {
         this.field = field;
     }

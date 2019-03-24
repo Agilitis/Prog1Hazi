@@ -7,6 +7,8 @@ public class Orangutan extends Animal {
         super(field);
     }
 
+    public Orangutan(){}
+
     @Override
     protected void hitByOrangutan(Orangutan orangutan) {
         logger.log(this+".hitByOrangutan(" + orangutan + ")");
@@ -52,8 +54,7 @@ public class Orangutan extends Animal {
 
     @Override
     public void tick() {
-        throw new UnsupportedOperationException("Not yet tickable");
+        Field moveHere = field.getNeighbours().get(0);
+        move(moveHere);
     }
-
-
 }
