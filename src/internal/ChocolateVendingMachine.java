@@ -8,7 +8,7 @@ public class ChocolateVendingMachine extends Thing {
 
     @Override
     public void doEvent() {
-        logger.log(this+".doEvenet()");
+        logger.log(this+".doEvent()");
         for(Field neighbour : field.getNeighbours()){
             GameObject gameObject = neighbour.getGameObject();
             gameObject.chocolateVendingMachineBeepSoundPlayed();

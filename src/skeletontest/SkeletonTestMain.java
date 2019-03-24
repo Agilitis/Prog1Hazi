@@ -32,8 +32,8 @@ public class SkeletonTestMain {
         testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnFieldWithPanda, "Orangutan With Pandas Steps On Field With Panda"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasUsesTeleport, "Orangutan With Pandas Uses Teleport"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnFinishField, "Orangutan With Pandas Steps On Finish Field"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnNonBokenEmptyField, "Orangutan With Pandas Steps On Non-Broken Empty Field"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnBokenEmptyField, "Orangutan With Pandas Steps On Broken Empty Field"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnNonBrokenEmptyField, "Orangutan With Pandas Steps On Non-Broken Empty Field"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnBrokenEmptyField, "Orangutan With Pandas Steps On Broken Empty Field"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::chocolateVendingMachineFireEvent, "Chocolate VendingMachine Fire Event"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::arcadeMachineFireEvent, "ArcadeMachine Fire Event"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::couchFireEvent, "Couch Fire Event"));
@@ -114,6 +114,7 @@ public class SkeletonTestMain {
         //do the work
         o.move(f4);
     }
+
     /**
      * Orángután rálép egy mezőre, ahol egy panda áll, és már korábban húzott pandákat. Ekkor az új panda beáll a sorba.
      */
@@ -162,6 +163,7 @@ public class SkeletonTestMain {
         //do the work
         o.move(t);
     }
+
     /**
      * Az orángután rálép a Finish fieldre, ahonnan ezáltal minden mögötte haladó panda bekerül az állatkertbe.
      */
@@ -184,7 +186,7 @@ public class SkeletonTestMain {
      * A fgvény azt a sccenáriót valósítja meg, mikor egy orángután aki egy sor pandát húz maga után rálép egy üres,
      * de összetört mezőre. A pandák mind előrrébb lépnek egyet. Ez egy álltalános semmilyen extra körülményt nem tartalmazó lépés.
      */
-    private static void orangutanWithPandasStepsOnNonBokenEmptyField(){
+    private static void orangutanWithPandasStepsOnNonBrokenEmptyField(){
         //initialise
         Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
@@ -207,12 +209,10 @@ public class SkeletonTestMain {
         o.move(f3);
     }
 
-
-
     /**
      * Egy orángután rálép egy összetört mezőre, ahol meghal és szétszakad mögötte a lánc.
      */
-    private static void orangutanWithPandasStepsOnBokenEmptyField(){
+    private static void orangutanWithPandasStepsOnBrokenEmptyField(){
         Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
         Field f3 = new Field(true,1);
@@ -233,7 +233,6 @@ public class SkeletonTestMain {
         //do the work
         o.move(f3);
     }
-
 
     /**
      * A fgvény azt a scenáriót valósítja meg, mikor a csokiautómata elsüti az eseményét. A közelben lévő pandák ennek
@@ -260,6 +259,7 @@ public class SkeletonTestMain {
         //do the work
         ch.tick();
     }
+
     /**
      * A játékgép megszólal, a mellette álló panda pedig megijed.
      */
@@ -275,6 +275,7 @@ public class SkeletonTestMain {
         //do the work
         a.tick();
     }
+
     /**
      * A fgvény azt a scanáriót valósítja meg, mikor a fotel elsüti az eseményét. A közelben lévő pandák ennek
      * hatására, ha tudnak az eseményre reagálni, reagálnak.
