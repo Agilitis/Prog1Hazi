@@ -13,6 +13,9 @@ public class Couch extends Thing {
         this.restingPanda = restingPanda;
     }
 
+    /**
+     * Minden időegységben tickel a kanapé, ami ezáltal csökkent egy belső számlálót, ami ha eléri a 0-t, akkor a saját eseményét tüzeli.
+     */
     @Override
     public void tick() {
         logger.log(this+".tick()");

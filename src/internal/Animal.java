@@ -17,6 +17,10 @@ public abstract class Animal extends GameObject {
 
     private int pointValue;
 
+    /**
+     * Beállít az Animalnak egy olyan Pandát, amit húzhat.
+     * @param pullThis Egy panda, amit húzhat az animal maga után, ha mozog.
+     */
     public void setPullThis(Panda pullThis) {
 
         pullThis.setPulledBy(this);
@@ -40,6 +44,10 @@ public abstract class Animal extends GameObject {
 
     boolean canMoveAlone = true;
 
+    /**
+     * A mozgást logikailag befejezi, ekkroa már mindent megvizsgált a controller, hogy mozoghat-e ide animal.
+     * @param newField Az új mező, ahova az állat lép.
+     */
     @Override
     protected void replaceField(Field newField) {
         this.field.removeGameObject();
@@ -53,6 +61,9 @@ public abstract class Animal extends GameObject {
         newField.sufferDamageByAnimal(1, this);
     }
 
+    /**
+     * Rekurzívan elengedik egymás kezét az állatok.
+     */
     void releaseHands() {
         logger.log("\t" + this +".releaseHands()");
         if (pullThis != null) {
@@ -61,6 +72,10 @@ public abstract class Animal extends GameObject {
         }
     }
 
+    /**
+     * A mozgást elindítja, ekkor még semmi nem dőlhet el a mozgásról.
+     * @param moveHere A mező ahova a mozgást indítja a controller.
+     */
     public void move(Field moveHere) {
         logger.log(this+".move(" + moveHere + ")");
 
