@@ -45,6 +45,7 @@ public abstract class Animal extends GameObject {
     protected void replaceField(Field newField) {
         this.field.removeGameObject();
         logger.log(this + ".replaceField("+newField+")");
+
         if(newField.getLife()>1){
             newField.sufferDamage(1);
         }else{
@@ -58,7 +59,6 @@ public abstract class Animal extends GameObject {
     }
 
     void releaseHands() {
-        logger.log(this + ".releaseHands()");
         if (pullThis != null) {
             pullThis.releaseHands();
             pullThis = null;
@@ -67,6 +67,7 @@ public abstract class Animal extends GameObject {
 
     public void move(Field moveHere) {
         logger.log(this+".move(" + moveHere + ")");
+
         if (canMoveAlone) {
             moveHere.acceptAnimal(this);
 

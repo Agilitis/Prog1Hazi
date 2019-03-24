@@ -180,6 +180,34 @@ public class SkeletonTestMain {
         o.move(f);
     }
 
+    /**
+     * A fgvény azt a sccenáriót valósítja meg, mikor egy orángután aki egy sor pandát húz maga után rálép egy üres,
+     * de ép mezőre. A pandák mind előrrébb lépnek egyet. Ez egy álltalános semmilyen extra körülményt nem tartalmazó lépés.
+     */
+    private static void orangutanWithPandasStepsOnNonBokenEmptyField(){
+        //initialise
+        Field f0 = new Field();
+        Field f1 = new Field();
+        Field f3 = new Field();
+
+        Orangutan o = new Orangutan(f0);
+
+        Panda p1 = new Panda(f1);
+        Panda p2 = new Panda();
+        //setting up the environment
+        o.setPullThis(p1);
+        p1.setPullThis(p2);
+
+        f0.addNeighbour(f3);
+        f0.addNeighbour(f1);
+        f1.addNeighbour(f0);
+        f3.addNeighbour(f0);
+
+        //do the work
+        o.move(f3);
+    }
+
+
 
     /**
      * Egy orángután rálép egy összetört mezőre, ahol meghal és szétszakad mögötte a lánc.
@@ -205,6 +233,8 @@ public class SkeletonTestMain {
         //do the work
         o.move(f3);
     }
+
+
     /**
      * A fgvény azt a scenáriót valósítja meg, mikor a csokiautómata elsüti az eseményét. A közelben lévő pandák ennek
      * hatására, ha tudnak az eseményre reagálni, reagálnak.
