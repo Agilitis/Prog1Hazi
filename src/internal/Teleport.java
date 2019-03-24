@@ -20,6 +20,10 @@ public class Teleport extends Field {
         teleportNeighbour.teleportHere(animal);
     }
 
+    /**
+     * Az első nem üres mezőre kirakja az állatot.
+     * @param animal az animal, amit ki kell raknia az első nem üres mezőre.
+     */
     private void teleportHere(Animal animal) {
         for(Field neighbour: neighBours){
             if(neighbour.getGameObject() == null){

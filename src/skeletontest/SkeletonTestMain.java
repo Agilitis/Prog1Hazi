@@ -104,7 +104,24 @@ public class SkeletonTestMain {
         //do the work
         o.move(f4);
     }
-    private static void orangutanWithPandasStepsOnFieldWithPanda(){}
+
+    /**
+     * Orángután rálép egy mezőre, ahol egy panda áll, és már korábban húzott pandákat. Ekkor az új panda beáll a sorba.
+     */
+    private static void orangutanWithPandasStepsOnFieldWithPanda(){
+        //initialize
+        Field f1 = new Field(false, 10);
+        Field f2 = new Field(false, 10);
+        Field f3 = new Field(false, 10);
+
+        //Setting up the enviroment
+        Orangutan o = new Orangutan(f2);
+        Panda p = new Panda(f1);
+        Panda p1 = new Panda(f3);
+
+        //do the work
+        o.move(f1);
+    }
     private static void orangutanWithPandasUsesTeleport(){
         //initialise
         Orangutan o = new Orangutan();
@@ -122,19 +139,68 @@ public class SkeletonTestMain {
 
         //do the work
     }
-    private static void orangutanWithPandasStepsOnFinishField(){}
-    private static void orangutanWithPandasStepsOnNonBokenEmptyField(){
+
+    /**
+     * Az orángután rálép a Finish fieldre, ahonnan ezáltal minden mögötte haladó panda bekerül az állatkertbe.
+     */
+    private static void orangutanWithPandasStepsOnFinishField(){
         //initialise
+        FinishField f = new FinishField(false, 10);
+        Field f1 = new Field(false, 10);
+        Field f2 = new Field(false, 10);
+        Field f3 = new Field(false, 10);
         //setting up the environment
+        Panda p2 = new Panda(f3);
+        Panda p1 = new Panda(f2);
+        Orangutan o = new Orangutan(f1);
+        o.setPullThis(p1);
+        p1.setPullThis(p2);
         //do the work
+        o.move(f);
     }
-    private static void orangutanWithPandasStepsOnBokenEmptyField(){}
+    private static void orangutanWithPandasStepsOnNonBokenEmptyField(){
+
+    }
+
+    /**
+     * Egy orángután rálép egy összetört mezőre, ahol meghal és szétszakad mögötte a lánc.
+     */
+    private static void orangutanWithPandasStepsOnBokenEmptyField(){
+        //initialise
+        Field f1 = new Field(false, 10);
+        Field f2 = new Field(false, 10);
+        Field f3 = new Field(false, 10);
+        Field f4 = new Field(true, 0);
+        //setting up the environment
+        Orangutan o = new Orangutan(f3);
+        Panda p1 = new Panda(f2);
+        Panda p2 = new Panda(f1);
+        o.setPullThis(p2);
+        p2.setPullThis(p1);
+        //do the work
+        o.move(f4);
+    }
     private static void chocolateVendingMachineFireEvent(){
         //initialise
         //setting up the environment
         //do the work
     }
-    private static void arcadeMachineFireEvent(){}
+
+    /**
+     * A játékgép megszólal, a mellette álló panda pedig megijed.
+     */
+    private static void arcadeMachineFireEvent(){
+        //initialise
+        Field f1 = new Field(false, 20);
+        Field f2 = new Field(true, 20);
+        //setting up the environment
+        ChocolateVendingMachine a = new ChocolateVendingMachine(f1);
+        BigPanda bp = new BigPanda(f2);
+        f1.addNeighbour(f2);
+        f2.addNeighbour(f1);
+        //do the work
+        a.tick();
+    }
     private static void couchFireEvent(){
         //initialise
         //setting up the environment

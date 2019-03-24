@@ -34,6 +34,7 @@ public class Orangutan extends Animal {
 
     @Override
     protected void die() {
+        logger.log(this + ".die()");
         releaseHands();
     }
 

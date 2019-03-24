@@ -4,14 +4,15 @@ public class ArcadeMachine extends Thing {
 
     public ArcadeMachine(Field field) {
         super(field);
+        counter = 1;
     }
 
     @Override
     public void doEvent() {
-        logger.log("Arcade machine making noise at field: " + this.getField());
         for(Field neighbour : field.getNeighbours()){
-            logger.log("Neighbour notified for arcade machine sound at: " + neighbour.hashCode());
+            logger.log(neighbour + ".getGameObject()");
             GameObject gameObject = neighbour.getGameObject();
+            logger.log("\t" + gameObject + ".arcadeMachineRingSoundPlayed()");
             gameObject.arcadeMachineRingSoundPlayed();
         }
     }

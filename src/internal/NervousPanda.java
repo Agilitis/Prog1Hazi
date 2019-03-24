@@ -7,7 +7,9 @@ public class NervousPanda extends Panda {
     }
 
     public void scare() {
+        logger.log(this +".scare()");
         if(pulledBy != null){
+            logger.log(pulledBy+".releaseHands()");
             pulledBy.releaseHands();
         }
     }
@@ -15,7 +17,7 @@ public class NervousPanda extends Panda {
 
     @Override
     void arcadeMachineRingSoundPlayed() {
-        logger.log("Nervous panda was scared.");
+        logger.log(this + "arcadeMachineRingSoundPlayed()");
         scare();
     }
 }
