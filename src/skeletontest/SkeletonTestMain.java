@@ -190,12 +190,13 @@ public class SkeletonTestMain {
         //initialise
         Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
+        Field f2 = new Field(false, 10);
         Field f3 = new Field(false,1);
 
         Orangutan o = new Orangutan(f0);
 
         Panda p1 = new Panda(f1);
-        Panda p2 = new Panda();
+        Panda p2 = new Panda(f2);
         //setting up the environment
         o.setPullThis(p1);
         p1.setPullThis(p2);

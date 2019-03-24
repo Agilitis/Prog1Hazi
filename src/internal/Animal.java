@@ -46,11 +46,6 @@ public abstract class Animal extends GameObject {
         this.field.removeGameObject();
         logger.log(this + ".replaceField("+newField+")");
 
-        if(newField.getLife()>1){
-            newField.sufferDamage(1);
-        }else{
-            this.die();
-        }
         if (this.pullThis != null) {
             this.pullThis.replaceField(field);
         }

@@ -36,6 +36,13 @@ public class Field {
 
     public void acceptAnimal(Animal animal) {
         logger.log(this+".acceptAnimal(" + animal + ")");
+        if(this.isDamagable){
+            if(this.getLife()>1){
+                this.sufferDamage(1);
+            }else{
+                animal.die();
+            }
+        }
         if (!isBroken) {
             if (gameObject != null) {
                 gameObject.hitByAnimal(animal);

@@ -55,7 +55,6 @@ public class Orangutan extends Animal {
 
     @Override
     public void tick() {
-        Field moveHere = field.getNeighbours().get(0);
-        move(moveHere);
+
     }
 }
