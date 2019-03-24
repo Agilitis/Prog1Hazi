@@ -7,6 +7,8 @@ public class Panda extends Animal {
         super(field);
     }
 
+    public Panda(){}
+
     public void setPulledBy(Animal animal) {
 		pulledBy = animal;
 	}

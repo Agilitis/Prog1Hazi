@@ -73,16 +73,73 @@ public class SkeletonTestMain {
         o.tick();
     }
     private static void orangutanStepsOnEmptyFieldFieldBreakWhilePandasCome(){
+        //initialise
+        Field f0 = new Field(true,1);
+        Field f1 = new Field();
+        Field f2 = new Field();
+        Field f3 = new Field();
+        Field f4 = new Field();
 
+        Orangutan o = new Orangutan(f0);
+
+        Panda p1 = new Panda(f1);
+        Panda p2 = new Panda(f2);
+        Panda p3 = new Panda(f3);
+
+        //setting up the environment
+        o.setPullThis(p1);
+        p1.setPullThis(p2);
+        p2.setPullThis(p3);
+        p3.setPulledBy(p2);
+        p2.setPulledBy(p1);
+        p1.setPulledBy(o);
+        f1.addNeighbour(f2);
+        f1.addNeighbour(f0);
+        f2.addNeighbour(f1);
+        f2.addNeighbour(f3);
+        f3.addNeighbour(f2);
+        f3.addNeighbour(f4);
+        f4.addNeighbour(f3);
+
+        //do the work
+        o.move(f4);
     }
     private static void orangutanWithPandasStepsOnFieldWithPanda(){}
-    private static void orangutanWithPandasUsesTeleport(){}
+    private static void orangutanWithPandasUsesTeleport(){
+        //initialise
+        Orangutan o = new Orangutan();
+
+        Panda p1 = new Panda();
+        Panda p2 = new Panda();
+
+        Teleport t = new Teleport();
+
+        Field f0 = new Field();
+        Field f1 = new Field();
+        Field f2 = new Field();
+
+        //setting up the environment
+
+        //do the work
+    }
     private static void orangutanWithPandasStepsOnFinishField(){}
-    private static void orangutanWithPandasStepsOnNonBokenEmptyField(){}
+    private static void orangutanWithPandasStepsOnNonBokenEmptyField(){
+        //initialise
+        //setting up the environment
+        //do the work
+    }
     private static void orangutanWithPandasStepsOnBokenEmptyField(){}
-    private static void chocolateVendingMachineFireEvent(){}
+    private static void chocolateVendingMachineFireEvent(){
+        //initialise
+        //setting up the environment
+        //do the work
+    }
     private static void arcadeMachineFireEvent(){}
-    private static void couchFireEvent(){}
+    private static void couchFireEvent(){
+        //initialise
+        //setting up the environment
+        //do the work
+    }
 
     /**
      * Ez a fgveny valositja meg tenylegesen a kommunikaciot a felhasznaloval, a standard inputrol
