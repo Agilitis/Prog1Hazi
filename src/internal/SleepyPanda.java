@@ -1,5 +1,10 @@
 package internal;
 
+import utility.Logger;
+
+/**
+ * Olyan panda aki a fotel eseményére tud reagálni.
+ */
 public class SleepyPanda extends Panda {
     public SleepyPanda(Field field) {
         super(field);
@@ -24,14 +29,23 @@ public class SleepyPanda extends Panda {
     private int stamina;
     private boolean isSleepy = true;
 
+    /**
+     * A pandát elaltatjuk egy kanapén.
+     * @param sleepHere A kanapé, amin a panda alhat.
+     */
     protected void putToRest(Couch sleepHere) {
-        logger.log("Sleepy panda going to sleep now.");
+    	Logger.increaseTabulation();
+        logger.log(this+".putToRest("+sleepHere+")");
         sleepHere.setRestingPanda(this);
         field.removeGameObject();
         canMoveAlone = false;
         releaseHands();
+        Logger.decreaseTabulation();
     }
 
+    /**
+     * Minden időegyésgben az álmos panda fáradtsága csökken.
+     */
     @Override
     public void tick() {
         if(stamina-- <= 0){
@@ -39,16 +53,24 @@ public class SleepyPanda extends Panda {
         }
     }
 
+    /**
+     * A panda éberségét felvesszük újra az alapértelmezett mértékre. Ez pl akkor történhet meg, ha aludt egy kanapén.
+     */
     void refreshPanda(){
         setSleepy(false);
         setStamina(20);
     }
 
+    /**
+     * Ezt a függvényét, hívja megy egy kanapé a pandának, ha az éppen eltüzeli az eseményét és a panda ott áll mellette.
+     * @param couch A kanapé, ami az eseményt kiadta.
+     */
     @Override
     public void restingSpotAvailable(Couch couch) {
+    	Logger.increaseTabulation();
         if(isSleepy){
-            logger.log("Sleepy panda: " +hashCode()+" found a resting spot: " + couch.hashCode());
             putToRest(couch);
         }
+        Logger.decreaseTabulation();
     }
 }

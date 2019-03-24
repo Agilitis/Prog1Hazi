@@ -1,6 +1,7 @@
 package skeletontest;
 
 import internal.*;
+import utility.Logger;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -32,8 +33,8 @@ public class SkeletonTestMain {
         testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnFieldWithPanda, "Orangutan With Pandas Steps On Field With Panda"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasUsesTeleport, "Orangutan With Pandas Uses Teleport"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnFinishField, "Orangutan With Pandas Steps On Finish Field"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnNonBokenEmptyField, "Orangutan With Pandas Steps On Non-Broken Empty Field"));
-        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnBokenEmptyField, "Orangutan With Pandas Steps On Broken Empty Field"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnNonBrokenEmptyField, "Orangutan With Pandas Steps On Non-Broken Empty Field"));
+        testCases.addTestCase(new TestCase(SkeletonTestMain::orangutanWithPandasStepsOnBrokenEmptyField, "Orangutan With Pandas Steps On Broken Empty Field"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::chocolateVendingMachineFireEvent, "Chocolate VendingMachine Fire Event"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::arcadeMachineFireEvent, "ArcadeMachine Fire Event"));
         testCases.addTestCase(new TestCase(SkeletonTestMain::couchFireEvent, "Couch Fire Event"));
@@ -61,20 +62,43 @@ public class SkeletonTestMain {
      * vagy ép, ezt futás közben a felhasználó dönti el. Ha törött az állat meghal, egyébként rálép.
      */
     private static void lonelyAnimalStepsOnEmptyField(){
-        //initialise
-        Orangutan o = new Orangutan();
-        Field f1 = new Field();
-        Field f2 = new Field();
+    	Logger.resetTabulation();
+    	
+    	Scanner scanner = new Scanner(System.in);
+        System.out.println("A mezo torott?(1/0)");
+        int fieldIsBroken = scanner.nextInt();
+        switch (fieldIsBroken){
+            case 1:
+                //initialize
+                Field f1 = new Field();
+                Field f2 = new Field(true,0);
+                Orangutan o = new Orangutan(f1);
 
-        //setting up the environment
-        o.setField(f1);
-        f1.setGameObject(o);
-        f1.addNeighbour(f2);
-        f2.addNeighbour(f1);
+                //setting up the environment
+                f1.addNeighbour(f2);
+                f2.addNeighbour(f1);
 
+                //do the work
+                o.move(f2);
+                break;
+            case 0:
+                //initialize
+                Field f3 = new Field();
+                Field f4 = new Field();
+                Orangutan or = new Orangutan(f3);
 
-        //do the work
-        o.tick();
+                //setting up the environment
+                f3.addNeighbour(f4);
+                f4.addNeighbour(f3);
+
+                //do the work
+                or.move(f4);
+                break;
+                default:
+                    System.out.println("Not a valid answer! Pick an other use-case!");
+                    break;
+        }
+
     }
 
     /**
@@ -83,7 +107,9 @@ public class SkeletonTestMain {
      * a sor visszafelé felbomlik, azonban a mögötte lévő állatok már nem halnak meg.
      */
     private static void orangutanStepsOnEmptyFieldFieldBreakWhilePandasCome(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f0 = new Field(true,1);
         Field f1 = new Field();
         Field f2 = new Field();
@@ -100,9 +126,6 @@ public class SkeletonTestMain {
         o.setPullThis(p1);
         p1.setPullThis(p2);
         p2.setPullThis(p3);
-        p3.setPulledBy(p2);
-        p2.setPulledBy(p1);
-        p1.setPulledBy(o);
         f1.addNeighbour(f2);
         f1.addNeighbour(f0);
         f2.addNeighbour(f1);
@@ -114,16 +137,19 @@ public class SkeletonTestMain {
         //do the work
         o.move(f4);
     }
+
     /**
      * Orángután rálép egy mezőre, ahol egy panda áll, és már korábban húzott pandákat. Ekkor az új panda beáll a sorba.
      */
     private static void orangutanWithPandasStepsOnFieldWithPanda(){
-        //initialize
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f1 = new Field(false, 10);
         Field f2 = new Field(false, 10);
         Field f3 = new Field(false, 10);
 
-        //Setting up the enviroment
+        //Setting up the environment
         Orangutan o = new Orangutan(f2);
         Panda p = new Panda(f1);
         Panda p1 = new Panda(f3);
@@ -137,17 +163,21 @@ public class SkeletonTestMain {
      * A pandák követni fogják az orángutánt ahova azt elteleportálta a teleport.
      */
     private static void orangutanWithPandasUsesTeleport(){
-        //initialise
-        Teleport t = new Teleport();
+    	Logger.resetTabulation();
+    	
+    	//initialize
+        Teleport t1 = new Teleport();
+        Teleport t2 = new Teleport();
 
         Field f0 = new Field();
         Field f1 = new Field();
         Field f2 = new Field();
+        Field f3 = new Field();
 
         Orangutan o = new Orangutan(f0);
 
         Panda p1 = new Panda(f1);
-        Panda p2 = new Panda();
+        Panda p2 = new Panda(f2);
 
         //setting up the environment
         o.setPullThis(p1);
@@ -155,18 +185,25 @@ public class SkeletonTestMain {
         p2.setPulledBy(p1);
         p1.setPulledBy(o);
 
-        t.addNeighbour(f2);
-        f0.addNeighbour(t);
+        t1.addTeleportNeighbour(t2);
+        t2.addTeleportNeighbour(t1);
+        t2.addNeighbour(f3);
+
+        f0.addNeighbour(t1);
         f1.addNeighbour(f0);
 
         //do the work
-        o.move(t);
+        o.move(t1);
     }
+
     /**
      * Az orángután rálép a Finish fieldre, ahonnan ezáltal minden mögötte haladó panda bekerül az állatkertbe.
      */
     private static void orangutanWithPandasStepsOnFinishField(){
-        FinishField f = new FinishField(false, 10);
+    	Logger.resetTabulation();
+    	
+    	//initialize
+    	FinishField f = new FinishField(false, 10);
         Field f1 = new Field(false, 10);
         Field f2 = new Field(false, 10);
         Field f3 = new Field(false, 10);
@@ -184,16 +221,19 @@ public class SkeletonTestMain {
      * A fgvény azt a sccenáriót valósítja meg, mikor egy orángután aki egy sor pandát húz maga után rálép egy üres,
      * de összetört mezőre. A pandák mind előrrébb lépnek egyet. Ez egy álltalános semmilyen extra körülményt nem tartalmazó lépés.
      */
-    private static void orangutanWithPandasStepsOnNonBokenEmptyField(){
-        //initialise
+    private static void orangutanWithPandasStepsOnNonBrokenEmptyField(){
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
+        Field f2 = new Field(false, 10);
         Field f3 = new Field(false,1);
 
         Orangutan o = new Orangutan(f0);
 
         Panda p1 = new Panda(f1);
-        Panda p2 = new Panda();
+        Panda p2 = new Panda(f2);
         //setting up the environment
         o.setPullThis(p1);
         p1.setPullThis(p2);
@@ -206,21 +246,22 @@ public class SkeletonTestMain {
         //do the work
         o.move(f3);
     }
-
-
 
     /**
      * Egy orángután rálép egy összetört mezőre, ahol meghal és szétszakad mögötte a lánc.
      */
-    private static void orangutanWithPandasStepsOnBokenEmptyField(){
-        Field f0 = new Field(false, 20);
+    private static void orangutanWithPandasStepsOnBrokenEmptyField(){
+    	Logger.resetTabulation();
+    	
+    	//initialize
+    	Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
-        Field f3 = new Field(true,1);
-
+        Field f2 = new Field(false, 10);
+        Field f3 = new Field(true,0);
         Orangutan o = new Orangutan(f0);
 
         Panda p1 = new Panda(f1);
-        Panda p2 = new Panda();
+        Panda p2 = new Panda(f2);
         //setting up the environment
         o.setPullThis(p1);
         p1.setPullThis(p2);
@@ -233,54 +274,70 @@ public class SkeletonTestMain {
         //do the work
         o.move(f3);
     }
-
 
     /**
      * A fgvény azt a scenáriót valósítja meg, mikor a csokiautómata elsüti az eseményét. A közelben lévő pandák ennek
      * hatására, ha tudnak az eseményre reagálni, reagálnak.
      */
     private static void chocolateVendingMachineFireEvent(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f1 = new Field();
-        Field f2 = new Field();
+        Field f2 = new Field(true, 10);
         Field f3 = new Field();
         Field f4 = new Field();
 
         ChocolateVendingMachine ch = new ChocolateVendingMachine(f1);
 
-        NervousPanda np = new NervousPanda(f2);
+        BigPanda bp = new BigPanda(f2);
 
         Panda p1 = new Panda(f3);
         Panda p2 = new Panda(f4);
 
         //setting up the environment
-        np.setPullThis(p1);
+        bp.setPullThis(p1);
         p1.setPullThis(p2);
+        f1.addNeighbour(f2);
+        f1.addNeighbour(f3);
+        f1.addNeighbour(f4);
 
         //do the work
         ch.tick();
     }
+
     /**
      * A játékgép megszólal, a mellette álló panda pedig megijed.
      */
     private static void arcadeMachineFireEvent(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f1 = new Field(false, 20);
+        Field f3 = new Field(false, 20);
+        Field f4 = new Field(false, 20);
         Field f2 = new Field(true, 20);
         //setting up the environment
-        ChocolateVendingMachine a = new ChocolateVendingMachine(f1);
-        BigPanda bp = new BigPanda(f2);
+        ArcadeMachine a = new ArcadeMachine(f1);
+        NervousPanda np = new NervousPanda(f2);
+        Panda p1 = new Panda(f3);
+        Panda p2 = new Panda(f4);
+        np.setPullThis(p1);
+        p1.setPullThis(p2);
         f1.addNeighbour(f2);
         f2.addNeighbour(f1);
         //do the work
         a.tick();
     }
+
     /**
      * A fgvény azt a scanáriót valósítja meg, mikor a fotel elsüti az eseményét. A közelben lévő pandák ennek
      * hatására, ha tudnak az eseményre reagálni, reagálnak.
      */
     private static void couchFireEvent(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f1 = new Field();
         Field f2 = new Field();
         Field f3 = new Field();
@@ -293,6 +350,8 @@ public class SkeletonTestMain {
 
         //setting up the environment
         sp.setPullThis(p1);
+        f1.addNeighbour(f2);
+        f1.addNeighbour(f3);
 
         //do the work
         co.tick();

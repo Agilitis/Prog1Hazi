@@ -1,23 +1,35 @@
 package internal;
 
+import utility.Logger;
+
+/**
+ * Olyan panda aki a játékautómata hangjára elengedi a többiek kezét. Másra nem reagál.
+ */
 public class NervousPanda extends Panda {
 
     public NervousPanda(Field field) {
         super(field);
     }
 
+    /**
+     * Ha meghallja a játékautómata hangját hívódik. Elengedi a többi panda kezét, mely hatására a sor felbomlik.
+     */
     public void scare() {
+    	Logger.increaseTabulation();
         logger.log(this +".scare()");
-        if(pulledBy != null){
-            logger.log(pulledBy+".releaseHands()");
-            pulledBy.releaseHands();
-        }
+        logger.log(this+".releaseHands()");
+        releaseHands();
+        Logger.decreaseTabulation();
     }
 
-
+    /**
+     * Ezt a fgvényt hívja az ArcadeMachine mikor kiadja a hangot. Meghívja a scare()-t.
+     */
     @Override
     void arcadeMachineRingSoundPlayed() {
+    	Logger.increaseTabulation();
         logger.log(this + "arcadeMachineRingSoundPlayed()");
         scare();
+        Logger.decreaseTabulation();
     }
 }

@@ -1,5 +1,10 @@
 package internal;
 
+import utility.Logger;
+
+/**
+ * Absztrakt osztály. Egy álltalános állatot reprezentál.
+ */
 public abstract class Animal extends GameObject {
     public Animal(Field field) {
         super(field);
@@ -17,12 +22,16 @@ public abstract class Animal extends GameObject {
 
     private int pointValue;
 
+    /**
+     * Beállít az Animalnak egy olyan Pandát, amit húzhat.
+     * @param pullThis Egy panda, amit húzhat az animal maga után, ha mozog.
+     */
     public void setPullThis(Panda pullThis) {
-        logger.log(this+".setPullThis(" + pullThis + ")");
-
+    	Logger.increaseTabulation();
         pullThis.setPulledBy(this);
         this.pullThis = pullThis;
         pullThis.canMoveAlone = false;
+        Logger.decreaseTabulation();
     }
 
     public Animal getPullThis() {
@@ -41,37 +50,50 @@ public abstract class Animal extends GameObject {
 
     boolean canMoveAlone = true;
 
+    /**
+     * A mozgást logikailag befejezi, ekkroa már mindent megvizsgált a controller, hogy mozoghat-e ide animal.
+     * @param newField Az új mező, ahova az állat lép.
+     */
     @Override
     protected void replaceField(Field newField) {
+    	Logger.increaseTabulation();
         this.field.removeGameObject();
         logger.log(this + ".replaceField("+newField+")");
 
-        if(newField.getLife()>1){
-            newField.sufferDamage(1);
-        }else{
-            this.die();
-        }
         if (this.pullThis != null) {
             this.pullThis.replaceField(field);
         }
         this.field = newField;
         this.field.setGameObject(this);
+        newField.sufferDamageByAnimal(1, this);
+        Logger.decreaseTabulation();
     }
 
+    /**
+     * Rekurzívan elengedik egymás kezét az állatok.
+     */
     void releaseHands() {
+    	Logger.increaseTabulation();
+        logger.log(this +".releaseHands()");
         if (pullThis != null) {
             pullThis.releaseHands();
             pullThis = null;
         }
+        Logger.decreaseTabulation();
     }
 
+    /**
+     * A mozgást elindítja, ekkor még semmi nem dőlhet el a mozgásról.
+     * @param moveHere A mező ahova a mozgást indítja a controller.
+     */
     public void move(Field moveHere) {
+    	Logger.increaseTabulation();
         logger.log(this+".move(" + moveHere + ")");
 
         if (canMoveAlone) {
             moveHere.acceptAnimal(this);
-
         }
+        Logger.decreaseTabulation();
     }
 
     protected abstract void hitByOrangutan(Orangutan orangutan);

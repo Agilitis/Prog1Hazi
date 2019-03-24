@@ -1,5 +1,10 @@
 package internal;
 
+import utility.Logger;
+
+/**
+ * A fotel. Ha egy álmos panda mellé lép akkor bele tud ülni.
+ */
 public class Couch extends Thing {
 
     private SleepyPanda restingPanda;
@@ -13,9 +18,14 @@ public class Couch extends Thing {
         this.restingPanda = restingPanda;
     }
 
+    /**
+     * Minden időegységben tickel a kanapé, ami ezáltal csökkent egy belső számlálót, ami ha eléri a 0-t, akkor a saját eseményét tüzeli.
+     */
     @Override
     public void tick() {
-        if (counter-- <= 0) {
+    	Logger.increaseTabulation();
+        logger.log(this+".tick()");
+        if (--counter <= 0) {
             if (restingPanda != null) {
                 Field wakeUpHere = field.getNeighbours().get(0);
                 restingPanda.move(wakeUpHere);
@@ -24,15 +34,22 @@ public class Couch extends Thing {
             doEvent();
             counter = 20;
         }
+        Logger.decreaseTabulation();
     }
 
+    /**
+     * Véletlenszerűen hívódik meg. Ha meghívódik minden szomszédos mezőn álló dolognak szól. hogy ide le lehet ülni.
+     */
     @Override
     public void doEvent() {
+    	Logger.increaseTabulation();
         logger.log(this+".doEvent(" + ")");
 
         for (Field neighbour : field.getNeighbours()) {
             GameObject gameObject = neighbour.getGameObject();
+            logger.log("\t"+gameObject+".restingSpotAvailable()");
             gameObject.restingSpotAvailable(this);
         }
+        Logger.decreaseTabulation();
     }
 }
