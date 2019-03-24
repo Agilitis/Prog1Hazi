@@ -62,19 +62,40 @@ public class SkeletonTestMain {
      */
     private static void lonelyAnimalStepsOnEmptyField(){
         Scanner scanner = new Scanner(System.in);
-        boolean isBroken = scanner.nextBoolean();
-        //initialise
-        Field f1 = new Field();
-        Field f2 = new Field();
-        Orangutan o = new Orangutan(f1);
+        System.out.println("A mező törött?(1/0)");
+        int fieldIsBroken = scanner.nextInt();
+        switch (fieldIsBroken){
+            case 1:
+                //initialise
+                Field f1 = new Field();
+                Field f2 = new Field(true,0);
+                Orangutan o = new Orangutan(f1);
 
-        //setting up the environment
-        f1.addNeighbour(f2);
-        f2.addNeighbour(f1);
+                //setting up the environment
+                f1.addNeighbour(f2);
+                f2.addNeighbour(f1);
 
+                //do the work
+                o.move(f2);
+                break;
+            case 0:
+                //initialise
+                Field f3 = new Field();
+                Field f4 = new Field();
+                Orangutan or = new Orangutan(f3);
 
-        //do the work
-        o.move(f2);
+                //setting up the environment
+                f3.addNeighbour(f4);
+                f4.addNeighbour(f3);
+
+                //do the work
+                or.move(f4);
+                break;
+                default:
+                    System.out.println("Not a valid answer! Pick an other use-case!");
+                    break;
+        }
+
     }
 
     /**

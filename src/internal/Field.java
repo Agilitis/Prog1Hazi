@@ -4,6 +4,10 @@ import utility.Logger;
 
 import java.util.ArrayList;
 
+/**
+ * Egy mező a játékban. Feladata, hogy tárolja a játékban előforduló gameObjecteket és biztosítsa a mozgásukat,
+ * a közöttük lévő kommunikációt és stabil felület legyen, melyen a dolgok tudnak létezni.
+ */
 public class Field {
     Logger logger = new Logger();
     ArrayList<Field> neighBours = new ArrayList<>();
@@ -23,7 +27,6 @@ public class Field {
     private int life;
 
     private void setBroken(boolean broken) {
-        logger.log(this+".setBroken(" + true + ")");
         isBroken = broken;
     }
 
@@ -44,6 +47,13 @@ public class Field {
         neighBours.add(neighbour);
     }
 
+    /**
+     * Fgvény mely megvalósítja a mozgásokat. Egy állat move() fgvénye hívja meg átadva saját magát. A Mező felelőssége
+     * eldönteni, hogy ő össze van-e törve, és ha igen akkor meghívja az állat die()-ját.
+     * Ha van valaki a mezőn, akkor ütközteti őket.
+     * Egyéb esetben elindítja az állat mozgását a replaceField() meghívásával.
+     * @param animal    Az állat aki rá akar lépni a mezőre.
+     */
     public void acceptAnimal(Animal animal) {
         logger.log("\t"+this+".acceptAnimal(" + animal + ")");
 

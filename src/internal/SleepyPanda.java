@@ -1,5 +1,8 @@
 package internal;
 
+/**
+ * Olyan panda aki a fotel eseményére tud reagálni.
+ */
 public class SleepyPanda extends Panda {
     public SleepyPanda(Field field) {
         super(field);

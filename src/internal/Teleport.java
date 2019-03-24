@@ -4,6 +4,9 @@ package internal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Különleges mező. Nem lehet rálépni, ha megkísérlik az állatot egy másik helyre teleportálja.
+ */
 public class Teleport extends Field {
     private ArrayList<Teleport> teleportNeighbours = new ArrayList<>();
 
@@ -13,6 +16,10 @@ public class Teleport extends Field {
 
     public Teleport(){}
 
+    /**
+     * Az egyik teleportszomszédjának meghívja a teleportHere()-fgvényét a kapott állattal.
+     * @param animal    Az állat aki rá akar lépni a mezőre.
+     */
     @Override
     public void acceptAnimal(Animal animal) {
         Teleport teleportNeighbour = teleportNeighbours.get(0);

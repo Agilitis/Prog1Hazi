@@ -1,5 +1,8 @@
 package internal;
 
+/**
+ * A fotel. Ha egy álmos panda mellé lép akkor bele tud ülni.
+ */
 public class Couch extends Thing {
 
     private SleepyPanda restingPanda;
@@ -30,6 +33,9 @@ public class Couch extends Thing {
         }
     }
 
+    /**
+     * Véletlenszerűen hívódik meg. Ha meghívódik minden szomszédos mezőn álló dolognak szól. hogy ide le lehet ülni.
+     */
     @Override
     public void doEvent() {
         logger.log(this+".doEvent(" + ")");

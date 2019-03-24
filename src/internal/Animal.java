@@ -1,5 +1,8 @@
 package internal;
 
+/**
+ * Absztrakt osztály. Egy álltalános állatot reprezentál.
+ */
 public abstract class Animal extends GameObject {
     public Animal(Field field) {
         super(field);

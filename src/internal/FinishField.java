@@ -1,6 +1,8 @@
 package internal;
 
-
+/**
+ * A célmező. Ha rálép egy állat azt az állatkertbe küldi.
+ */
 public class FinishField extends Field {
 
     public FinishField(boolean isDamagable, int life) {

@@ -1,5 +1,8 @@
 package internal;
 
+/**
+ * Olyan állat akit a játékos tud irányítani. Ha pandával ütközik megfogja és maga után húzza.
+ */
 public class Orangutan extends Animal {
 
 

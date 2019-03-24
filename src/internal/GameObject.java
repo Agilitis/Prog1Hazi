@@ -2,6 +2,9 @@ package internal;
 
 import utility.Logger;
 
+/**
+ * Egy álltalános dolog a játékban. Minden ami a mezőkön tud lenni az gameObject. Absztrakt osztály.
+ */
 public abstract class GameObject implements ITickable {
     Logger logger = new Logger();
 
@@ -18,11 +21,19 @@ public abstract class GameObject implements ITickable {
         this.field.setGameObject(this);
     }
 
+    /**
+     * Akkor hívódik, ha egy állat nekiment. A leszármazottak felüldefiniálják, hogy egyedi módon reagálhassanak.
+     * @param animal
+     */
     protected void hitByAnimal(Animal animal){
         logger.log(this+".hitByAnimal(" + animal + ")");
 
     }
 
+    /**
+     * Ez a fgvény teszi át a gameObjectet a mezőről egy másikra.
+     * @param newField  A mező amire rálép.
+     */
     protected void replaceField(Field newField){
         field = newField;
     }
@@ -31,14 +42,22 @@ public abstract class GameObject implements ITickable {
 		return field;
 	}
 
+    /**
+     * Leszármmazott használja, hogy reagálhasson a Thingek eseményeire.
+     * @param couch Az eseményt generáló Couch.
+     */
     public void restingSpotAvailable(Couch couch) {
 
     }
-
+    /**
+     * Leszármmazott használja, hogy reagálhasson a Thingek eseményeire.
+     */
     void chocolateVendingMachineBeepSoundPlayed(){
 
     }
-
+    /**
+     * Leszármmazott használja, hogy reagálhasson a Thingek eseményeire.
+     */
     void arcadeMachineRingSoundPlayed(){
 
     }

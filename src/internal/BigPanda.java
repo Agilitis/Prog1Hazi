@@ -1,5 +1,8 @@
 package internal;
 
+/**
+ * Olyan panda aki ha megijed ugrik egyet és ettől a mező nagymértékben sebződik.
+ */
 public class BigPanda extends Panda {
 
     public BigPanda(Field field) {
@@ -14,6 +17,9 @@ public class BigPanda extends Panda {
         field.sufferDamageByAnimal(5, this);
     }
 
+    /**
+     * Ezzel reagál a csokiautómata hangjára. Meghívja a scare() fgvényt.
+     */
     @Override
     void chocolateVendingMachineBeepSoundPlayed() {
         this.scare();

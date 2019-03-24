@@ -1,5 +1,8 @@
 package internal;
 
+/**
+ * Álltalános, nem mozgó dolog, mely eseményt tud generálni.
+ */
 public abstract class Thing extends GameObject {
     int counter;
 

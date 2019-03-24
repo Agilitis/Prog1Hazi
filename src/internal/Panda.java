@@ -1,6 +1,9 @@
 package internal;
 
-
+/**
+ * Álltalános panda. Nem reagál a Thingek eseményeire. Ha nem fogják a kezét véletlenszerűen mászkál a pályán.
+ * Ha ütközik egy orángutánnal, az megfogja a kezét és onnantól csak akkor lép ha az orángután maga után húzza.
+ */
 public class Panda extends Animal {
     protected Animal pulledBy;
     public Panda(Field field) {
@@ -13,6 +16,10 @@ public class Panda extends Animal {
 		pulledBy = animal;
 	}
 
+    /**
+     * Ha nekimegy egy orángutánnak, akkor hívódik. Beállítja a mezői a megfelelő értékekre.
+     * @param orangutan Az orángután akivel ütközött
+     */
     @Override
     protected void hitByOrangutan(Orangutan orangutan) {
         logger.log(this+".hitByOrangutan(" + orangutan + ")");
@@ -22,6 +29,10 @@ public class Panda extends Animal {
         canMoveAlone = false;
     }
 
+    /**
+     * Ha pandával ütközik akkor hívódik. Nem csinál semmit, mmivel nem reagál másik pandával való ütközésre.
+     * @param panda
+     */
     @Override
     protected void hitByPanda(Panda panda) {
         logger.log(this+".hitByPanda(" + panda + ")");
@@ -29,6 +40,10 @@ public class Panda extends Animal {
 
     }
 
+    /**
+     * Ha összetörik alatta egy csempe, vagy egy összetört csempére lép akkor hívódik. Leveszi magát a csempéről
+     * és felbontja a mogotte lévő pandacsapatot ha van ilyen.
+     */
     //They don't actually die, but go to a nice place.
     @Override
     protected void die() {
@@ -39,6 +54,10 @@ public class Panda extends Animal {
         }
     }
 
+    /**
+     * Leveszi a pandát a mezőről, pontot ad a játékosnak és végul meghívja a die()-t. Ha van mögötte panda, akit
+     * húz annak is meghívja a fgvényét.
+     */
     @Override
     public void goToZoo() {
         logger.log("\t"+this+".goToZoo()");
@@ -49,13 +68,20 @@ public class Panda extends Animal {
         die();
     }
 
+    /**
+     * Akkor hívódik, ha nekimegy egy animal. Meghívja az animalnak a hitByPanda()- fgvényét.
+     * @param animal Az állat akivel ütközött.
+     */
     @Override
     protected void hitByAnimal(Animal animal) {
         logger.log(this +".hitByAnimal("+animal+")");
         animal.hitByPanda(this);
     }
 
-
+    /**
+     * A véletlenszerű mozgást valósítja meg. Bizonyos időnként meghívja a move()-t, a lehetséges célmezők
+     * egyikére.
+     */
     @Override
     public void tick() {
         //some logic to define when
@@ -63,10 +89,17 @@ public class Panda extends Animal {
         move(getStepOptions()[0]);
     }
 
+    /**
+     * Leszármazott használja.
+     * @param sleepHere A fotel ahova le lehet ülni.
+     */
     protected void putToRest(Couch sleepHere) {
 	    //Virutal function, we cannot create Panda objects anyway.
     }
 
+    /**
+     * Leszármazott használja.
+     */
     protected void scare() {
         //Virutal function, we cannot create Panda objects anyway.
 
