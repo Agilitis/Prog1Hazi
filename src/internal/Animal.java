@@ -1,6 +1,12 @@
-package Internal;
+package internal;
 
 public abstract class Animal extends GameObject {
+    public Animal(Field field) {
+        super(field);
+    }
+
+    public Animal(){}
+
     int getPointValue() {
         return pointValue;
     }
@@ -11,8 +17,12 @@ public abstract class Animal extends GameObject {
 
     private int pointValue;
 
-    void setPullThis(Panda pullThis) {
+    public void setPullThis(Panda pullThis) {
+        logger.log(this+".setPullThis(" + pullThis + ")");
+
+        pullThis.setPulledBy(this);
         this.pullThis = pullThis;
+        pullThis.canMoveAlone = false;
     }
 
     public Animal getPullThis() {
@@ -29,28 +39,37 @@ public abstract class Animal extends GameObject {
         this.canMoveAlone = canMoveAlone;
 }
 
-    boolean canMoveAlone;
+    boolean canMoveAlone = true;
 
-    protected void replaceField(Field newPlace) {
-        field.removeGameObject();
-
-        if (pullThis != null) {
-            pullThis.replaceField(field);
+    @Override
+    protected void replaceField(Field newField) {
+        this.field.removeGameObject();
+        logger.log(this + ".replaceField("+newField+")");
+        if(newField.getLife()>1){
+            newField.sufferDamage(1);
+        }else{
+            this.die();
         }
-
-        field = newPlace;
+        if (this.pullThis != null) {
+            this.pullThis.replaceField(field);
+        }
+        this.field = newField;
+        this.field.setGameObject(this);
     }
 
     void releaseHands() {
+        logger.log(this + ".releaseHands()");
         if (pullThis != null) {
             pullThis.releaseHands();
             pullThis = null;
         }
     }
 
-    void move(Field moveHere) {
+    public void move(Field moveHere) {
+        logger.log(this+".move(" + moveHere + ")");
         if (canMoveAlone) {
             moveHere.acceptAnimal(this);
+
         }
     }
 
