@@ -62,19 +62,17 @@ public class SkeletonTestMain {
      */
     private static void lonelyAnimalStepsOnEmptyField(){
         //initialise
-        Orangutan o = new Orangutan();
         Field f1 = new Field();
         Field f2 = new Field();
+        Orangutan o = new Orangutan(f1);
 
         //setting up the environment
-        o.setField(f1);
-        f1.setGameObject(o);
         f1.addNeighbour(f2);
         f2.addNeighbour(f1);
 
 
         //do the work
-        o.tick();
+        o.move(f2);
     }
 
     /**
