@@ -25,7 +25,7 @@ public class SleepyPanda extends Panda {
     private boolean isSleepy = true;
 
     protected void putToRest(Couch sleepHere) {
-        logger.log("Sleepy panda going to sleep now.");
+        logger.log(this+".putToRest("+sleepHere+")");
         sleepHere.setRestingPanda(this);
         field.removeGameObject();
         canMoveAlone = false;
@@ -47,7 +47,6 @@ public class SleepyPanda extends Panda {
     @Override
     public void restingSpotAvailable(Couch couch) {
         if(isSleepy){
-            logger.log("Sleepy panda: " +hashCode()+" found a resting spot: " + couch.hashCode());
             putToRest(couch);
         }
     }

@@ -7,13 +7,12 @@ public class BigPanda extends Panda {
     }
 
     public void scare() {
-        logger.log(this+".scare()");
-        field.sufferDamage(5);
+        logger.log("\t"+this+".scare()");
+        field.sufferDamageByAnimal(5, this);
     }
 
     @Override
     void chocolateVendingMachineBeepSoundPlayed() {
-        logger.log(this+".choclateVendingMachineBeepSoundPlayed()");
         this.scare();
     }
 

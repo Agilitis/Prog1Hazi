@@ -41,7 +41,7 @@ public class Panda extends Animal {
 
     @Override
     public void goToZoo() {
-        logger.log(this+".goToZoo()");
+        logger.log("\t"+this+".goToZoo()");
         if(pullThis != null){
             pullThis.goToZoo();
         }
@@ -51,7 +51,7 @@ public class Panda extends Animal {
 
     @Override
     protected void hitByAnimal(Animal animal) {
-        logger.log("Panda was hit by an Animal, hitting back!");
+        logger.log(this +".hitByAnimal("+animal+")");
         animal.hitByPanda(this);
     }
 

@@ -8,10 +8,8 @@ public class NervousPanda extends Panda {
 
     public void scare() {
         logger.log(this +".scare()");
-        if(pulledBy != null){
-            logger.log(pulledBy+".releaseHands()");
-            pulledBy.releaseHands();
-        }
+        logger.log("\t"+this+".releaseHands()");
+        releaseHands();
     }
 
 

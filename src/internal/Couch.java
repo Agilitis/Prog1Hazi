@@ -15,7 +15,8 @@ public class Couch extends Thing {
 
     @Override
     public void tick() {
-        if (counter-- <= 0) {
+        logger.log(this+".tick()");
+        if (--counter <= 0) {
             if (restingPanda != null) {
                 Field wakeUpHere = field.getNeighbours().get(0);
                 restingPanda.move(wakeUpHere);
@@ -32,6 +33,7 @@ public class Couch extends Thing {
 
         for (Field neighbour : field.getNeighbours()) {
             GameObject gameObject = neighbour.getGameObject();
+            logger.log("\t"+gameObject+".restingSpotAvailable()");
             gameObject.restingSpotAvailable(this);
         }
     }

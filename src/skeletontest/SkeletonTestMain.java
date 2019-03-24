@@ -61,6 +61,8 @@ public class SkeletonTestMain {
      * vagy ép, ezt futás közben a felhasználó dönti el. Ha törött az állat meghal, egyébként rálép.
      */
     private static void lonelyAnimalStepsOnEmptyField(){
+        Scanner scanner = new Scanner(System.in);
+        boolean isBroken = scanner.nextBoolean();
         //initialise
         Field f1 = new Field();
         Field f2 = new Field();
@@ -98,9 +100,6 @@ public class SkeletonTestMain {
         o.setPullThis(p1);
         p1.setPullThis(p2);
         p2.setPullThis(p3);
-        p3.setPulledBy(p2);
-        p2.setPulledBy(p1);
-        p1.setPulledBy(o);
         f1.addNeighbour(f2);
         f1.addNeighbour(f0);
         f2.addNeighbour(f1);
@@ -219,12 +218,12 @@ public class SkeletonTestMain {
     private static void orangutanWithPandasStepsOnBrokenEmptyField(){
         Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
-        Field f3 = new Field(true,1);
-
+        Field f2 = new Field(false, 10);
+        Field f3 = new Field(true,0);
         Orangutan o = new Orangutan(f0);
 
         Panda p1 = new Panda(f1);
-        Panda p2 = new Panda();
+        Panda p2 = new Panda(f2);
         //setting up the environment
         o.setPullThis(p1);
         p1.setPullThis(p2);
@@ -245,20 +244,23 @@ public class SkeletonTestMain {
     private static void chocolateVendingMachineFireEvent(){
         //initialise
         Field f1 = new Field();
-        Field f2 = new Field();
+        Field f2 = new Field(true, 10);
         Field f3 = new Field();
         Field f4 = new Field();
 
         ChocolateVendingMachine ch = new ChocolateVendingMachine(f1);
 
-        NervousPanda np = new NervousPanda(f2);
+        BigPanda bp = new BigPanda(f2);
 
         Panda p1 = new Panda(f3);
         Panda p2 = new Panda(f4);
 
         //setting up the environment
-        np.setPullThis(p1);
+        bp.setPullThis(p1);
         p1.setPullThis(p2);
+        f1.addNeighbour(f2);
+        f1.addNeighbour(f3);
+        f1.addNeighbour(f4);
 
         //do the work
         ch.tick();
@@ -270,10 +272,16 @@ public class SkeletonTestMain {
     private static void arcadeMachineFireEvent(){
         //initialise
         Field f1 = new Field(false, 20);
+        Field f3 = new Field(false, 20);
+        Field f4 = new Field(false, 20);
         Field f2 = new Field(true, 20);
         //setting up the environment
-        ChocolateVendingMachine a = new ChocolateVendingMachine(f1);
-        BigPanda bp = new BigPanda(f2);
+        ArcadeMachine a = new ArcadeMachine(f1);
+        NervousPanda np = new NervousPanda(f2);
+        Panda p1 = new Panda(f3);
+        Panda p2 = new Panda(f4);
+        np.setPullThis(p1);
+        p1.setPullThis(p2);
         f1.addNeighbour(f2);
         f2.addNeighbour(f1);
         //do the work
@@ -298,6 +306,8 @@ public class SkeletonTestMain {
 
         //setting up the environment
         sp.setPullThis(p1);
+        f1.addNeighbour(f2);
+        f1.addNeighbour(f3);
 
         //do the work
         co.tick();
