@@ -11,6 +11,8 @@ public class Teleport extends Field {
         super(isDamagable, life);
     }
 
+    public Teleport(){}
+
     @Override
     public void acceptAnimal(Animal animal) {
         Teleport teleportNeighbour = teleportNeighbours.get(0);
