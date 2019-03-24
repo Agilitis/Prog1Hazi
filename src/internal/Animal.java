@@ -18,7 +18,6 @@ public abstract class Animal extends GameObject {
     private int pointValue;
 
     public void setPullThis(Panda pullThis) {
-        logger.log(this+".setPullThis(" + pullThis + ")");
 
         pullThis.setPulledBy(this);
         this.pullThis = pullThis;

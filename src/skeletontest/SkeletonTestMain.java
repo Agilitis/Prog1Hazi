@@ -137,16 +137,18 @@ public class SkeletonTestMain {
      */
     private static void orangutanWithPandasUsesTeleport(){
         //initialise
-        Teleport t = new Teleport();
+        Teleport t1 = new Teleport();
+        Teleport t2 = new Teleport();
 
         Field f0 = new Field();
         Field f1 = new Field();
         Field f2 = new Field();
+        Field f3 = new Field();
 
         Orangutan o = new Orangutan(f0);
 
         Panda p1 = new Panda(f1);
-        Panda p2 = new Panda();
+        Panda p2 = new Panda(f2);
 
         //setting up the environment
         o.setPullThis(p1);
@@ -154,12 +156,15 @@ public class SkeletonTestMain {
         p2.setPulledBy(p1);
         p1.setPulledBy(o);
 
-        t.addNeighbour(f2);
-        f0.addNeighbour(t);
+        t1.addTeleportNeighbour(t2);
+        t2.addTeleportNeighbour(t1);
+        t2.addNeighbour(f3);
+
+        f0.addNeighbour(t1);
         f1.addNeighbour(f0);
 
         //do the work
-        o.move(t);
+        o.move(t1);
     }
 
     /**
