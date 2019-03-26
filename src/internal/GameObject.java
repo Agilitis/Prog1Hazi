@@ -26,8 +26,9 @@ public abstract class GameObject implements ITickable {
      * @param animal
      */
     protected void hitByAnimal(Animal animal){
+    	Logger.increaseTabulation();
         logger.log(this+".hitByAnimal(" + animal + ")");
-
+        Logger.decreaseTabulation();
     }
 
     /**

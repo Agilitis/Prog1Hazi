@@ -4,6 +4,8 @@ package internal;
 import java.util.ArrayList;
 import java.util.List;
 
+import utility.Logger;
+
 /**
  * Különleges mező. Nem lehet rálépni, ha megkísérlik az állatot egy másik helyre teleportálja.
  */
@@ -22,9 +24,11 @@ public class Teleport extends Field {
      */
     @Override
     public void acceptAnimal(Animal animal) {
+    	Logger.increaseTabulation();
         Teleport teleportNeighbour = teleportNeighbours.get(0);
         logger.log(this+".acceptAnimal(" + animal + ")");
         teleportNeighbour.teleportHere(animal);
+        Logger.decreaseTabulation();
     }
 
     /**
@@ -32,6 +36,7 @@ public class Teleport extends Field {
      * @param animal az animal, amit ki kell raknia az első nem üres mezőre.
      */
     private void teleportHere(Animal animal) {
+    	Logger.increaseTabulation();
         for(Field neighbour: neighBours){
             if(neighbour.getGameObject() == null){
                 logger.log(this+".teleportHere(" + animal + ")");
@@ -40,6 +45,7 @@ public class Teleport extends Field {
                 return;
             }
         }
+        Logger.decreaseTabulation();
     }
 
     public List<Teleport> getTeleportNeighbours() {

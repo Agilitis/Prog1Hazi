@@ -1,5 +1,7 @@
 package internal;
 
+import utility.Logger;
+
 /**
  * A fotel. Ha egy álmos panda mellé lép akkor bele tud ülni.
  */
@@ -21,6 +23,7 @@ public class Couch extends Thing {
      */
     @Override
     public void tick() {
+    	Logger.increaseTabulation();
         logger.log(this+".tick()");
         if (--counter <= 0) {
             if (restingPanda != null) {
@@ -31,6 +34,7 @@ public class Couch extends Thing {
             doEvent();
             counter = 20;
         }
+        Logger.decreaseTabulation();
     }
 
     /**
@@ -38,6 +42,7 @@ public class Couch extends Thing {
      */
     @Override
     public void doEvent() {
+    	Logger.increaseTabulation();
         logger.log(this+".doEvent(" + ")");
 
         for (Field neighbour : field.getNeighbours()) {
@@ -45,5 +50,6 @@ public class Couch extends Thing {
             logger.log("\t"+gameObject+".restingSpotAvailable()");
             gameObject.restingSpotAvailable(this);
         }
+        Logger.decreaseTabulation();
     }
 }

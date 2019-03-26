@@ -40,7 +40,6 @@ public class Field {
         }else{
             this.life = life;
         }
-
     }
 
     public void addNeighbour(Field neighbour) {
@@ -55,7 +54,8 @@ public class Field {
      * @param animal    Az állat aki rá akar lépni a mezőre.
      */
     public void acceptAnimal(Animal animal) {
-        logger.log("\t"+this+".acceptAnimal(" + animal + ")");
+    	Logger.increaseTabulation();
+        logger.log(this+".acceptAnimal(" + animal + ")");
 
         if (!isBroken) {
             if (gameObject != null) {
@@ -67,6 +67,7 @@ public class Field {
         } else {
             animal.die();
         }
+        Logger.decreaseTabulation();
     }
 
     /**
@@ -75,6 +76,7 @@ public class Field {
      * @param byAnimal az állat, amely a sebzést okozta
      */
     public void sufferDamageByAnimal(int damage, Animal byAnimal) {
+    	Logger.increaseTabulation();
         if (isDamagable) {
             logger.log(this+".sufferDamageByAnimal(" + damage + ")");
             life -= damage;
@@ -83,6 +85,7 @@ public class Field {
                 byAnimal.die();
             }
         }
+        Logger.decreaseTabulation();
     }
 
     ArrayList<Field> getNeighbours() {

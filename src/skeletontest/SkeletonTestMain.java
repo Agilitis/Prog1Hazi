@@ -1,6 +1,7 @@
 package skeletontest;
 
 import internal.*;
+import utility.Logger;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -61,12 +62,14 @@ public class SkeletonTestMain {
      * vagy ép, ezt futás közben a felhasználó dönti el. Ha törött az állat meghal, egyébként rálép.
      */
     private static void lonelyAnimalStepsOnEmptyField(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("A mező törött?(1/0)");
+    	Logger.resetTabulation();
+    	
+    	Scanner scanner = new Scanner(System.in);
+        System.out.println("A mezo torott?(1/0)");
         int fieldIsBroken = scanner.nextInt();
         switch (fieldIsBroken){
             case 1:
-                //initialise
+                //initialize
                 Field f1 = new Field();
                 Field f2 = new Field(true,0);
                 Orangutan o = new Orangutan(f1);
@@ -79,7 +82,7 @@ public class SkeletonTestMain {
                 o.move(f2);
                 break;
             case 0:
-                //initialise
+                //initialize
                 Field f3 = new Field();
                 Field f4 = new Field();
                 Orangutan or = new Orangutan(f3);
@@ -104,7 +107,9 @@ public class SkeletonTestMain {
      * a sor visszafelé felbomlik, azonban a mögötte lévő állatok már nem halnak meg.
      */
     private static void orangutanStepsOnEmptyFieldFieldBreakWhilePandasCome(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f0 = new Field(true,1);
         Field f1 = new Field();
         Field f2 = new Field();
@@ -137,12 +142,14 @@ public class SkeletonTestMain {
      * Orángután rálép egy mezőre, ahol egy panda áll, és már korábban húzott pandákat. Ekkor az új panda beáll a sorba.
      */
     private static void orangutanWithPandasStepsOnFieldWithPanda(){
-        //initialize
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f1 = new Field(false, 10);
         Field f2 = new Field(false, 10);
         Field f3 = new Field(false, 10);
 
-        //Setting up the enviroment
+        //Setting up the environment
         Orangutan o = new Orangutan(f2);
         Panda p = new Panda(f1);
         Panda p1 = new Panda(f3);
@@ -156,7 +163,9 @@ public class SkeletonTestMain {
      * A pandák követni fogják az orángutánt ahova azt elteleportálta a teleport.
      */
     private static void orangutanWithPandasUsesTeleport(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Teleport t1 = new Teleport();
         Teleport t2 = new Teleport();
 
@@ -191,7 +200,10 @@ public class SkeletonTestMain {
      * Az orángután rálép a Finish fieldre, ahonnan ezáltal minden mögötte haladó panda bekerül az állatkertbe.
      */
     private static void orangutanWithPandasStepsOnFinishField(){
-        FinishField f = new FinishField(false, 10);
+    	Logger.resetTabulation();
+    	
+    	//initialize
+    	FinishField f = new FinishField(false, 10);
         Field f1 = new Field(false, 10);
         Field f2 = new Field(false, 10);
         Field f3 = new Field(false, 10);
@@ -210,7 +222,9 @@ public class SkeletonTestMain {
      * de összetört mezőre. A pandák mind előrrébb lépnek egyet. Ez egy álltalános semmilyen extra körülményt nem tartalmazó lépés.
      */
     private static void orangutanWithPandasStepsOnNonBrokenEmptyField(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
         Field f2 = new Field(false, 10);
@@ -237,7 +251,10 @@ public class SkeletonTestMain {
      * Egy orángután rálép egy összetört mezőre, ahol meghal és szétszakad mögötte a lánc.
      */
     private static void orangutanWithPandasStepsOnBrokenEmptyField(){
-        Field f0 = new Field(false, 20);
+    	Logger.resetTabulation();
+    	
+    	//initialize
+    	Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
         Field f2 = new Field(false, 10);
         Field f3 = new Field(true,0);
@@ -263,7 +280,9 @@ public class SkeletonTestMain {
      * hatására, ha tudnak az eseményre reagálni, reagálnak.
      */
     private static void chocolateVendingMachineFireEvent(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f1 = new Field();
         Field f2 = new Field(true, 10);
         Field f3 = new Field();
@@ -291,7 +310,9 @@ public class SkeletonTestMain {
      * A játékgép megszólal, a mellette álló panda pedig megijed.
      */
     private static void arcadeMachineFireEvent(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f1 = new Field(false, 20);
         Field f3 = new Field(false, 20);
         Field f4 = new Field(false, 20);
@@ -314,7 +335,9 @@ public class SkeletonTestMain {
      * hatására, ha tudnak az eseményre reagálni, reagálnak.
      */
     private static void couchFireEvent(){
-        //initialise
+    	Logger.resetTabulation();
+    	
+    	//initialize
         Field f1 = new Field();
         Field f2 = new Field();
         Field f3 = new Field();
