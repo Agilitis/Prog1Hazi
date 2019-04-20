@@ -1,5 +1,7 @@
 package internal;
 
+import utility.Logger;
+
 /**
  * Olyan panda aki a fotel eseményére tud reagálni.
  */
@@ -32,11 +34,13 @@ public class SleepyPanda extends Panda {
      * @param sleepHere A kanapé, amin a panda alhat.
      */
     protected void putToRest(Couch sleepHere) {
+    	Logger.increaseTabulation();
         logger.log(this+".putToRest("+sleepHere+")");
         sleepHere.setRestingPanda(this);
         field.removeGameObject();
         canMoveAlone = false;
         releaseHands();
+        Logger.decreaseTabulation();
     }
 
     /**
@@ -63,8 +67,10 @@ public class SleepyPanda extends Panda {
      */
     @Override
     public void restingSpotAvailable(Couch couch) {
+    	Logger.increaseTabulation();
         if(isSleepy){
             putToRest(couch);
         }
+        Logger.decreaseTabulation();
     }
 }

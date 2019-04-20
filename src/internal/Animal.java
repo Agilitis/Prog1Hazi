@@ -1,5 +1,7 @@
 package internal;
 
+import utility.Logger;
+
 /**
  * Absztrakt osztály. Egy álltalános állatot reprezentál.
  */
@@ -25,10 +27,11 @@ public abstract class Animal extends GameObject {
      * @param pullThis Egy panda, amit húzhat az animal maga után, ha mozog.
      */
     public void setPullThis(Panda pullThis) {
-
+    	Logger.increaseTabulation();
         pullThis.setPulledBy(this);
         this.pullThis = pullThis;
         pullThis.canMoveAlone = false;
+        Logger.decreaseTabulation();
     }
 
     public Animal getPullThis() {
@@ -53,8 +56,9 @@ public abstract class Animal extends GameObject {
      */
     @Override
     protected void replaceField(Field newField) {
+    	Logger.increaseTabulation();
         this.field.removeGameObject();
-        logger.log("\t\t"+this + ".replaceField("+newField+")");
+        logger.log(this + ".replaceField("+newField+")");
 
         if (this.pullThis != null) {
             this.pullThis.replaceField(field);
@@ -62,17 +66,20 @@ public abstract class Animal extends GameObject {
         this.field = newField;
         this.field.setGameObject(this);
         newField.sufferDamageByAnimal(1, this);
+        Logger.decreaseTabulation();
     }
 
     /**
      * Rekurzívan elengedik egymás kezét az állatok.
      */
     void releaseHands() {
-        logger.log("\t" + this +".releaseHands()");
+    	Logger.increaseTabulation();
+        logger.log(this +".releaseHands()");
         if (pullThis != null) {
             pullThis.releaseHands();
             pullThis = null;
         }
+        Logger.decreaseTabulation();
     }
 
     /**
@@ -80,11 +87,13 @@ public abstract class Animal extends GameObject {
      * @param moveHere A mező ahova a mozgást indítja a controller.
      */
     public void move(Field moveHere) {
+    	Logger.increaseTabulation();
         logger.log(this+".move(" + moveHere + ")");
 
         if (canMoveAlone) {
             moveHere.acceptAnimal(this);
         }
+        Logger.decreaseTabulation();
     }
 
     protected abstract void hitByOrangutan(Orangutan orangutan);
