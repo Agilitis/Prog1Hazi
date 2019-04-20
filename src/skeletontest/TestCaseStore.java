@@ -10,7 +10,7 @@ import java.util.List;
 public class TestCaseStore {
     private ArrayList<TestCase> testCases = new ArrayList<>();
 
-    void addTestCase(TestCase testCase){
+    public void addTestCase(TestCase testCase){
         testCases.add(testCase);
     }
 

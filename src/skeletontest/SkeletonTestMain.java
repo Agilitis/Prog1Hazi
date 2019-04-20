@@ -373,5 +373,32 @@ public class SkeletonTestMain {
         }
         return readValue;
     }
+//=============================================================================================================================
+    public static void loadMap(String level){
 
+    }
+
+    public static void addAnimal(Level level, Animal animal, Field field, String name, Animal follow){
+
+    }
+
+    public static void addItem(Level level, Thing thing, Field field, String name){}
+
+    public static void release(Level level, String name){}
+
+    public static void moveAnimal(Level level, Field start, Field finish){}
+
+    public static void triggerThing(Level level, String name){}
+
+    public static void damageField(Level level, String name, int damage){}
+
+    public static void breakField(String name){}
+
+    public static void automat(boolean on){}
+
+    public static void stat(String name){}
+
+    public static void file(String file){}
+
+    public static void save(String fileName){}
 }
