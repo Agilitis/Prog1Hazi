@@ -28,5 +28,4 @@ public class Logger {
     public static void decreaseTabulation() {
     	tabulation--;
     }
-
 }

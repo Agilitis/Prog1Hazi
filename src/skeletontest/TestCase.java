@@ -3,7 +3,7 @@ package skeletontest;
 /**
  * A kulonbozo teszteseteket megvalosito osztaly. Minden tesztesethez peldanyosodik egy a megfelelo parameterekkel.
  */
-class TestCase {
+public class TestCase {
 
 
     private static int id = 0;
@@ -16,7 +16,7 @@ class TestCase {
      * @param method    Az a metodus amely a megvalosítja a tesztesetet.
      * @param name  A teszteset neve.
      */
-    TestCase(Runnable method, String name){
+    public TestCase(Runnable method, String name){
         this.serialNumber = ++id;
         this.method = method;
         this.name = name;

@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class Timer {
     private ArrayList<ITickable> tickables = new ArrayList<>();
 
-    public void inicialize(){
-        //put thing in tickables
+    public void initialize(){
+        //put things in tickables
     }
 
-    public void tick(){
+    void tick(){
         for(ITickable iTickable : tickables){
             iTickable.tick();
         }

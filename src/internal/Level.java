@@ -7,8 +7,13 @@ import java.util.ArrayList;
  */
 public class Level {
     private ArrayList<Field> fields = new ArrayList<>();
+    private ArrayList<Panda> zoo = new ArrayList<>();   //for the pandas, who were sent to the zoo
+    private ArrayList<Animal> animals = new ArrayList<>();
+    private ArrayList<Thing> things = new ArrayList<>();
 
-    public void inicialise(){
+
+
+    public void initialise(){
         //put fields in fields
     }
 
