@@ -1,13 +1,12 @@
 package internal;
 
-import skeletontest.SkeletonTestMain;
-import skeletontest.TestCase;
-import skeletontest.TestCaseStore;
-
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Logger;
-import skeletontest.TestCase;
+import utility.CommandInterpreter;
 
 /**
  * A Main osztaly. Ez fog ossze minden mas osztalyt es biztositja a mukodesuket.
@@ -35,8 +34,16 @@ public class Game {
         else if(operationMode == 1){   //test mode
             currentLevel = new Level();
             currentLevel.inicialise();
+            Method methodToInvoke;
 
-
+            while(getOperationMode() == 1) {    //for now
+                try {
+                    methodToInvoke = CommandInterpreter.getMethodToInvoke();
+                    Objects.requireNonNull(methodToInvoke).invoke(methodToInvoke, "lol, it works");
+                } catch (IllegalAccessException | InvocationTargetException | NullPointerException e) {
+                    System.out.println("Hiba a vegrehajtasban!");
+                }
+            }
         }
         else{
             Logger.getAnonymousLogger().info("No such operation mode! Exiting program!");

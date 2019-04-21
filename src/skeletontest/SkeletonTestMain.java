@@ -401,4 +401,8 @@ public class SkeletonTestMain {
     public static void file(String file){}
 
     public static void save(String fileName){}
+
+    public static void test(String msg){
+        System.out.println(msg);
+    }
 }
