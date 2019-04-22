@@ -10,7 +10,7 @@ public class NervousPanda extends Panda {
     public NervousPanda(Field field) {
         super(field);
     }
-
+    public NervousPanda(){}
     /**
      * Ha meghallja a játékautómata hangját hívódik. Elengedi a többi panda kezét, mely hatására a sor felbomlik.
      */

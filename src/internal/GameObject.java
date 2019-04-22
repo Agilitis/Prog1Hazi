@@ -8,6 +8,16 @@ import utility.Logger;
 public abstract class GameObject implements ITickable {
     Logger logger = new Logger();
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    protected String name;
+
     public GameObject(){}
 
     public void setField(Field field) {

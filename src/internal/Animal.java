@@ -6,6 +6,16 @@ import utility.Logger;
  * Absztrakt osztály. Egy álltalános állatot reprezentál.
  */
 public abstract class Animal extends GameObject {
+    public Animal getPulledBy() {
+        return pulledBy;
+    }
+
+    public void setPulledBy(Animal pulledBy) {
+        this.pulledBy = pulledBy;
+    }
+
+    protected Animal pulledBy;
+
     public Animal(Field field) {
         super(field);
     }
@@ -72,7 +82,7 @@ public abstract class Animal extends GameObject {
     /**
      * Rekurzívan elengedik egymás kezét az állatok.
      */
-    void releaseHands() {
+    public void releaseHands() {
     	Logger.increaseTabulation();
         logger.log(this +".releaseHands()");
         if (pullThis != null) {
@@ -105,7 +115,6 @@ public abstract class Animal extends GameObject {
     }
 
     protected abstract void die();
-
 
     public abstract void goToZoo();
 }

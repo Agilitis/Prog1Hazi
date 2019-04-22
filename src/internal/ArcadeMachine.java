@@ -12,7 +12,7 @@ public class ArcadeMachine extends Thing {
         super(field);
         counter = 1;
     }
-
+    public ArcadeMachine(){}
     /**
      * Fgvény, mely megvalósítja a hang kiadását. Minden szomszédos mezőtől elkéri az ott található gameObjectet és
      * meghívja az arcadeMachineRingSoundPlayed() fgvényét.

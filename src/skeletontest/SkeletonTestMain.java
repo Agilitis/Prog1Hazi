@@ -378,49 +378,98 @@ public class SkeletonTestMain {
 
     }
 
-    public static void addPanda(Level level, Field field, String name, String follow){
+    public static void addPanda(Level level, String field, String name, String follow){
+        Panda panda = new Panda();
+        level.addAnimal(panda, field, name, follow);
 
     }
 
-    public static void addSleepyPanda(Level level, Field field, String name, String follow){
+    public static void addSleepyPanda(Level level, String field, String name, String follow){
+        SleepyPanda sp = new SleepyPanda();
+        level.addAnimal(sp,field,name,follow);
+    }
+
+    public static void addBigPanda(Level level, String field, String name, String follow){
+        BigPanda bp = new BigPanda();
+        level.addAnimal(bp,field,name,follow);
+    }
+
+    public static void addNervousPanda(Level level, String field, String name, String follow){
+        NervousPanda np = new NervousPanda();
+        level.addAnimal(np, field, name, follow);
+    }
+
+    public static void addOrangutan(Level level, String field, String name, String follow){
+        Orangutan o = new Orangutan();
+        level.addAnimal(o, field, name, follow);
+    }
+
+    public static void addCouch(Level level, String field, String name, Object arg1){
+        Couch c = new Couch();
+        level.addThing(c, field, name);
+    }
+
+    public static void addArcadeMachine(Level level, String field, String name, Object arg1){
+        ArcadeMachine am = new ArcadeMachine();
+        level.addThing(am, field,name);
+    }
+
+    public static void addVendingMachine(Level level, String field, String name, Object arg1){
+        ChocolateVendingMachine ch = new ChocolateVendingMachine();
+        level.addThing(ch, field, name);
+    }
+
+    public static void release(Level level, String name, Object arg1, Object arg2){
+        Animal animal = level.getAnimal(name);
+        if(animal != null){
+            animal.releaseHands();
+        }
+    }
+
+    public static void moveAnimal(Level level, String start, String finish, Object arg1){
+        Field field = level.getField(start);
+        Field fieldEnd = level.getField(finish);
+        if(field != null && fieldEnd != null){
+            try {
+                Animal animal = (Animal) field.getGameObject();
+                animal.move(fieldEnd);
+            }
+            catch (Exception e){
+
+            }
+        }
+    }
+
+    public static void triggerThing(Level level, String name, Object arg1, Object arg2){
+        Thing thing = level.getThing(name);
+        if(thing != null){
+            thing.trigger();
+        }
+    }
+
+    public static void damageField(Level level, String name, int damage, Object arg1){
+        Field field = level.getField(name);
+        if(field != null){
+            field.sufferDamageByAnimal(damage, new Panda());
+        }
+    }
+
+    public static void breakField(Level level, String name, Object arg1, Object arg2){
+        Field field = level.getField(name);
+        if(field != null){
+            field.sufferDamageByAnimal(100, new Panda());
+        }
+    }
+
+    public static void automat(Level level, boolean on, Object arg1, Object arg2){}
+
+    public static void stat(Level level, String name, Object arg1, Object arg2){
 
     }
 
-    public static void addBigPanda(Level level, Field field, String name, String follow){
+    public static void file(Level level, String file, Object arg1, Object arg2){}
 
-    }
-
-    public static void addNervousPanda(Level level, Field field, String name, String follow){
-
-    }
-
-    public static void addOrangutan(Level level, Field field, String name, String follow){
-
-    }
-
-    public static void addCouch(Level level, Field field, String name, Object arg1){}
-
-    public static void addArcadeMachine(Level level, Field field, String name, Object arg1){}
-
-    public static void addVendingMachine(Level level, Field field, String name, Object arg1){}
-
-    public static void release(Level level, String name, Object arg1, Object arg2){}
-
-    public static void moveAnimal(Level level, Field start, Field finish, Object arg1){}
-
-    public static void triggerThing(Level level, String name, Object arg1, Object arg2){}
-
-    public static void damageField(Level level, String name, int damage, Object arg1){}
-
-    public static void breakField(String name, Object arg1, Object arg2, Object arg3){}
-
-    public static void automat(boolean on, Object arg1, Object arg2, Object arg3){}
-
-    public static void stat(String name, Object arg1, Object arg2, Object arg3){}
-
-    public static void file(String file, Object arg1, Object arg2, Object arg3){}
-
-    public static void save(String fileName, Object arg1, Object arg2, Object arg3){}
+    public static void save(Level level, String fileName, Object arg1, Object arg2){}
 
     public static void test(String msg, Object arg1, Object arg2, Object arg3){
         System.out.println(msg);

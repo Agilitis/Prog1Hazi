@@ -9,7 +9,7 @@ public class SleepyPanda extends Panda {
     public SleepyPanda(Field field) {
         super(field);
     }
-
+    public SleepyPanda(){}
     public int getStamina() {
         return stamina;
     }

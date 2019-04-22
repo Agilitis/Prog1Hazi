@@ -11,7 +11,7 @@ public class ChocolateVendingMachine extends Thing {
     public ChocolateVendingMachine(Field field) {
         super(field);
     }
-
+    public ChocolateVendingMachine(){}
     /**
      * Fgvény, mely megvalósítja a hang kiadását. Minden szomszédos mezőtől elkéri az ott található gameObjectet és
      * meghívja a chocolateVendingMachineBeepSoundPlayed() fgvényét.
