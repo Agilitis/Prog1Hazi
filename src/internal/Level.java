@@ -13,9 +13,56 @@ public class Level {
 
 
 
-    public void initialise(){
+    void initialise(){
         //put fields in fields
     }
 
+    public Field getField(String name){
+        for(Field field : fields){
+            if(field.getName().equals(name)){
+                return field;
+            }
+        }
+        return null;
+    }
+
+    public Animal getAnimal(String name){
+        for(Animal animal : animals){
+            if(animal.getName().equals(name)){
+                return animal;
+            }
+        }
+        return null;
+    }
+
+    public Thing getThing(String name){
+        for(Thing thing : things){
+            if(thing.getName().equals(name)){
+                return thing;
+            }
+        }
+        return null;
+    }
+
+    public void addAnimal(Animal animal, String field, String name, String follow){
+        Field fField = getField(field);
+        if(fField != null){
+            animal.setName(name);
+            fField.setGameObject(animal);
+        }
+        Animal aFollow = getAnimal(follow);
+        if(aFollow != null){
+            animal.setPulledBy(aFollow);
+        }
+        animals.add(animal);
+    }
+
+    public void addThing(Thing thing, String field, String name){
+        Field fField = getField(field);
+        if(fField != null){
+            fField.setGameObject(thing);
+        }
+        things.add(thing);
+    }
 
 }

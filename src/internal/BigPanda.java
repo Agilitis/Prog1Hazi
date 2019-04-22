@@ -10,7 +10,7 @@ public class BigPanda extends Panda {
     public BigPanda(Field field) {
         super(field);
     }
-
+    public BigPanda(){}
     /**
      * A panda megijed, ekkor az alatta levő mezőnek 5 sebzést okoz.
      */

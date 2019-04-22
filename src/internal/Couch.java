@@ -12,7 +12,7 @@ public class Couch extends Thing {
     public Couch(Field field) {
         super(field);
     }
-
+    public Couch(){}
 
     void setRestingPanda(SleepyPanda restingPanda) {
         this.restingPanda = restingPanda;

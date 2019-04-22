@@ -7,16 +7,12 @@ import utility.Logger;
  * Ha ĂĽtkĂ¶zik egy orĂˇngutĂˇnnal, az megfogja a kezĂ©t Ă©s onnantĂłl csak akkor lĂ©p ha az orĂˇngutĂˇn maga utĂˇn hĂşzza.
  */
 public class Panda extends Animal {
-    protected Animal pulledBy;
     public Panda(Field field) {
         super(field);
     }
 
     public Panda(){}
 
-    public void setPulledBy(Animal animal) {
-		pulledBy = animal;
-	}
 
     /**
      * Ha nekimegy egy orĂˇngutĂˇnnak, akkor hĂ­vĂłdik. BeĂˇllĂ­tja a mezĹ‘i a megfelelĹ‘ Ă©rtĂ©kekre.
@@ -56,7 +52,9 @@ public class Panda extends Animal {
     protected void die() {
     	Logger.increaseTabulation();
         logger.log(this+".die()");
-        field.removeGameObject();
+        if(field != null) {
+            field.removeGameObject();
+        }
         if(pulledBy != null){
             pulledBy.releaseHands();
         }

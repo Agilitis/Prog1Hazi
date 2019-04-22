@@ -12,6 +12,16 @@ public class Field {
     Logger logger = new Logger();
     ArrayList<Field> neighBours = new ArrayList<>();
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    protected String name;
+
     public boolean isDamagable() {
         return isDamagable;
     }
@@ -92,7 +102,7 @@ public class Field {
         return neighBours;
     }
 
-    GameObject getGameObject() {
+    public GameObject getGameObject() {
         return gameObject;
     }
 
