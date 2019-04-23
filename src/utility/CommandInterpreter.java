@@ -37,24 +37,28 @@ public final class CommandInterpreter {
                             parameters.add(Game.getInstance().getCurrentLevel());
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
+                            parameters.add(splittedCommand.get(4));
                             methodToInvoke = SkeletonTestMain.class.getMethod("addPanda", Level.class, String.class, String.class, String.class);
                             break;
                         case "sleepypanda":
                             parameters.add(Game.getInstance().getCurrentLevel());
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
+                            parameters.add(splittedCommand.get(4));
                             methodToInvoke = SkeletonTestMain.class.getMethod("addSleepyPanda", Level.class, String.class, String.class, String.class);
                             break;
                         case "bigpanda":
                             parameters.add(Game.getInstance().getCurrentLevel());
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
+                            parameters.add(splittedCommand.get(4));
                             methodToInvoke = SkeletonTestMain.class.getMethod("addBigPanda", Level.class, String.class, String.class, String.class);
                             break;
                         case "nervouspanda":
                             parameters.add(Game.getInstance().getCurrentLevel());
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
+                            parameters.add(splittedCommand.get(4));
                             methodToInvoke = SkeletonTestMain.class.getMethod("addNervousPanda", Level.class, String.class, String.class, String.class);
                             break;
                         case "orangutan":
