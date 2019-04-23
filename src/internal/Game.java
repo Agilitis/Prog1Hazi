@@ -70,7 +70,6 @@ public class Game {
             currentLevel = FileHandler.loadMap("map1.json");
             Method methodToInvoke;
             ArrayList<Object> parameters;
-
             while(getOperationMode() == 1) {    //for now
                 try {
                     methodToInvoke = CommandInterpreter.getMethodToInvoke();
