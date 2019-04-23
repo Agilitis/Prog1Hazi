@@ -66,6 +66,8 @@ public class Level {
         if(fField != null){
             fField.setGameObject(thing);
         }
+        thing.name = name;
+        thing.field = fField;
         things.add(thing);
     }
 

@@ -34,6 +34,18 @@
       "damagable": 1,
       "health": 20
     }
+  ,
+    {
+      "name": "field5",
+      "damagable": 1,
+      "health": 20
+    }
+  ,
+    {
+      "name": "field5",
+      "damagable": 1,
+      "health": 20
+    }
   ],
   "neighbours": [
     {
@@ -56,7 +68,7 @@
     {
       "name": "machine1",
       "type": "ArcadeMachine",
-      "field": "field2"
+      "field": "field5"
     }
   ]
 }

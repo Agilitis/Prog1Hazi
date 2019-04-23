@@ -481,7 +481,9 @@ public class SkeletonTestMain {
         }
     }
 
-    public static void file(Level level, String file, Object arg1, Object arg2){}
+    public static void file(Level level, String file, Object arg1, Object arg2){
+
+    }
 
     public static void save(Level level, String fileName, Object arg1, Object arg2){}
 
