@@ -18,6 +18,30 @@ public class Game {
     private static boolean gameOn = true;
     private Level currentLevel; //the level everything happens on
 
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+
+    public static boolean isGameOn() {
+        return gameOn;
+    }
+
+    public static void setGameOn(boolean gameOn) {
+        Game.gameOn = gameOn;
+    }
+
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrentLevel(Level currentLevel) {
+        this.currentLevel = currentLevel;
+    }
+
     private Game(){}
 
     private static int getOperationMode(){

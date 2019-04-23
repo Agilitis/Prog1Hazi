@@ -414,7 +414,7 @@ public class SkeletonTestMain {
         level.addThing(am, field,name);
     }
 
-    public static void addVendingMachine(Level level, String field, String name, Object arg1){
+    public static void addChocolateMachine(Level level, String field, String name, Object arg1){
         ChocolateVendingMachine ch = new ChocolateVendingMachine();
         level.addThing(ch, field, name);
     }
@@ -447,10 +447,10 @@ public class SkeletonTestMain {
         }
     }
 
-    public static void damageField(Level level, String name, int damage, Object arg1){
+    public static void damageField(Level level, String name, String damage, Object arg1){
         Field field = level.getField(name);
         if(field != null){
-            field.sufferDamageByAnimal(damage, new Panda());
+            field.sufferDamageByAnimal(Integer.parseInt(damage), new Panda());
         }
     }
 
@@ -461,7 +461,7 @@ public class SkeletonTestMain {
         }
     }
 
-    public static void automat(Level level, boolean on, Object arg1, Object arg2){}
+    public static void automat(Level level, String on, Object arg1, Object arg2){}
 
     public static void stat(Level level, String name, Object arg1, Object arg2){
 
@@ -473,5 +473,8 @@ public class SkeletonTestMain {
 
     public static void test(String msg, Object arg1, Object arg2, Object arg3){
         System.out.println(msg);
+        System.out.println((String)arg1);
+        System.out.println((String)arg2);
+        System.out.println((String)arg3);
     }
 }
