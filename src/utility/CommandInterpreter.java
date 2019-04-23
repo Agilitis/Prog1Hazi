@@ -45,6 +45,7 @@ public final class CommandInterpreter {
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
                             parameters.add(splittedCommand.get(4));
+
                             methodToInvoke = SkeletonTestMain.class.getMethod("addSleepyPanda", Level.class, String.class, String.class, String.class);
                             break;
                         case "bigpanda":
