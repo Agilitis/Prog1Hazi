@@ -123,4 +123,9 @@ public class Orangutan extends Animal {
         }
         Logger.decreaseTabulation();
     }
+
+    @Override
+    public String toString(){
+        return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+    }
 }

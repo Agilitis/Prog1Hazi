@@ -116,6 +116,6 @@ public class Field {
 
     @Override
     public String toString(){
-        return "Name: " + this.name + "GameObject" + this.gameObject.name;
+        return "Name: " + this.name;
     }
 }

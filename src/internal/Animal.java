@@ -43,7 +43,7 @@ public abstract class Animal extends GameObject {
      * Beállít az Animalnak egy olyan Pandát, amit húzhat.
      * @param pullThis Egy panda, amit húzhat az animal maga után, ha mozog.
      */
-    public void setPullThis(Panda pullThis) {
+    public void setPullThis(Animal pullThis) {
     	Logger.increaseTabulation();
         pullThis.setPulledBy(this);
         this.pullThis = pullThis;
@@ -66,7 +66,7 @@ public abstract class Animal extends GameObject {
         return canMoveAlone;
     }
 
-    Panda pullThis;
+    Animal pullThis;
 
     void setCanMoveAlone(boolean canMoveAlone) {
         this.canMoveAlone = canMoveAlone;

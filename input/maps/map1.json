@@ -30,19 +30,19 @@
       "health": 20
     },
     {
+      "name": "field4",
+      "damagable": 1,
+      "health": 20
+    }
+  ,
+    {
+      "name": "field5",
+      "damagable": 1,
+      "health": 20
+    }
+  ,
+    {
       "name": "field",
-      "damagable": 1,
-      "health": 20
-    }
-  ,
-    {
-      "name": "field5",
-      "damagable": 1,
-      "health": 20
-    }
-  ,
-    {
-      "name": "field5",
       "damagable": 1,
       "health": 20
     }

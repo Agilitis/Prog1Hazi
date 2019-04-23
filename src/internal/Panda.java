@@ -117,4 +117,9 @@ public class Panda extends Animal {
         //Virutal function, we cannot create Panda objects anyway.
 
     }
+
+    @Override
+    public String toString(){
+        return "Name: " + this.name + " " + "Field: " + this.field.getName() + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+    }
 }

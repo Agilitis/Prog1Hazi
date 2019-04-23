@@ -52,10 +52,12 @@ public class Level {
         Field fField = getField(field);
         if(fField != null){
             animal.setName(name);
+            animal.setField(fField);
             fField.setGameObject(animal);
         }
         Animal aFollow = getAnimal(follow);
         if(aFollow != null){
+            aFollow.setPullThis(animal);
             animal.setPulledBy(aFollow);
         }
         animals.add(animal);
