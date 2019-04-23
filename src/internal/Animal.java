@@ -15,7 +15,7 @@ public abstract class Animal extends GameObject {
     }
 
     protected Animal pulledBy;
-
+    protected String name;
     public Animal(Field field) {
         super(field);
     }
@@ -44,6 +44,13 @@ public abstract class Animal extends GameObject {
         Logger.decreaseTabulation();
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
     public Animal getPullThis() {
         return pullThis;
     }

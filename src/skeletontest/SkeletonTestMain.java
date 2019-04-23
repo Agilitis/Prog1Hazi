@@ -1,8 +1,10 @@
 package skeletontest;
 
 import internal.*;
+import utility.FileHandler;
 import utility.Logger;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -20,6 +22,7 @@ public class SkeletonTestMain {
      * @param args a szokvanyos main parameter
      */
     public static void main(String... args) {
+        FileHandler.loadMap("map1.json");
         testFixtures();
         handleTests();
     }
@@ -476,5 +479,8 @@ public class SkeletonTestMain {
         System.out.println((String)arg1);
         System.out.println((String)arg2);
         System.out.println((String)arg3);
+    }
+
+    public static void damageField() {
     }
 }

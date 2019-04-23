@@ -17,6 +17,10 @@ public class Level {
         //put fields in fields
     }
 
+    public void addField(Field field){
+        fields.add(field);
+    }
+
     public Field getField(String name){
         for(Field field : fields){
             if(field.getName().equals(name)){
