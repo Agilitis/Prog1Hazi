@@ -28,4 +28,5 @@ public class FinishField extends Field {
     public String toString(){
         return "Name: " + this.name;
     }
+
 }
