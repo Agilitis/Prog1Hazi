@@ -4,8 +4,6 @@ import internal.*;
 import utility.FileHandler;
 import utility.Logger;
 
-import java.io.File;
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -384,7 +382,6 @@ public class SkeletonTestMain {
     public static void addPanda(Level level, String field, String name, String follow){
         Panda panda = new Panda();
         level.addAnimal(panda, field, name, follow);
-
     }
 
     public static void addSleepyPanda(Level level, String field, String name, String follow){
