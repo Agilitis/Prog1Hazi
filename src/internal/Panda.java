@@ -98,7 +98,7 @@ public class Panda extends Animal {
     	Logger.increaseTabulation();
         //some logic to define when
         //witch field exactly needs to be defined
-        move(getStepOptions()[0]);
+        move(getStepOptions().get(0));
         Logger.decreaseTabulation();
     }
 

@@ -2,6 +2,8 @@ package internal;
 
 import utility.Logger;
 
+import java.util.ArrayList;
+
 /**
  * Absztrakt osztály. Egy álltalános állatot reprezentál.
  */
@@ -117,8 +119,8 @@ public abstract class Animal extends GameObject {
 
     protected abstract void hitByPanda(Panda panda);
 
-    Field[] getStepOptions() {
-        return new Field[0];
+    ArrayList<Field> getStepOptions() {
+        return field.getNeighbours();
     }
 
     protected abstract void die();

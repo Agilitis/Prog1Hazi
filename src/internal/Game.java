@@ -52,11 +52,18 @@ public class Game {
     private void start(int operationMode){
         if(operationMode == 0){    //game mode
             this.initialise();
+            players.add(new Player());
             while (gameOn) {
                 for(Player player : players){
                     player.doAction();  //either does something or not
                 }
                 timer.tick();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    Thread.currentThread().interrupt();
+                }
             }
         }
         else if(operationMode == 1){   //test mode
