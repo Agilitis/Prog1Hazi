@@ -467,7 +467,18 @@ public class SkeletonTestMain {
     public static void automat(Level level, String on, Object arg1, Object arg2){}
 
     public static void stat(Level level, String name, Object arg1, Object arg2){
-
+        Field field = level.getField(name);
+        Animal animal = level.getAnimal(name);
+        Thing thing = level.getThing(name);
+        if(field != null){
+            System.out.println(field.toString());
+        }
+        if(animal != null){
+            System.out.println(animal.toString());
+        }
+        if(thing != null){
+            System.out.println(thing.toString());
+        }
     }
 
     public static void file(Level level, String file, Object arg1, Object arg2){}

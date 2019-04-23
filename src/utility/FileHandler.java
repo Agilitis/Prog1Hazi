@@ -28,6 +28,7 @@ public final class FileHandler {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         JSONArray fields = (JSONArray) jsonObject.get("fields");
         JSONArray neighbours = (JSONArray) jsonObject.get("neighbours");
         JSONArray pandas = (JSONArray) jsonObject.get("pandas");

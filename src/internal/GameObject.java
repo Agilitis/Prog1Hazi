@@ -31,6 +31,7 @@ public abstract class GameObject implements ITickable {
         this.field.setGameObject(this);
     }
 
+
     /**
      * Akkor hívódik, ha egy állat nekiment. A leszármazottak felüldefiniálják, hogy egyedi módon reagálhassanak.
      * @param animal

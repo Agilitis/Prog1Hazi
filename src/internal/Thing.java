@@ -28,6 +28,11 @@ public abstract class Thing extends GameObject {
         Logger.decreaseTabulation();
     }
 
+    @Override
+    public String toString() {
+        return "Name: %s, Counter: %s".format(this.name, this.counter);
+    }
+
     abstract void doEvent();
 
     public void trigger(){
