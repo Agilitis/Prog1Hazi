@@ -23,6 +23,11 @@ public class NervousPanda extends Panda {
         Logger.decreaseTabulation();
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
     /**
      * Ezt a fgvényt hívja az ArcadeMachine mikor kiadja a hangot. Meghívja a scare()-t.
      */

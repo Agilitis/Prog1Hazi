@@ -18,6 +18,11 @@ public class Teleport extends Field {
 
     public Teleport(){}
 
+    @Override
+    public String toString() {
+        return String.format("name: %s",this.name) + super.toString();
+    }
+
     /**
      * Az egyik teleportszomszédjának meghívja a teleportHere()-fgvényét a kapott állattal.
      * @param animal    Az állat aki rá akar lépni a mezőre.
