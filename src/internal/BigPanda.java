@@ -29,5 +29,8 @@ public class BigPanda extends Panda {
         this.scare();
     }
 
-
+    @Override
+    public String toString(){
+        return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+    }
 }

@@ -114,5 +114,8 @@ public class Field {
         this.gameObject = gameObject;
     }
 
-
+    @Override
+    public String toString(){
+        return "Name: " + this.name + "GameObject" + this.gameObject.name;
+    }
 }

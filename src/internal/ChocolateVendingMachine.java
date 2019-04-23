@@ -26,4 +26,9 @@ public class ChocolateVendingMachine extends Thing {
         }
         Logger.decreaseTabulation();
     }
+
+    @Override
+    public String toString(){
+        return "Name: " + this.name + " " + "Field: " + this.field;
+    }
 }

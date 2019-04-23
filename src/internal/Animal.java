@@ -26,7 +26,7 @@ public abstract class Animal extends GameObject {
 
     @Override
     public String toString() {
-        return "name: %s, pullThis: %s, pulledBy: %s, canmovealon: %d".format(this.name, this.pullThis, this.pulledBy, this.canMoveAlone);
+        return String.format(this.name, this.pullThis, this.pulledBy, this.canMoveAlone);
     }
 
     int getPointValue() {
