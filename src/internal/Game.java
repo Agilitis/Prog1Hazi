@@ -69,10 +69,11 @@ public class Game {
         else if(operationMode == 1){   //test mode
             currentLevel = FileHandler.loadMap("map1.json");
             Method methodToInvoke;
+            Scanner scanner = new Scanner(System.in);
             ArrayList<Object> parameters;
             while(true) {    //for now
                 try {
-                    methodToInvoke = CommandInterpreter.getMethodToInvoke();
+                    methodToInvoke = CommandInterpreter.getMethodToInvoke(scanner.nextLine());
                     parameters = CommandInterpreter.getParameters();
                     Objects.requireNonNull(methodToInvoke).invoke(this, parameters.get(0), parameters.get(1), parameters.get(2), parameters.get(3));
                 } catch (IllegalAccessException | InvocationTargetException | NullPointerException e) {
