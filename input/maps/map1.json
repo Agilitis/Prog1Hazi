@@ -1,0 +1,62 @@
+{
+  "pandas": [
+    {
+      "name": "panda1",
+      "field": "field1",
+      "type": "BigPanda",
+      "follow": ""
+    },
+    {
+      "name": "panda2",
+      "field": "field2",
+      "type": "BigPanda",
+      "follow": "panda1"
+    }
+  ],
+  "fields": [
+    {
+      "name": "field1",
+      "damagable": 1,
+      "health": 20
+    },
+    {
+      "name": "field2",
+      "damagable": 1,
+      "health": 20
+    },
+    {
+      "name": "field3",
+      "damagable": 1,
+      "health": 20
+    },
+    {
+      "name": "field",
+      "damagable": 1,
+      "health": 20
+    }
+  ],
+  "neighbours": [
+    {
+      "name": "field",
+      "fields": [
+        "field1",
+        "field2",
+        "field3"
+      ]
+    },
+    {
+      "name": "field",
+      "fields": [
+        "field4",
+        "field5"
+      ]
+    }
+  ],
+  "things": [
+    {
+      "name": "machine1",
+      "type": "ArcadeMachine",
+      "field": "field2"
+    }
+  ]
+}
