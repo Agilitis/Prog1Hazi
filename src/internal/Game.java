@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Logger;
 import utility.CommandInterpreter;
+import utility.FileHandler;
 
 /**
  * A Main osztaly. Ez fog ossze minden mas osztalyt es biztositja a mukodesuket.
@@ -59,8 +60,7 @@ public class Game {
             }
         }
         else if(operationMode == 1){   //test mode
-            currentLevel = new Level();
-            currentLevel.initialise();
+            currentLevel = FileHandler.loadMap("map1.json");
             Method methodToInvoke;
             ArrayList<Object> parameters;
 

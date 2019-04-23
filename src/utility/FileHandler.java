@@ -19,9 +19,8 @@ public final class FileHandler {
     private static JSONObject jsonObject;
 
 
-    public static void loadMap(String mapName){
+    public static Level loadMap(String mapName){
         Level level = new Level();
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
         try {
             jsonObject = (JSONObject) new JSONParser().parse(new FileReader("input/maps/" + mapName));
         } catch (IOException e) {
@@ -38,14 +37,12 @@ public final class FileHandler {
             String damagable = ((JSONObject)field).get("damagable").toString();
             Boolean isDamagable = 1 == Integer.parseInt(damagable);
             int health = Integer.parseInt (((JSONObject)field).get("damagable").toString());
-            System.out.println(fieldName);
             Field newField = new Field(isDamagable, health);
             newField.setName(fieldName);
             level.addField(newField);
         }
 
         for (var neighbour : neighbours){
-            System.out.println("Neighbours: " + neighbour);
             String fieldName = ((JSONObject)neighbour).get("name").toString();
             JSONArray fieldNeighbours = (JSONArray) ((JSONObject)neighbour).get("fields");
             Field field = level.getField(fieldName);
@@ -57,7 +54,6 @@ public final class FileHandler {
         }
 
         for (var panda : pandas){
-            System.out.println("Pandas: " + panda);
             String pandaName = ((JSONObject)panda).get("name").toString();
             String type = ((JSONObject)panda).get("type").toString();
             String fieldName = ((JSONObject)panda).get("field").toString();
@@ -77,10 +73,9 @@ public final class FileHandler {
         }
 
         for (var thing : things){
-            System.out.println("Things: " + thing);
             String thingName = ((JSONObject)thing).get("name").toString();
-            String type = ((JSONObject)thing).get("name").toString();
-            String field = ((JSONObject)thing).get("name").toString();
+            String type = ((JSONObject)thing).get("type").toString();
+            String field = ((JSONObject)thing).get("field").toString();
             switch(type){
                 case "ArcadeMachine":
                     level.addThing(new ArcadeMachine(), field, thingName);
@@ -93,7 +88,7 @@ public final class FileHandler {
                     break;
             }
         }
-
+        return level;
     }
 
 }
