@@ -1,13 +1,15 @@
 package internal;
 
+import Graphics.View;
+import utility.CommandInterpreter;
+import utility.FileHandler;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Logger;
-import utility.CommandInterpreter;
-import utility.FileHandler;
 
 /**
  * A Main osztaly. Ez fog ossze minden mas osztalyt es biztositja a mukodesuket.
@@ -18,6 +20,7 @@ public class Game {
     private ArrayList<Player> players = new ArrayList<>();  //there are more players
     private static boolean gameOn = true;
     private Level currentLevel; //the level everything happens on
+    private View view;
 
     public Timer getTimer() {
         return timer;
@@ -54,16 +57,8 @@ public class Game {
             this.initialise();
             players.add(new Player());
             while (gameOn) {
-                for(Player player : players){
-                    player.doAction();  //either does something or not
-                }
-                timer.tick();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    Thread.currentThread().interrupt();
-                }
+                //timer.tick();
+
             }
         }
         else if(operationMode == 1){   //test mode
@@ -87,6 +82,7 @@ public class Game {
     }
 
     private void initialise() {
+        this.view = new View();
     }
 
     public static Game getInstance(){

@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -28,12 +29,6 @@ public class SleepyPanda extends Panda {
 
     private int stamina;
     private boolean isSleepy = true;
-
-    @Override
-    public String toString() {
-        return "name: %s, stamina: %s, isSleepy: %s, pulledBy: %s, canmovealon: %d"
-                .format(this.name, this.stamina, this.isSleepy) + "," + super.toString();
-    }
 
     /**
      * A pandát elaltatjuk egy kanapén.
@@ -83,5 +78,10 @@ public class SleepyPanda extends Panda {
     @Override
     public String toString(){
         return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+    }
+
+    @Override
+    public Drawable getDrawable(){
+        return null;
     }
 }

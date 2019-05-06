@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -32,5 +33,10 @@ public class BigPanda extends Panda {
     @Override
     public String toString(){
         return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+    }
+
+    @Override
+    public Drawable getDrawable(){
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -28,11 +29,6 @@ public class Panda extends Animal {
             canMoveAlone = false;
         }
         Logger.decreaseTabulation();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 
     /**
@@ -92,6 +88,11 @@ public class Panda extends Animal {
         logger.log(this +".hitByAnimal("+animal+")");
         animal.hitByPanda(this);
         Logger.decreaseTabulation();
+    }
+
+    @Override
+    public Drawable getDrawable() {
+        return null;
     }
 
     /**

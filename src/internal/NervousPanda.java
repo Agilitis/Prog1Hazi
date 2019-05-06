@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -22,12 +23,6 @@ public class NervousPanda extends Panda {
         releaseHands();
         Logger.decreaseTabulation();
     }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
     /**
      * Ezt a fgvényt hívja az ArcadeMachine mikor kiadja a hangot. Meghívja a scare()-t.
      */
@@ -42,5 +37,10 @@ public class NervousPanda extends Panda {
     @Override
     public String toString(){
         return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+    }
+
+    @Override
+    public Drawable getDrawable(){
+        return null;
     }
 }

@@ -11,7 +11,21 @@ public class Level {
     private ArrayList<Animal> animals = new ArrayList<>();
     private ArrayList<Thing> things = new ArrayList<>();
 
+    public ArrayList<Field> getFields() {
+        return fields;
+    }
 
+    public ArrayList<Panda> getZoo() {
+        return zoo;
+    }
+
+    public ArrayList<Animal> getAnimals() {
+        return animals;
+    }
+
+    public ArrayList<Thing> getThings() {
+        return things;
+    }
 
     void initialise(){
         //put fields in fields

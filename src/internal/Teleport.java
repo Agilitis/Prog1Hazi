@@ -1,6 +1,7 @@
 package internal;
 
 
+import Graphics.Drawable;
 import utility.Logger;
 
 import java.util.ArrayList;
@@ -17,11 +18,6 @@ public class Teleport extends Field {
     }
 
     public Teleport(){}
-
-    @Override
-    public String toString() {
-        return String.format("name: %s",this.name) + super.toString();
-    }
 
     /**
      * Az egyik teleportszomszédjának meghívja a teleportHere()-fgvényét a kapott állattal.
@@ -64,5 +60,10 @@ public class Teleport extends Field {
     @Override
     public String toString(){
         return "Name: " + this.name;
+    }
+
+    @Override
+    public Drawable getDrawable(){
+        return null;
     }
 }

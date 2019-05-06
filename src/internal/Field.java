@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 public class Field {
     Logger logger = new Logger();
     ArrayList<Field> neighBours = new ArrayList<>();
+    protected int[] coordinates = new int[2];
 
     public String getName() {
         return name;
@@ -117,5 +119,9 @@ public class Field {
     @Override
     public String toString(){
         return "Name: " + this.name;
+    }
+
+    public Drawable getDrawable(){
+        return null;
     }
 }

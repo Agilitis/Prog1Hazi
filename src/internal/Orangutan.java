@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -21,11 +22,6 @@ public class Orangutan extends Animal {
     }
 
     public Orangutan(){}
-
-    @Override
-    public String toString() {
-        return String.format("name: %s,  stepsBeforeCatching: %s,",this.name,this.stepsBeforeCatching) + super.toString();
-    }
 
     /**
      * Ha az orángutánt egy másik orángutánnal ütköztetjük, akkor ez hívódik meg, amennyiban a
@@ -104,6 +100,11 @@ public class Orangutan extends Animal {
         logger.log(this+".hitByAnimal(" + animal+ ")");
         animal.hitByOrangutan(this);
         Logger.decreaseTabulation();
+    }
+
+    @Override
+    public Drawable getDrawable() {
+        return null;
     }
 
     /**

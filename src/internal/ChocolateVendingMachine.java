@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -11,6 +12,12 @@ public class ChocolateVendingMachine extends Thing {
     public ChocolateVendingMachine(Field field) {
         super(field);
     }
+
+    @Override
+    public Drawable getDrawable() {
+        return null;
+    }
+
     public ChocolateVendingMachine(){}
     /**
      * Fgvény, mely megvalósítja a hang kiadását. Minden szomszédos mezőtől elkéri az ott található gameObjectet és
