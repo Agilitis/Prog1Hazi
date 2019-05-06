@@ -22,6 +22,11 @@ public class Orangutan extends Animal {
 
     public Orangutan(){}
 
+    @Override
+    public String toString() {
+        return String.format("name: %s,  stepsBeforeCatching: %s,",this.name,this.stepsBeforeCatching) + super.toString();
+    }
+
     /**
      * Ha az orángutánt egy másik orángutánnal ütköztetjük, akkor ez hívódik meg, amennyiban a
      * @param orangutan Az orángután, ami ütközött az adott orángutánnal.

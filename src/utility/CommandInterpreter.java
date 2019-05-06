@@ -45,6 +45,7 @@ public final class CommandInterpreter {
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
                             parameters.add(splittedCommand.get(4));
+
                             methodToInvoke = SkeletonTestMain.class.getMethod("addSleepyPanda", Level.class, String.class, String.class, String.class);
                             break;
                         case "bigpanda":
@@ -65,7 +66,6 @@ public final class CommandInterpreter {
                             parameters.add(Game.getInstance().getCurrentLevel());
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
-                            parameters.add(splittedCommand.get(4));
                             methodToInvoke = SkeletonTestMain.class.getMethod("addOrangutan", Level.class, String.class, String.class, String.class);
                             break;
                             default:
@@ -80,21 +80,18 @@ public final class CommandInterpreter {
                             parameters.add(Game.getInstance().getCurrentLevel());
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
-                            parameters.add(splittedCommand.get(4));
                             methodToInvoke = SkeletonTestMain.class.getMethod("addCouch", Level.class, String.class, String.class, Object.class);
                             break;
                         case "arcademachine":
                             parameters.add(Game.getInstance().getCurrentLevel());
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
-                            parameters.add(splittedCommand.get(4));
                             methodToInvoke = SkeletonTestMain.class.getMethod("addArcadeMachine", Level.class, String.class, String.class, Object.class);
                             break;
                         case "chocolatemachine":
                             parameters.add(Game.getInstance().getCurrentLevel());
                             parameters.add(splittedCommand.get(2));
                             parameters.add(splittedCommand.get(3));
-                            parameters.add(splittedCommand.get(4));
                             methodToInvoke = SkeletonTestMain.class.getMethod("addChocolateMachine", Level.class, String.class, String.class, Object.class);
                             break;
                             default:
@@ -156,7 +153,7 @@ public final class CommandInterpreter {
                         break;
             }
 
-            for(int i = 0; i < COMMAND_PARAMS - actualParamOfCommand; i++){
+            for(int i = 0; i < 10; i++){
                 parameters.add(null);
             }
 

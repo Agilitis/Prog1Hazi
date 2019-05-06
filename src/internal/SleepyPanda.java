@@ -29,6 +29,12 @@ public class SleepyPanda extends Panda {
     private int stamina;
     private boolean isSleepy = true;
 
+    @Override
+    public String toString() {
+        return "name: %s, stamina: %s, isSleepy: %s, pulledBy: %s, canmovealon: %d"
+                .format(this.name, this.stamina, this.isSleepy) + "," + super.toString();
+    }
+
     /**
      * A pandát elaltatjuk egy kanapén.
      * @param sleepHere A kanapé, amin a panda alhat.

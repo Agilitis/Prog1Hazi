@@ -1,18 +1,4 @@
 {
-  "pandas": [
-    {
-      "name": "panda1",
-      "field": "field1",
-      "type": "BigPanda",
-      "follow": ""
-    },
-    {
-      "name": "panda2",
-      "field": "field2",
-      "type": "BigPanda",
-      "follow": "panda1"
-    }
-  ],
   "fields": [
     {
       "name": "field1",
@@ -33,42 +19,100 @@
       "name": "field4",
       "damagable": 1,
       "health": 20
-    }
-  ,
+    },
     {
       "name": "field5",
       "damagable": 1,
-      "health": 20
-    }
-  ,
+      "health": 0
+    },
     {
-      "name": "field",
+      "name": "field6",
+      "damagable": 1,
+      "health": 20
+    },
+    {
+      "name": "field7",
       "damagable": 1,
       "health": 20
     }
   ],
   "neighbours": [
     {
-      "name": "field",
+      "name": "field1",
       "fields": [
-        "field1",
         "field2",
-        "field3"
+        "field3",
+        "field4",
+        "field5",
+        "field6",
+        "field7"
       ]
     },
     {
-      "name": "field",
+      "name": "field2",
       "fields": [
+        "field1",
+        "field3",
         "field4",
-        "field5"
+        "field5",
+        "field6",
+        "field7"
       ]
-    }
-  ],
-  "things": [
+    },
     {
-      "name": "machine1",
-      "type": "ArcadeMachine",
-      "field": "field5"
+      "name": "field3",
+      "fields": [
+        "field1",
+        "field2",
+        "field4",
+        "field5",
+        "field6",
+        "field7"
+      ]
+    },
+    {
+      "name": "field4",
+      "fields": [
+        "field1",
+        "field3",
+        "field2",
+        "field5",
+        "field6",
+        "field7"
+      ]
+    },
+    {
+      "name": "field5",
+      "fields": [
+        "field1",
+        "field3",
+        "field4",
+        "field2",
+        "field6",
+        "field7"
+      ]
+    },
+    {
+      "name": "field6",
+      "fields": [
+        "field1",
+        "field3",
+        "field4",
+        "field5",
+        "field2",
+        "field7"
+      ]
+    },
+    {
+      "name": "field7",
+      "fields": [
+        "field1",
+        "field3",
+        "field4",
+        "field5",
+        "field6",
+        "field2"
+      ]
     }
   ]
 }

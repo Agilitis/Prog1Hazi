@@ -30,6 +30,11 @@ public class Panda extends Animal {
         Logger.decreaseTabulation();
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
     /**
      * Ha pandĂˇval ĂĽtkĂ¶zik akkor hĂ­vĂłdik. Nem csinĂˇl semmit, mmivel nem reagĂˇl mĂˇsik pandĂˇval valĂł ĂĽtkĂ¶zĂ©sre.
      * @param panda

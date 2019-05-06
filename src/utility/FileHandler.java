@@ -33,7 +33,7 @@ public final class FileHandler {
         JSONArray neighbours = (JSONArray) jsonObject.get("neighbours");
         JSONArray pandas = (JSONArray) jsonObject.get("pandas");
         JSONArray things = (JSONArray) jsonObject.get("things");
-        for (var field : fields){
+        for (Object field : fields){
             String fieldName = ((JSONObject)field).get("name").toString();
             String damagable = ((JSONObject)field).get("damagable").toString();
             Boolean isDamagable = 1 == Integer.parseInt(damagable);
@@ -43,50 +43,54 @@ public final class FileHandler {
             level.addField(newField);
         }
 
-        for (var neighbour : neighbours){
+        for (Object neighbour : neighbours){
             String fieldName = ((JSONObject)neighbour).get("name").toString();
             JSONArray fieldNeighbours = (JSONArray) ((JSONObject)neighbour).get("fields");
             Field field = level.getField(fieldName);
             if(field != null){
-                for(var fieldNeighbour : fieldNeighbours){
+                for(Object fieldNeighbour : fieldNeighbours){
                     field.addNeighbour(level.getField(fieldNeighbour.toString()));
                 }
             }
         }
+        if(pandas != null)
+        {
+            for (Object panda : pandas){
+                String pandaName = ((JSONObject)panda).get("name").toString();
+                String type = ((JSONObject)panda).get("type").toString();
+                String fieldName = ((JSONObject)panda).get("field").toString();
+                String follow = ((JSONObject)panda).get("follow").toString();
+                switch(type){
+                    case "BigPanda":
+                        level.addAnimal(new BigPanda(), fieldName, pandaName, follow);
+                        break;
+                    case "NervousPanda":
+                        level.addAnimal(new NervousPanda(), fieldName, pandaName, follow);
+                        break;
+                    case "SleepyPanda":
+                        level.addAnimal(new SleepyPanda(), fieldName, pandaName, follow);
+                        break;
+                }
 
-        for (var panda : pandas){
-            String pandaName = ((JSONObject)panda).get("name").toString();
-            String type = ((JSONObject)panda).get("type").toString();
-            String fieldName = ((JSONObject)panda).get("field").toString();
-            String follow = ((JSONObject)panda).get("follow").toString();
-            switch(type){
-                case "BigPanda":
-                    level.addAnimal(new BigPanda(), fieldName, pandaName, follow);
-                    break;
-                case "NervousPanda":
-                    level.addAnimal(new NervousPanda(), fieldName, pandaName, follow);
-                    break;
-                case "SleepyPanda":
-                    level.addAnimal(new SleepyPanda(), fieldName, pandaName, follow);
-                    break;
             }
-
         }
-
-        for (var thing : things){
-            String thingName = ((JSONObject)thing).get("name").toString();
-            String type = ((JSONObject)thing).get("type").toString();
-            String field = ((JSONObject)thing).get("field").toString();
-            switch(type){
-                case "ArcadeMachine":
-                    level.addThing(new ArcadeMachine(), field, thingName);
-                    break;
-                case "Couch":
-                    level.addThing(new Couch(), field, thingName);
-                    break;
-                case "ChocolateVendingMachine":
-                    level.addThing(new ChocolateVendingMachine(), field, thingName);
-                    break;
+        if(things != null)
+        {
+            for (Object thing : things){
+                String thingName = ((JSONObject)thing).get("name").toString();
+                String type = ((JSONObject)thing).get("type").toString();
+                String field = ((JSONObject)thing).get("field").toString();
+                switch(type){
+                    case "ArcadeMachine":
+                        level.addThing(new ArcadeMachine(), field, thingName);
+                        break;
+                    case "Couch":
+                        level.addThing(new Couch(), field, thingName);
+                        break;
+                    case "ChocolateVendingMachine":
+                        level.addThing(new ChocolateVendingMachine(), field, thingName);
+                        break;
+                }
             }
         }
         return level;
