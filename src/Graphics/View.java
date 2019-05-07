@@ -28,7 +28,7 @@ public class View extends JFrame {
 
     public View(){
         this.setVisible(true);
-        this.setSize(600,500);
+        this.setSize(1560,600);
         this.setTitle("PandaPlaza");
         this.setLocation(200,200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
