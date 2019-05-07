@@ -11,10 +11,28 @@ public class Level {
     private ArrayList<Animal> animals = new ArrayList<>();
     private ArrayList<Thing> things = new ArrayList<>();
 
+    public ArrayList<Field> getFields() {
+        return fields;
+    }
 
+    public ArrayList<Panda> getZoo() {
+        return zoo;
+    }
+
+    public ArrayList<Animal> getAnimals() {
+        return animals;
+    }
+
+    public ArrayList<Thing> getThings() {
+        return things;
+    }
 
     void initialise(){
         //put fields in fields
+    }
+
+    public void addField(Field field){
+        fields.add(field);
     }
 
     public Field getField(String name){
@@ -48,10 +66,12 @@ public class Level {
         Field fField = getField(field);
         if(fField != null){
             animal.setName(name);
+            animal.setField(fField);
             fField.setGameObject(animal);
         }
         Animal aFollow = getAnimal(follow);
         if(aFollow != null){
+            aFollow.setPullThis(animal);
             animal.setPulledBy(aFollow);
         }
         animals.add(animal);
@@ -62,6 +82,8 @@ public class Level {
         if(fField != null){
             fField.setGameObject(thing);
         }
+        thing.name = name;
+        thing.field = fField;
         things.add(thing);
     }
 

@@ -1,12 +1,15 @@
 package internal;
 
+import Graphics.View;
+import utility.CommandInterpreter;
+import utility.FileHandler;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Logger;
-import utility.CommandInterpreter;
 
 /**
  * A Main osztaly. Ez fog ossze minden mas osztalyt es biztositja a mukodesuket.
@@ -17,6 +20,31 @@ public class Game {
     private ArrayList<Player> players = new ArrayList<>();  //there are more players
     private static boolean gameOn = true;
     private Level currentLevel; //the level everything happens on
+    private View view;
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+
+    public static boolean isGameOn() {
+        return gameOn;
+    }
+
+    public static void setGameOn(boolean gameOn) {
+        Game.gameOn = gameOn;
+    }
+
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrentLevel(Level currentLevel) {
+        this.currentLevel = currentLevel;
+    }
 
     private Game(){}
 
@@ -27,22 +55,21 @@ public class Game {
     private void start(int operationMode){
         if(operationMode == 0){    //game mode
             this.initialise();
+            players.add(new Player());
+            view.update(currentLevel);
             while (gameOn) {
-                for(Player player : players){
-                    player.doAction();  //either does something or not
-                }
-                timer.tick();
+                //timer.tick();
+
             }
         }
         else if(operationMode == 1){   //test mode
-            currentLevel = new Level();
-            currentLevel.initialise();
+            currentLevel = FileHandler.loadMap("map1.json");
             Method methodToInvoke;
+            Scanner scanner = new Scanner(System.in);
             ArrayList<Object> parameters;
-
-            while(getOperationMode() == 1) {    //for now
+            while(true) {    //for now
                 try {
-                    methodToInvoke = CommandInterpreter.getMethodToInvoke();
+                    methodToInvoke = CommandInterpreter.getMethodToInvoke(scanner.nextLine());
                     parameters = CommandInterpreter.getParameters();
                     Objects.requireNonNull(methodToInvoke).invoke(this, parameters.get(0), parameters.get(1), parameters.get(2), parameters.get(3));
                 } catch (IllegalAccessException | InvocationTargetException | NullPointerException e) {
@@ -56,6 +83,8 @@ public class Game {
     }
 
     private void initialise() {
+        currentLevel = FileHandler.loadMap("map1.json");
+        this.view = new View();
     }
 
     public static Game getInstance(){

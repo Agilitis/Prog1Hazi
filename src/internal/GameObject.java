@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -7,6 +8,7 @@ import utility.Logger;
  */
 public abstract class GameObject implements ITickable {
     Logger logger = new Logger();
+    protected int[] coordinates = new int[2];
 
     public String getName() {
         return name;
@@ -30,6 +32,7 @@ public abstract class GameObject implements ITickable {
         this.field = field;
         this.field.setGameObject(this);
     }
+
 
     /**
      * Akkor hívódik, ha egy állat nekiment. A leszármazottak felüldefiniálják, hogy egyedi módon reagálhassanak.
@@ -72,4 +75,6 @@ public abstract class GameObject implements ITickable {
     void arcadeMachineRingSoundPlayed(){
 
     }
+
+    public abstract Drawable getDrawable();
 }

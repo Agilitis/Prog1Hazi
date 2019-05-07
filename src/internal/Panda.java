@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -89,6 +90,11 @@ public class Panda extends Animal {
         Logger.decreaseTabulation();
     }
 
+    @Override
+    public Drawable getDrawable() {
+        return null;
+    }
+
     /**
      * A vĂ©letlenszerĹ± mozgĂˇst valĂłsĂ­tja meg. Bizonyos idĹ‘nkĂ©nt meghĂ­vja a move()-t, a lehetsĂ©ges cĂ©lmezĹ‘k
      * egyikĂ©re.
@@ -98,7 +104,7 @@ public class Panda extends Animal {
     	Logger.increaseTabulation();
         //some logic to define when
         //witch field exactly needs to be defined
-        move(getStepOptions()[0]);
+        move(getStepOptions().get(0));
         Logger.decreaseTabulation();
     }
 
@@ -116,5 +122,10 @@ public class Panda extends Animal {
     protected void scare() {
         //Virutal function, we cannot create Panda objects anyway.
 
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + this.name + " " + "Field: " + this.field.getName() + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
     }
 }

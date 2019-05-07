@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -101,6 +102,11 @@ public class Orangutan extends Animal {
         Logger.decreaseTabulation();
     }
 
+    @Override
+    public Drawable getDrawable() {
+        return null;
+    }
+
     /**
      * A fgvény meghíváskor elengedi a pandákat, a sor felbomlik.
      */
@@ -122,5 +128,10 @@ public class Orangutan extends Animal {
             moveHere.acceptAnimal(this);
         }
         Logger.decreaseTabulation();
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
     }
 }

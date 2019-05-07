@@ -1,0 +1,702 @@
+{
+  "fields": [
+    {
+      "name": "field1",
+      "damagable": 0,
+      "health": 20,
+      "coords": [0,0]
+    },
+    {
+      "name": "field2",
+      "damagable": 0,
+      "health": 20,
+      "coords": [120,0]
+    },
+    {
+      "name": "field3",
+      "damagable": 0,
+      "health": 20,
+      "coords": [240,0]
+    },
+    {
+      "name": "field4",
+      "damagable": 0,
+      "health": 20,
+      "coords": [360,0]
+    },
+    {
+      "name": "field5",
+      "damagable": 0,
+      "health": 20,
+      "coords": [480,0]
+    },
+    {
+      "name": "field6",
+      "damagable": 0,
+      "health": 20,
+      "coords": [600,0]
+    },
+    {
+      "name": "field7",
+      "damagable": 0,
+      "health": 20,
+      "coords": [720,0]
+    },
+    {
+      "name": "field8",
+      "damagable": 0,
+      "health": 20,
+      "coords": [840,0]
+    },
+    {
+      "name": "field9",
+      "damagable": 0,
+      "health": 20,
+      "coords": [960,0]
+    },
+    {
+      "name": "field10",
+      "damagable": 0,
+      "health": 20,
+      "coords": [0,120]
+    },
+    {
+      "name": "field11",
+      "damagable": 0,
+      "health": 20,
+      "coords": [120,120]
+    },
+    {
+      "name": "field12",
+      "damagable": 0,
+      "health": 20,
+      "coords": [240,120]
+    },
+    {
+      "name": "field13",
+      "damagable": 0,
+      "health": 20,
+      "coords": [360,120]
+    },
+    {
+      "name": "field14",
+      "damagable": 0,
+      "health": 20,
+      "coords": [480,120]
+    },
+    {
+      "name": "field15",
+      "damagable": 0,
+      "health": 20,
+      "coords": [600,120]
+    },
+    {
+      "name": "field16",
+      "damagable": 0,
+      "health": 20,
+      "coords": [720,120]
+    },
+    {
+      "name": "field18",
+      "damagable": 0,
+      "health": 20,
+      "coords": [0,240]
+    },
+    {
+      "name": "field19",
+      "damagable": 0,
+      "health": 20,
+      "coords": [120,240]
+    },
+    {
+      "name": "field20",
+      "damagable": 0,
+      "health": 20,
+      "coords": [240,240]
+    },
+    {
+      "name": "field21",
+      "damagable": 0,
+      "health": 20,
+      "coords": [360,240]
+    },
+    {
+      "name": "field22",
+      "damagable": 0,
+      "health": 20,
+      "coords": [480,240]
+    },
+    {
+      "name": "field23",
+      "damagable": 0,
+      "health": 20,
+      "coords": [600,240]
+    },
+    {
+      "name": "field24",
+      "damagable": 0,
+      "health": 20,
+      "coords": [720,240]
+    },
+    {
+      "name": "field25",
+      "damagable": 0,
+      "health": 20,
+      "coords": [840,240]
+    },
+    {
+      "name": "field26",
+      "damagable": 0,
+      "health": 20,
+      "coords": [960,240]
+    },
+    {
+      "name": "field27",
+      "damagable": 0,
+      "health": 20,
+      "coords": [1080,240]
+    },
+    {
+      "name": "field28",
+      "damagable": 0,
+      "health": 20,
+      "coords": [1200,240]
+    },
+    {
+      "name": "field29",
+      "damagable": 0,
+      "health": 20,
+      "coords": [1320,240]
+    },
+    {
+      "name": "field31",
+      "damagable": 0,
+      "health": 20,
+      "coords": [120,360]
+    },
+    {
+      "name": "field32",
+      "damagable": 1,
+      "health": 10,
+      "coords": [240,360]
+    },
+    {
+      "name": "field33",
+      "damagable": 0,
+      "health": 20,
+      "coords": [360,360]
+    },
+    {
+      "name": "field34",
+      "damagable": 0,
+      "health": 20,
+      "coords": [480,360]
+    },
+    {
+      "name": "field35",
+      "damagable": 0,
+      "health": 20,
+      "coords": [600,360]
+    },
+    {
+      "name": "field36",
+      "damagable": 1,
+      "health": 10,
+      "coords": [720,360]
+    },
+    {
+      "name": "field37",
+      "damagable": 0,
+      "health": 20,
+      "coords": [840,360]
+    },
+    {
+      "name": "field39",
+      "damagable": 0,
+      "health": 20,
+      "coords": [240,480]
+    },
+    {
+      "name": "field40",
+      "damagable": 0,
+      "health": 20,
+      "coords": [600,480]
+    },
+    {
+      "name": "field41",
+      "damagable": 0,
+      "health": 20,
+      "coords": [720,480]
+    },
+    {
+      "name": "field42",
+      "damagable": 0,
+      "health": 20,
+      "coords": [840,480]
+    }
+  ],
+  "finishFields": [
+    {
+      "name": "field17",
+      "coords": [960,120]
+    }
+  ],
+  "teleports": [
+    {
+      "name": "field30",
+      "coords": [1440,240]
+    },
+    {
+      "name": "field38",
+      "coords": [240,480]
+    }
+  ],
+  "neighbours": [
+    {
+      "name": "field1",
+      "fields": [
+        "field2",
+        "field10"
+      ]
+    },
+    {
+      "name": "field2",
+      "fields": [
+        "field1",
+        "field10",
+        "field11"
+      ]
+    },
+    {
+      "name": "field3",
+      "fields": [
+        "field11",
+        "field12",
+        "field4"
+      ]
+    },
+    {
+      "name": "field4",
+      "fields": [
+        "field3",
+        "field12",
+        "field5"
+      ]
+    },
+    {
+      "name": "field5",
+      "fields": [
+        "field4",
+        "field12",
+        "field13",
+        "field6"
+      ]
+    },
+    {
+      "name": "field6",
+      "fields": [
+        "field5",
+        "field13",
+        "field7"
+      ]
+    },
+    {
+      "name": "field7",
+      "fields": [
+        "field6",
+        "field13",
+        "field14",
+        "field8"
+      ]
+    },
+    {
+      "name": "field8",
+      "fields": [
+        "field7",
+        "field15",
+        "field16",
+        "field9"
+      ]
+    },
+    {
+      "name": "field9",
+      "fields": [
+        "field8",
+        "field16"
+      ]
+    },
+    {
+      "name": "field10",
+      "fields": [
+        "field1",
+        "field2",
+        "field11",
+        "field21",
+        "field20",
+        "field19",
+        "field18"
+      ]
+    },
+    {
+      "name": "field11",
+      "fields": [
+        "field10",
+        "field2",
+        "field3",
+        "field12"
+      ]
+    },
+    {
+      "name": "field12",
+      "fields": [
+        "field11",
+        "field3",
+        "field4",
+        "field5",
+        "field13",
+        "field24",
+        "field23",
+        "field22",
+        "field21"
+      ]
+    },
+    {
+      "name": "field13",
+      "fields": [
+        "field12",
+        "field5",
+        "field6",
+        "field7",
+        "field24",
+        "field25",
+        "field26",
+        "field27",
+        "field14"
+      ]
+    },
+    {
+      "name": "field14",
+      "fields": [
+        "field13",
+        "field7",
+        "field15",
+        "field17",
+        "field27"
+      ]
+    },
+    {
+      "name": "field15",
+      "fields": [
+        "field14",
+        "field8",
+        "field16",
+        "field17"
+      ]
+    },
+    {
+      "name": "field16",
+      "fields": [
+        "field15",
+        "field9",
+        "field17"
+      ]
+    },
+    {
+      "name": "field17",
+      "fields": [
+        "field16",
+        "field15",
+        "field14",
+        "field27",
+        "field28",
+        "field29",
+        "field30"
+      ]
+    },
+    {
+      "name": "field18",
+      "fields": [
+        "field10",
+        "field19"
+      ]
+    },
+    {
+      "name": "field19",
+      "fields": [
+        "field18",
+        "field10",
+        "field20",
+        "field31"
+      ]
+    },
+    {
+      "name": "field20",
+      "fields": [
+        "field19",
+        "field10",
+        "field21",
+        "field32"
+      ]
+    },
+    {
+      "name": "field21",
+      "fields": [
+        "field20",
+        "field10",
+        "field11",
+        "field12",
+        "field22"
+      ]
+    },
+    {
+      "name": "field22",
+      "fields": [
+        "field21",
+        "field12",
+        "field23",
+        "field32"
+      ]
+    },
+    {
+      "name": "field23",
+      "fields": [
+        "field22",
+        "field12",
+        "field24",
+        "field34",
+        "field33"
+      ]
+    },
+    {
+      "name": "field24",
+      "fields": [
+        "field23",
+        "field12",
+        "field13",
+        "field25",
+        "field34"
+      ]
+    },
+    {
+      "name": "field25",
+      "fields": [
+        "field24",
+        "field13",
+        "field26",
+        "field34",
+        "field35"
+      ]
+    },
+    {
+      "name": "field26",
+      "fields": [
+        "field25",
+        "field13",
+        "field27",
+        "field36"
+      ]
+    },
+    {
+      "name": "field27",
+      "fields": [
+        "field26",
+        "field13",
+        "field14",
+        "field17",
+        "field28"
+      ]
+    },
+    {
+      "name": "field28",
+      "fields": [
+        "field27",
+        "field17",
+        "field29",
+        "field36"
+      ]
+    },
+    {
+      "name": "field29",
+      "fields": [
+        "field28",
+        "field17",
+        "field30",
+        "field37"
+      ]
+    },
+    {
+      "name": "field30",
+      "fields": [
+        "field29",
+        "field17"
+      ]
+    },
+    {
+      "name": "field31",
+      "fields": [
+        "field19",
+        "field32"
+      ]
+    },
+    {
+      "name": "field32",
+      "fields": [
+        "field31",
+        "field20",
+        "field22",
+        "field33",
+        "field38"
+      ]
+    },
+    {
+      "name": "field33",
+      "fields": [
+        "field32",
+        "field23",
+        "field34",
+        "field39"
+      ]
+    },
+    {
+      "name": "field34",
+      "fields": [
+        "field39",
+        "field33",
+        "field23",
+        "field24",
+        "field25",
+        "field35",
+        "field40"
+      ]
+    },
+    {
+      "name": "field35",
+      "fields": [
+        "field34",
+        "field25",
+        "field36",
+        "field40"
+      ]
+    },
+    {
+      "name": "field36",
+      "fields": [
+        "field35",
+        "field26",
+        "field28",
+        "field37",
+        "field41"
+      ]
+    },
+    {
+      "name": "field37",
+      "fields": [
+        "field36",
+        "field29",
+        "field42"
+      ]
+    },
+    {
+      "name": "field38",
+      "fields": [
+        "field32",
+        "field39"
+      ]
+    },
+    {
+      "name": "field39",
+      "fields": [
+        "field38",
+        "field33",
+        "field34"
+      ]
+    },
+    {
+      "name": "field40",
+      "fields": [
+        "field34",
+        "field35",
+        "field41"
+      ]
+    },
+    {
+      "name": "field41",
+      "fields": [
+        "field40",
+        "field36",
+        "field42"
+      ]
+    },
+    {
+      "name": "field42",
+      "fields": [
+        "field37",
+        "field41"
+      ]
+    }
+  ],
+  "teleportNeighbours": [
+    {
+      "name": "field30",
+      "teleports":[
+      "field38"
+      ]
+    },
+    {
+      "name": "field38",
+      "teleports": [
+        "field30"
+      ]
+    }
+  ],
+  "pandas": [
+    {
+      "name": "panda1",
+      "field": "field3"
+    },
+    {
+      "name": "panda2",
+      "field": "field41"
+    },
+    {
+      "name": "panda3",
+      "field": "field15"
+    }
+  ],
+  "sleepyPandas": [
+    {
+      "name": "panda4",
+      "field": "field5"
+    }
+  ],
+  "bigPandas": [
+    {
+      "name": "panda5",
+      "field": "field23"
+    }
+  ],
+  "nervousPandas": [
+    {
+      "name": "panda6",
+      "field": "field16"
+    }
+  ],
+  "chocolateMachines": [
+    {
+      "name": "chocomachine1",
+      "field": "field34"
+    }
+  ],
+  "arcademachines": [
+    {
+      "name": "arcademachine1",
+      "field": "field13"
+    }
+  ],
+  "couches": [
+    {
+      "name": "couch1",
+      "field": "field42"
+    }
+  ]
+}

@@ -1,11 +1,14 @@
 package skeletontest;
 
 import internal.*;
+import utility.CommandInterpreter;
+import utility.FileHandler;
 import utility.Logger;
 
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.*;
 
 /**
  * Osztaly mely magaban foglalja a teszteseteket es menedzseli a tesztek futasat.
@@ -20,6 +23,7 @@ public class SkeletonTestMain {
      * @param args a szokvanyos main parameter
      */
     public static void main(String... args) {
+        FileHandler.loadMap("map1.json");
         testFixtures();
         handleTests();
     }
@@ -63,7 +67,7 @@ public class SkeletonTestMain {
      */
     private static void lonelyAnimalStepsOnEmptyField(){
     	Logger.resetTabulation();
-    	
+
     	Scanner scanner = new Scanner(System.in);
         System.out.println("A mezo torott?(1/0)");
         int fieldIsBroken = scanner.nextInt();
@@ -108,7 +112,7 @@ public class SkeletonTestMain {
      */
     private static void orangutanStepsOnEmptyFieldFieldBreakWhilePandasCome(){
     	Logger.resetTabulation();
-    	
+
     	//initialize
         Field f0 = new Field(true,1);
         Field f1 = new Field();
@@ -143,7 +147,7 @@ public class SkeletonTestMain {
      */
     private static void orangutanWithPandasStepsOnFieldWithPanda(){
     	Logger.resetTabulation();
-    	
+
     	//initialize
         Field f1 = new Field(false, 10);
         Field f2 = new Field(false, 10);
@@ -164,7 +168,7 @@ public class SkeletonTestMain {
      */
     private static void orangutanWithPandasUsesTeleport(){
     	Logger.resetTabulation();
-    	
+
     	//initialize
         Teleport t1 = new Teleport();
         Teleport t2 = new Teleport();
@@ -201,7 +205,7 @@ public class SkeletonTestMain {
      */
     private static void orangutanWithPandasStepsOnFinishField(){
     	Logger.resetTabulation();
-    	
+
     	//initialize
     	FinishField f = new FinishField(false, 10);
         Field f1 = new Field(false, 10);
@@ -223,7 +227,7 @@ public class SkeletonTestMain {
      */
     private static void orangutanWithPandasStepsOnNonBrokenEmptyField(){
     	Logger.resetTabulation();
-    	
+
     	//initialize
         Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
@@ -252,7 +256,7 @@ public class SkeletonTestMain {
      */
     private static void orangutanWithPandasStepsOnBrokenEmptyField(){
     	Logger.resetTabulation();
-    	
+
     	//initialize
     	Field f0 = new Field(false, 20);
         Field f1 = new Field(false, 10);
@@ -281,7 +285,7 @@ public class SkeletonTestMain {
      */
     private static void chocolateVendingMachineFireEvent(){
     	Logger.resetTabulation();
-    	
+
     	//initialize
         Field f1 = new Field();
         Field f2 = new Field(true, 10);
@@ -311,7 +315,7 @@ public class SkeletonTestMain {
      */
     private static void arcadeMachineFireEvent(){
     	Logger.resetTabulation();
-    	
+
     	//initialize
         Field f1 = new Field(false, 20);
         Field f3 = new Field(false, 20);
@@ -336,7 +340,7 @@ public class SkeletonTestMain {
      */
     private static void couchFireEvent(){
     	Logger.resetTabulation();
-    	
+
     	//initialize
         Field f1 = new Field();
         Field f2 = new Field();
@@ -414,7 +418,7 @@ public class SkeletonTestMain {
         level.addThing(am, field,name);
     }
 
-    public static void addVendingMachine(Level level, String field, String name, Object arg1){
+    public static void addChocolateMachine(Level level, String field, String name, Object arg1){
         ChocolateVendingMachine ch = new ChocolateVendingMachine();
         level.addThing(ch, field, name);
     }
@@ -447,10 +451,10 @@ public class SkeletonTestMain {
         }
     }
 
-    public static void damageField(Level level, String name, int damage, Object arg1){
+    public static void damageField(Level level, String name, String damage, Object arg1){
         Field field = level.getField(name);
         if(field != null){
-            field.sufferDamageByAnimal(damage, new Panda());
+            field.sufferDamageByAnimal(Integer.parseInt(damage), new Panda());
         }
     }
 
@@ -461,17 +465,55 @@ public class SkeletonTestMain {
         }
     }
 
-    public static void automat(Level level, boolean on, Object arg1, Object arg2){}
+    public static void automat(Level level, String on, Object arg1, Object arg2){}
 
     public static void stat(Level level, String name, Object arg1, Object arg2){
-
+        Field field = level.getField(name);
+        Animal animal = level.getAnimal(name);
+        Thing thing = level.getThing(name);
+        if(field != null){
+            System.out.println(field.toString());
+        }
+        if(animal != null){
+            System.out.println(animal.toString());
+        }
+        if(thing != null){
+            System.out.println(thing.toString());
+        }
     }
 
-    public static void file(Level level, String file, Object arg1, Object arg2){}
+    public static void file(Level level, String file, Object arg1, Object arg2)  {
+        File fileToRead = new File("input/sequences/"+file);
+        ArrayList<Object> parameters;
+        Method methodToInvoke;
+        Scanner sc = null;
+        try {
+            sc = new Scanner(fileToRead);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        while (sc.hasNextLine()) {
+            try {
+                String command = sc.nextLine();
+                methodToInvoke = CommandInterpreter.getMethodToInvoke(command);
+                parameters = CommandInterpreter.getParameters();
+                Objects.requireNonNull(methodToInvoke).invoke(methodToInvoke, parameters.get(0), parameters.get(1), parameters.get(2), parameters.get(3));
+            } catch (IllegalAccessException | InvocationTargetException | NullPointerException e) {
+                System.out.println("Hiba a vegrehajtasban!");
+            }
+        }
+    }
 
     public static void save(Level level, String fileName, Object arg1, Object arg2){}
 
     public static void test(String msg, Object arg1, Object arg2, Object arg3){
         System.out.println(msg);
+        System.out.println((String)arg1);
+        System.out.println((String)arg2);
+        System.out.println((String)arg3);
+    }
+
+    public static void damageField() {
     }
 }

@@ -1,10 +1,11 @@
 package internal;
 
 
+import Graphics.Drawable;
+import utility.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import utility.Logger;
 
 /**
  * Különleges mező. Nem lehet rálépni, ha megkísérlik az állatot egy másik helyre teleportálja.
@@ -54,5 +55,15 @@ public class Teleport extends Field {
 
     public void addTeleportNeighbour(Teleport teleport){
         teleportNeighbours.add(teleport);
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + this.name;
+    }
+
+    @Override
+    public Drawable getDrawable(){
+        return null;
     }
 }

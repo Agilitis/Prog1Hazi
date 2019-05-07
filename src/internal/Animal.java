@@ -2,6 +2,8 @@ package internal;
 
 import utility.Logger;
 
+import java.util.ArrayList;
+
 /**
  * Absztrakt osztály. Egy álltalános állatot reprezentál.
  */
@@ -15,12 +17,17 @@ public abstract class Animal extends GameObject {
     }
 
     protected Animal pulledBy;
-
+    protected String name;
     public Animal(Field field) {
         super(field);
     }
 
     public Animal(){}
+
+    @Override
+    public String toString() {
+        return String.format(this.name, this.pullThis, this.pulledBy, this.canMoveAlone);
+    }
 
     int getPointValue() {
         return pointValue;
@@ -36,7 +43,7 @@ public abstract class Animal extends GameObject {
      * Beállít az Animalnak egy olyan Pandát, amit húzhat.
      * @param pullThis Egy panda, amit húzhat az animal maga után, ha mozog.
      */
-    public void setPullThis(Panda pullThis) {
+    public void setPullThis(Animal pullThis) {
     	Logger.increaseTabulation();
         pullThis.setPulledBy(this);
         this.pullThis = pullThis;
@@ -44,6 +51,13 @@ public abstract class Animal extends GameObject {
         Logger.decreaseTabulation();
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
     public Animal getPullThis() {
         return pullThis;
     }
@@ -52,7 +66,7 @@ public abstract class Animal extends GameObject {
         return canMoveAlone;
     }
 
-    Panda pullThis;
+    Animal pullThis;
 
     void setCanMoveAlone(boolean canMoveAlone) {
         this.canMoveAlone = canMoveAlone;
@@ -110,8 +124,8 @@ public abstract class Animal extends GameObject {
 
     protected abstract void hitByPanda(Panda panda);
 
-    Field[] getStepOptions() {
-        return new Field[0];
+    ArrayList<Field> getStepOptions() {
+        return field.getNeighbours();
     }
 
     protected abstract void die();

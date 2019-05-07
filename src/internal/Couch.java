@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -12,6 +13,12 @@ public class Couch extends Thing {
     public Couch(Field field) {
         super(field);
     }
+
+    @Override
+    public Drawable getDrawable() {
+        return null;
+    }
+
     public Couch(){}
 
     void setRestingPanda(SleepyPanda restingPanda) {
@@ -51,5 +58,10 @@ public class Couch extends Thing {
             gameObject.restingSpotAvailable(this);
         }
         Logger.decreaseTabulation();
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + this.name + " " + "Field: " + this.field;
     }
 }

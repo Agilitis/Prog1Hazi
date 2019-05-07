@@ -23,4 +23,10 @@ public class FinishField extends Field {
         animal.goToZoo();
         Logger.decreaseTabulation();
     }
+
+    @Override
+    public String toString(){
+        return "Name: " + this.name;
+    }
+
 }

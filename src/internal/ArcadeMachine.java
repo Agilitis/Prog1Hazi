@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.Drawable;
 import utility.Logger;
 
 /**
@@ -12,6 +13,12 @@ public class ArcadeMachine extends Thing {
         super(field);
         counter = 1;
     }
+
+    @Override
+    public Drawable getDrawable() {
+        return null;
+    }
+
     public ArcadeMachine(){}
     /**
      * Fgvény, mely megvalósítja a hang kiadását. Minden szomszédos mezőtől elkéri az ott található gameObjectet és
@@ -27,5 +34,10 @@ public class ArcadeMachine extends Thing {
             gameObject.arcadeMachineRingSoundPlayed();
         }
         Logger.decreaseTabulation();
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + this.name + " " + "Field: " + this.field;
     }
 }
