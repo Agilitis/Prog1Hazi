@@ -56,6 +56,7 @@ public class Game {
         if(operationMode == 0){    //game mode
             this.initialise();
             players.add(new Player());
+            view.update(currentLevel);
             while (gameOn) {
                 //timer.tick();
 
@@ -82,6 +83,7 @@ public class Game {
     }
 
     private void initialise() {
+        currentLevel = FileHandler.loadMap("map1.json");
         this.view = new View();
     }
 

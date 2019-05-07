@@ -6,13 +6,25 @@ import internal.Level;
 import internal.Thing;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class View extends JFrame {
-    private JPanel mainPanel = new JPanel();
+    private JPanel mainPanel = new JPanel(){
+        @Override
+        public void paintComponent(Graphics g){
+            super.paintComponent(g);
 
+            for(Drawable drawable : drawables){
+                drawable.draw(g);
+            }
+        }
+    };
     private ArrayList<Drawable> drawables = new ArrayList<>();
 
+    public JPanel getMainPanel(){
+        return mainPanel;
+    }
 
     public View(){
         this.setVisible(true);
@@ -21,6 +33,9 @@ public class View extends JFrame {
         this.setLocation(200,200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
+
+
+
 
         this.add(mainPanel);
     }
@@ -40,6 +55,6 @@ public class View extends JFrame {
             drawables.add(animal.getDrawable());
         }
 
-
+        mainPanel.repaint();
     }
 }
