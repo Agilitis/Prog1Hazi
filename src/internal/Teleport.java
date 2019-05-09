@@ -2,6 +2,7 @@ package internal;
 
 
 import Graphics.Drawable;
+import Graphics.TeleportView;
 import utility.Logger;
 
 import java.util.ArrayList;
@@ -64,6 +65,8 @@ public class Teleport extends Field {
 
     @Override
     public Drawable getDrawable(){
-        return null;
+        TeleportView teleportView = new TeleportView();
+        teleportView.setCoordinates(this.coordinates);
+        return teleportView;
     }
 }

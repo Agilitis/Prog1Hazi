@@ -1,6 +1,7 @@
 package internal;
 
 import Graphics.Drawable;
+import Graphics.SleepyPandaView;
 import utility.Logger;
 
 /**
@@ -82,6 +83,8 @@ public class SleepyPanda extends Panda {
 
     @Override
     public Drawable getDrawable(){
-        return null;
+        SleepyPandaView sleepyPandaView = new SleepyPandaView();
+        sleepyPandaView.setCoordinates(this.coordinates);
+        return sleepyPandaView;
     }
 }

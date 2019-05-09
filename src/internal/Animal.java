@@ -89,6 +89,7 @@ public abstract class Animal extends GameObject {
         }
         this.field = newField;
         this.field.setGameObject(this);
+        this.coordinates = field.getCoordinates();
         newField.sufferDamageByAnimal(1, this);
         Logger.decreaseTabulation();
     }

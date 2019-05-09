@@ -1,6 +1,7 @@
 package internal;
 
 import Graphics.Drawable;
+import Graphics.PandaView;
 import utility.Logger;
 
 /**
@@ -92,7 +93,9 @@ public class Panda extends Animal {
 
     @Override
     public Drawable getDrawable() {
-        return null;
+        PandaView pandaView = new PandaView();
+        pandaView.setCoordinates(this.coordinates);
+        return pandaView;
     }
 
     /**

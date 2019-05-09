@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.ArcadeMachineView;
 import Graphics.Drawable;
 import utility.Logger;
 
@@ -16,7 +17,9 @@ public class ArcadeMachine extends Thing {
 
     @Override
     public Drawable getDrawable() {
-        return null;
+        ArcadeMachineView arcadeMachineView = new ArcadeMachineView();
+        arcadeMachineView.setCoordinates(this.coordinates);
+        return arcadeMachineView;
     }
 
     public ArcadeMachine(){}

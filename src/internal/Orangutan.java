@@ -1,6 +1,7 @@
 package internal;
 
 import Graphics.Drawable;
+import Graphics.OrangutanView;
 import utility.Logger;
 
 /**
@@ -104,7 +105,9 @@ public class Orangutan extends Animal {
 
     @Override
     public Drawable getDrawable() {
-        return null;
+        OrangutanView orangutanView = new OrangutanView();
+        orangutanView.setCoordinates(this.coordinates);
+        return orangutanView;
     }
 
     /**

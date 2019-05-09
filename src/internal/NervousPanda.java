@@ -1,6 +1,7 @@
 package internal;
 
 import Graphics.Drawable;
+import Graphics.NervousPandaView;
 import utility.Logger;
 
 /**
@@ -41,6 +42,8 @@ public class NervousPanda extends Panda {
 
     @Override
     public Drawable getDrawable(){
-        return null;
+        NervousPandaView nervousPandaView = new NervousPandaView();
+        nervousPandaView.setCoordinates(this.coordinates);
+        return nervousPandaView;
     }
 }

@@ -31,6 +31,7 @@ public abstract class GameObject implements ITickable {
     public GameObject(Field field) {
         this.field = field;
         this.field.setGameObject(this);
+        this.coordinates = field.getCoordinates();
     }
 
 

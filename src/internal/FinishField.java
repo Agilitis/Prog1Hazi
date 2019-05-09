@@ -1,5 +1,7 @@
 package internal;
 
+import Graphics.Drawable;
+import Graphics.FinishFieldView;
 import utility.Logger;
 
 /**
@@ -27,6 +29,13 @@ public class FinishField extends Field {
     @Override
     public String toString(){
         return "Name: " + this.name;
+    }
+
+    @Override
+    public Drawable getDrawable(){
+        FinishFieldView finishFieldView = new FinishFieldView();
+        finishFieldView.setCoordinates(this.coordinates);
+        return finishFieldView;
     }
 
 }

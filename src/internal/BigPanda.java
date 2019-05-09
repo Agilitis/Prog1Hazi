@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.BigPandaView;
 import Graphics.Drawable;
 import utility.Logger;
 
@@ -37,6 +38,8 @@ public class BigPanda extends Panda {
 
     @Override
     public Drawable getDrawable(){
-        return null;
+        BigPandaView bigPandaView = new BigPandaView();
+        bigPandaView.setCoordinates(this.coordinates);
+        return bigPandaView;
     }
 }

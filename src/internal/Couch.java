@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.CouchView;
 import Graphics.Drawable;
 import utility.Logger;
 
@@ -16,7 +17,9 @@ public class Couch extends Thing {
 
     @Override
     public Drawable getDrawable() {
-        return null;
+        CouchView couchView = new CouchView();
+        couchView.setCoordinates(this.coordinates);
+        return couchView;
     }
 
     public Couch(){}

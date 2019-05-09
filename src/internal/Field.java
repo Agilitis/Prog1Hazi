@@ -1,6 +1,7 @@
 package internal;
 
 import Graphics.Drawable;
+import Graphics.FieldView;
 import utility.Logger;
 
 import java.util.ArrayList;
@@ -13,6 +14,14 @@ public class Field {
     Logger logger = new Logger();
     ArrayList<Field> neighBours = new ArrayList<>();
     protected int[] coordinates = new int[2];
+
+    public int[] getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(int[] coordinates) {
+        this.coordinates = coordinates;
+    }
 
     public String getName() {
         return name;
@@ -122,6 +131,8 @@ public class Field {
     }
 
     public Drawable getDrawable(){
-        return null;
+        FieldView fieldView = new FieldView();
+        fieldView.setCoordinates(this.coordinates);
+        return fieldView;
     }
 }

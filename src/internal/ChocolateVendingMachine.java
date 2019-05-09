@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.ChocolateMachineView;
 import Graphics.Drawable;
 import utility.Logger;
 
@@ -15,7 +16,9 @@ public class ChocolateVendingMachine extends Thing {
 
     @Override
     public Drawable getDrawable() {
-        return null;
+        ChocolateMachineView chocolateMachineView = new ChocolateMachineView();
+        chocolateMachineView.setCoordinates(this.coordinates);
+        return chocolateMachineView;
     }
 
     public ChocolateVendingMachine(){}
