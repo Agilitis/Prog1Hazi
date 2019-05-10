@@ -109,7 +109,12 @@ public class Panda extends Animal {
     	Logger.increaseTabulation();
         //some logic to define when
         //witch field exactly needs to be defined
-        move(getStepOptions().get(0));
+        if (canMoveAlone) {
+            Random rand = new Random();
+            ArrayList<Field> stepOptions = getStepOptions();
+            Field movingTo = stepOptions.get(rand.nextInt(stepOptions.size()));
+            move(movingTo);
+        }
         Logger.decreaseTabulation();
     }
 
