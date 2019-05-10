@@ -68,6 +68,7 @@ public class Game {
     private void initialise() {
         currentLevel = FileHandler.loadMap("map1.json");
         this.view = new View();
+
     }
 
     public static Game getInstance(){
