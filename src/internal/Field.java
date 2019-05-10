@@ -1,8 +1,10 @@
 package internal;
 
 import Graphics.Drawable;
+import Graphics.FieldView;
 import utility.Logger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +15,14 @@ public class Field {
     Logger logger = new Logger();
     ArrayList<Field> neighBours = new ArrayList<>();
     protected int[] coordinates = new int[2];
+
+    public int[] getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(int[] coordinates) {
+        this.coordinates = coordinates;
+    }
 
     public String getName() {
         return name;
@@ -45,13 +55,11 @@ public class Field {
     private boolean isBroken;
     private GameObject gameObject;
 
-    public Field(boolean isDamagable, int life) {
-        this.isDamagable = isDamagable;
-        if(life <=0){
-            setBroken(true);
-        }else{
-            this.life = life;
-        }
+    public Field(String name, boolean damagable, int health, int[] coords) {
+        this.name = name;
+        this.isDamagable = damagable;
+        this.life = health;
+        this.coordinates = coords;
     }
 
     public void addNeighbour(Field neighbour) {
@@ -121,7 +129,9 @@ public class Field {
         return "Name: " + this.name;
     }
 
-    public Drawable getDrawable(){
-        return null;
+    public Drawable getDrawable() throws IOException {
+        FieldView fieldView = new FieldView();
+        fieldView.setCoordinates(this.coordinates);
+        return fieldView;
     }
 }

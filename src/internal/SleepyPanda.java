@@ -1,14 +1,17 @@
 package internal;
 
 import Graphics.Drawable;
+import Graphics.SleepyPandaView;
 import utility.Logger;
+
+import java.io.IOException;
 
 /**
  * Olyan panda aki a fotel eseményére tud reagálni.
  */
 public class SleepyPanda extends Panda {
-    public SleepyPanda(Field field) {
-        super(field);
+    public SleepyPanda(String name, Field field) {
+        super(name, field);
     }
     public SleepyPanda(){}
     public int getStamina() {
@@ -77,11 +80,13 @@ public class SleepyPanda extends Panda {
 
     @Override
     public String toString(){
-        return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+        return "Name: " + this.name + " " + "Field: " + this.field;
     }
 
     @Override
-    public Drawable getDrawable(){
-        return null;
+    public Drawable getDrawable() throws IOException {
+        SleepyPandaView sleepyPandaView = new SleepyPandaView();
+        sleepyPandaView.setCoordinates(this.coordinates);
+        return sleepyPandaView;
     }
 }

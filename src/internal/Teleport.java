@@ -2,8 +2,10 @@ package internal;
 
 
 import Graphics.Drawable;
+import Graphics.TeleportView;
 import utility.Logger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,8 @@ import java.util.List;
 public class Teleport extends Field {
     private ArrayList<Teleport> teleportNeighbours = new ArrayList<>();
 
-    public Teleport(boolean isDamagable, int life) {
-        super(isDamagable, life);
+    public Teleport(String name, int[] coords) {
+        super(name, false, 20, coords);
     }
 
     public Teleport(){}
@@ -63,7 +65,9 @@ public class Teleport extends Field {
     }
 
     @Override
-    public Drawable getDrawable(){
-        return null;
+    public Drawable getDrawable() throws IOException {
+        TeleportView teleportView = new TeleportView();
+        teleportView.setCoordinates(this.coordinates);
+        return teleportView;
     }
 }

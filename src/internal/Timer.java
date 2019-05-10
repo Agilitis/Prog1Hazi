@@ -12,9 +12,9 @@ public class Timer {
         //put things in tickables
     }
 
-    void tick(){
-        for(ITickable iTickable : tickables){
-            iTickable.tick();
+    void tick(Level level){
+        for(Animal animal : level.getAnimals()){
+            animal.tick();
         }
     }
 }

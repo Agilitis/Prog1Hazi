@@ -1,15 +1,18 @@
 package internal;
 
 import Graphics.Drawable;
+import Graphics.NervousPandaView;
 import utility.Logger;
+
+import java.io.IOException;
 
 /**
  * Olyan panda aki a játékautómata hangjára elengedi a többiek kezét. Másra nem reagál.
  */
 public class NervousPanda extends Panda {
 
-    public NervousPanda(Field field) {
-        super(field);
+    public NervousPanda(String name, Field field) {
+        super(name, field);
     }
     public NervousPanda(){}
     /**
@@ -36,11 +39,13 @@ public class NervousPanda extends Panda {
 
     @Override
     public String toString(){
-        return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+        return "Name: " + this.name + " " + "Field: " + this.field;
     }
 
     @Override
-    public Drawable getDrawable(){
-        return null;
+    public Drawable getDrawable() throws IOException {
+        NervousPandaView nervousPandaView = new NervousPandaView();
+        nervousPandaView.setCoordinates(this.coordinates);
+        return nervousPandaView;
     }
 }

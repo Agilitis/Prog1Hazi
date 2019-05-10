@@ -1,7 +1,10 @@
 package internal;
 
+import Graphics.CouchView;
 import Graphics.Drawable;
 import utility.Logger;
+
+import java.io.IOException;
 
 /**
  * A fotel. Ha egy álmos panda mellé lép akkor bele tud ülni.
@@ -10,13 +13,15 @@ public class Couch extends Thing {
 
     private SleepyPanda restingPanda;
 
-    public Couch(Field field) {
-        super(field);
+    public Couch(String name, Field field) {
+        super(name, field);
     }
 
     @Override
-    public Drawable getDrawable() {
-        return null;
+    public Drawable getDrawable() throws IOException {
+        CouchView couchView = new CouchView();
+        couchView.setCoordinates(this.coordinates);
+        return couchView;
     }
 
     public Couch(){}

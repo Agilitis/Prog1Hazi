@@ -1,15 +1,13 @@
 package utility;
 
-import java.io.*;
-import java.util.HashMap;
-
 import internal.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import javax.swing.text.StyledEditorKit;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Ez az osztaly valositja meg a file elereseket.
@@ -19,6 +17,7 @@ public final class FileHandler {
     private static JSONObject jsonObject;
 
 
+    @SuppressWarnings("Duplicates")
     public static Level loadMap(String mapName){
         Level level = new Level();
         try {
@@ -30,17 +29,48 @@ public final class FileHandler {
         }
 
         JSONArray fields = (JSONArray) jsonObject.get("fields");
+        JSONArray finishFields = (JSONArray) jsonObject.get("finishFields");
+        JSONArray teleports = (JSONArray) jsonObject.get("teleports");
         JSONArray neighbours = (JSONArray) jsonObject.get("neighbours");
+        JSONArray teleportNeighbours = (JSONArray) jsonObject.get("teleportNeighbours");
         JSONArray pandas = (JSONArray) jsonObject.get("pandas");
-        JSONArray things = (JSONArray) jsonObject.get("things");
+        JSONArray sleepyPandas = (JSONArray) jsonObject.get("sleepyPandas");
+        JSONArray bigPandas = (JSONArray) jsonObject.get("bigPandas");
+        JSONArray nervousPandas = (JSONArray) jsonObject.get("nervousPandas");
+        JSONArray chocolateMachines = (JSONArray) jsonObject.get("chocolateMachines");
+        JSONArray arcadeMachines = (JSONArray) jsonObject.get("arcadeMachines");
+        JSONArray couches = (JSONArray) jsonObject.get("couches");
+
         for (Object field : fields){
             String fieldName = ((JSONObject)field).get("name").toString();
-            String damagable = ((JSONObject)field).get("damagable").toString();
-            Boolean isDamagable = 1 == Integer.parseInt(damagable);
+            boolean damagable = Integer.parseInt(((JSONObject)field).get("damagable").toString()) != 0;
             int health = Integer.parseInt (((JSONObject)field).get("damagable").toString());
-            Field newField = new Field(isDamagable, health);
-            newField.setName(fieldName);
-            level.addField(newField);
+            JSONArray jsonCoords = (JSONArray)((JSONObject)field).get("coords");
+            int[] corrds = new int[jsonCoords.size()];
+            for (int i = 0; i < jsonCoords.size(); ++i) {
+                corrds[i] = Integer.parseInt(jsonCoords.get(i).toString());
+            }
+            level.addField(new Field(fieldName, damagable, health, corrds));
+        }
+
+        for (Object finishField : finishFields){
+            String fieldName = ((JSONObject)finishField).get("name").toString();
+            JSONArray jsonCoords = (JSONArray)((JSONObject)finishField).get("coords");
+            int[] corrds = new int[jsonCoords.size()];
+            for (int i = 0; i < jsonCoords.size(); ++i) {
+                corrds[i] = Integer.parseInt(jsonCoords.get(i).toString());
+            }
+            level.addField(new FinishField(fieldName, corrds));
+        }
+
+        for (Object teleport : teleports){
+            String fieldName = ((JSONObject)teleport).get("name").toString();
+            JSONArray jsonCoords = (JSONArray)((JSONObject)teleport).get("coords");
+            int[] corrds = new int[jsonCoords.size()];
+            for (int i = 0; i < jsonCoords.size(); ++i) {
+                corrds[i] = Integer.parseInt(jsonCoords.get(i).toString());
+            }
+            level.addField(new Teleport(fieldName, corrds));
         }
 
         for (Object neighbour : neighbours){
@@ -53,46 +83,60 @@ public final class FileHandler {
                 }
             }
         }
-        if(pandas != null)
-        {
-            for (Object panda : pandas){
-                String pandaName = ((JSONObject)panda).get("name").toString();
-                String type = ((JSONObject)panda).get("type").toString();
-                String fieldName = ((JSONObject)panda).get("field").toString();
-                String follow = ((JSONObject)panda).get("follow").toString();
-                switch(type){
-                    case "BigPanda":
-                        level.addAnimal(new BigPanda(), fieldName, pandaName, follow);
-                        break;
-                    case "NervousPanda":
-                        level.addAnimal(new NervousPanda(), fieldName, pandaName, follow);
-                        break;
-                    case "SleepyPanda":
-                        level.addAnimal(new SleepyPanda(), fieldName, pandaName, follow);
-                        break;
-                }
 
-            }
-        }
-        if(things != null)
-        {
-            for (Object thing : things){
-                String thingName = ((JSONObject)thing).get("name").toString();
-                String type = ((JSONObject)thing).get("type").toString();
-                String field = ((JSONObject)thing).get("field").toString();
-                switch(type){
-                    case "ArcadeMachine":
-                        level.addThing(new ArcadeMachine(), field, thingName);
-                        break;
-                    case "Couch":
-                        level.addThing(new Couch(), field, thingName);
-                        break;
-                    case "ChocolateVendingMachine":
-                        level.addThing(new ChocolateVendingMachine(), field, thingName);
-                        break;
+        for (Object teleportNeighbour : teleportNeighbours){
+            String teleportName = ((JSONObject)teleportNeighbour).get("name").toString();
+            JSONArray fieldNeighbours = (JSONArray) ((JSONObject)teleportNeighbour).get("teleports");
+            Teleport teleport = (Teleport) level.getField(teleportName);
+            if(teleport != null){
+                for(Object fieldNeighbour : fieldNeighbours){
+                    teleport.addTeleportNeighbour((Teleport)level.getField(fieldNeighbour.toString()));
                 }
             }
         }
+
+        for (Object panda : pandas){
+            String pandaName = ((JSONObject)panda).get("name").toString();
+            String fieldName = ((JSONObject)panda).get("field").toString();
+            level.addAnimal(new Panda(pandaName, level.getField(fieldName)));
+        }
+
+        for (Object sleepyPanda : sleepyPandas){
+            String pandaName = ((JSONObject)sleepyPanda).get("name").toString();
+            String fieldName = ((JSONObject)sleepyPanda).get("field").toString();
+            level.addAnimal(new SleepyPanda(pandaName, level.getField(fieldName)));
+        }
+
+        for (Object bigPanda : bigPandas){
+            String pandaName = ((JSONObject)bigPanda).get("name").toString();
+            String fieldName = ((JSONObject)bigPanda).get("field").toString();
+            level.addAnimal(new BigPanda(pandaName, level.getField(fieldName)));
+        }
+
+        for (Object nervousPanda : nervousPandas){
+            String pandaName = ((JSONObject)nervousPanda).get("name").toString();
+            String fieldName = ((JSONObject)nervousPanda).get("field").toString();
+            level.addAnimal(new NervousPanda(pandaName, level.getField(fieldName)));
+        }
+
+        for(Object chocolateMachine : chocolateMachines){
+            String name = ((JSONObject)chocolateMachine).get("name").toString();
+            String fieldName = ((JSONObject)chocolateMachine).get("field").toString();
+            level.addThing(new ChocolateVendingMachine(name, level.getField(fieldName)));
+        }
+
+        for(Object arcadeMachine : arcadeMachines){
+            String name = ((JSONObject)arcadeMachine).get("name").toString();
+            String fieldName = ((JSONObject)arcadeMachine).get("field").toString();
+            level.addThing(new ArcadeMachine(name, level.getField(fieldName)));
+        }
+
+        for(Object couch : couches){
+            String name = ((JSONObject)couch).get("name").toString();
+            String fieldName = ((JSONObject)couch).get("field").toString();
+            level.addThing(new Couch(name, level.getField(fieldName)));
+        }
+
         return level;
     }
 

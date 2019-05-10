@@ -28,7 +28,7 @@ public class Level {
     }
 
     void initialise(){
-        //put fields in fields
+
     }
 
     public void addField(Field field){
@@ -62,29 +62,11 @@ public class Level {
         return null;
     }
 
-    public void addAnimal(Animal animal, String field, String name, String follow){
-        Field fField = getField(field);
-        if(fField != null){
-            animal.setName(name);
-            animal.setField(fField);
-            fField.setGameObject(animal);
-        }
-        Animal aFollow = getAnimal(follow);
-        if(aFollow != null){
-            aFollow.setPullThis(animal);
-            animal.setPulledBy(aFollow);
-        }
+    public void addAnimal(Animal animal){
         animals.add(animal);
     }
 
-    public void addThing(Thing thing, String field, String name){
-        Field fField = getField(field);
-        if(fField != null){
-            fField.setGameObject(thing);
-        }
-        thing.name = name;
-        thing.field = fField;
+    public void addThing(Thing thing){
         things.add(thing);
     }
-
 }

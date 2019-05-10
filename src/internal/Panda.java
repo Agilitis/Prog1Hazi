@@ -1,15 +1,18 @@
 package internal;
 
 import Graphics.Drawable;
+import Graphics.PandaView;
 import utility.Logger;
+
+import java.io.IOException;
 
 /**
  * Ă�lltalĂˇnos panda. Nem reagĂˇl a Thingek esemĂ©nyeire. Ha nem fogjĂˇk a kezĂ©t vĂ©letlenszerĹ±en mĂˇszkĂˇl a pĂˇlyĂˇn.
  * Ha ĂĽtkĂ¶zik egy orĂˇngutĂˇnnal, az megfogja a kezĂ©t Ă©s onnantĂłl csak akkor lĂ©p ha az orĂˇngutĂˇn maga utĂˇn hĂşzza.
  */
 public class Panda extends Animal {
-    public Panda(Field field) {
-        super(field);
+    public Panda(String name, Field field) {
+        super(name, field);
     }
 
     public Panda(){}
@@ -91,8 +94,10 @@ public class Panda extends Animal {
     }
 
     @Override
-    public Drawable getDrawable() {
-        return null;
+    public Drawable getDrawable() throws IOException {
+        PandaView pandaView = new PandaView();
+        pandaView.setCoordinates(this.coordinates);
+        return pandaView;
     }
 
     /**
@@ -126,6 +131,6 @@ public class Panda extends Animal {
 
     @Override
     public String toString(){
-        return "Name: " + this.name + " " + "Field: " + this.field.getName() + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+        return "Name: " + this.name + " " + "Field: " + this.field.getName();
     }
 }

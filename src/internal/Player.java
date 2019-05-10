@@ -18,6 +18,8 @@ class Player {
     private ArrayList<Object> parameters;
     private static TestCaseStore testCaseStore = new TestCaseStore();
 
+    Player(Orangutan orangutan){this.orangutan = orangutan;}
+
     void doAction() {
         try {BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
             if(bufferedReader.ready()){

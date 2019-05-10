@@ -1,15 +1,18 @@
 package internal;
 
+import Graphics.BigPandaView;
 import Graphics.Drawable;
 import utility.Logger;
+
+import java.io.IOException;
 
 /**
  * Olyan panda aki ha megijed ugrik egyet és ettől a mező nagymértékben sebződik.
  */
 public class BigPanda extends Panda {
 
-    public BigPanda(Field field) {
-        super(field);
+    public BigPanda(String name, Field field) {
+        super(name, field);
     }
     public BigPanda(){}
     /**
@@ -32,11 +35,13 @@ public class BigPanda extends Panda {
 
     @Override
     public String toString(){
-        return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+        return "Name: " + this.name + " " + "Field: " + this.field;
     }
 
     @Override
-    public Drawable getDrawable(){
-        return null;
+    public Drawable getDrawable() throws IOException {
+        BigPandaView bigPandaView = new BigPandaView();
+        bigPandaView.setCoordinates(this.coordinates);
+        return bigPandaView;
     }
 }

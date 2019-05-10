@@ -17,9 +17,8 @@ public abstract class Animal extends GameObject {
     }
 
     protected Animal pulledBy;
-    protected String name;
-    public Animal(Field field) {
-        super(field);
+    public Animal(String name, Field field) {
+        super(name, field);
     }
 
     public Animal(){}
@@ -89,6 +88,7 @@ public abstract class Animal extends GameObject {
         }
         this.field = newField;
         this.field.setGameObject(this);
+        this.coordinates = field.getCoordinates();
         newField.sufferDamageByAnimal(1, this);
         Logger.decreaseTabulation();
     }

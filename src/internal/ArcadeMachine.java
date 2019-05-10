@@ -1,7 +1,10 @@
 package internal;
 
+import Graphics.ArcadeMachineView;
 import Graphics.Drawable;
 import utility.Logger;
+
+import java.io.IOException;
 
 /**
  * A játékgép. Tulajdonsága, hogy véletlenszerűen hangot ad ki, mely a szomszédos mezőkön hallatszik és a
@@ -9,14 +12,16 @@ import utility.Logger;
  */
 public class ArcadeMachine extends Thing {
 
-    public ArcadeMachine(Field field) {
-        super(field);
+    public ArcadeMachine(String name, Field field) {
+        super(name, field);
         counter = 1;
     }
 
     @Override
-    public Drawable getDrawable() {
-        return null;
+    public Drawable getDrawable() throws IOException{
+        ArcadeMachineView arcadeMachineView = new ArcadeMachineView();
+        arcadeMachineView.setCoordinates(this.coordinates);
+        return arcadeMachineView;
     }
 
     public ArcadeMachine(){}

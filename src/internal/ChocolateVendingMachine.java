@@ -1,7 +1,10 @@
 package internal;
 
+import Graphics.ChocolateMachineView;
 import Graphics.Drawable;
 import utility.Logger;
+
+import java.io.IOException;
 
 /**
  * A játékban a csokiautómata. Véletlenszerűen kiadja a hangját, mely a szomszédos mezőkön hallatszik és a
@@ -9,13 +12,15 @@ import utility.Logger;
  */
 public class ChocolateVendingMachine extends Thing {
 
-    public ChocolateVendingMachine(Field field) {
-        super(field);
+    public ChocolateVendingMachine(String name, Field field) {
+        super(name, field);
     }
 
     @Override
-    public Drawable getDrawable() {
-        return null;
+    public Drawable getDrawable() throws IOException {
+        ChocolateMachineView chocolateMachineView = new ChocolateMachineView();
+        chocolateMachineView.setCoordinates(this.coordinates);
+        return chocolateMachineView;
     }
 
     public ChocolateVendingMachine(){}
