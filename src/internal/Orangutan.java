@@ -130,6 +130,9 @@ public class Orangutan extends Animal {
             stepsBeforeCatching--;
             moveHere.acceptAnimal(this);
         }
+        if (pullThis != null) {
+            pullThis.move(onThis);
+        }
         Logger.decreaseTabulation();
     }
 

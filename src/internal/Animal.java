@@ -114,9 +114,10 @@ public abstract class Animal extends GameObject {
     public void move(Field moveHere) {
     	Logger.increaseTabulation();
         logger.log(this+".move(" + moveHere + ")");
-
-        if (canMoveAlone) {
-            moveHere.acceptAnimal(this);
+        Field onThis = field;
+        moveHere.acceptAnimal(this);
+        if (pullThis != null) {
+            pullThis.move(onThis);
         }
         Logger.decreaseTabulation();
     }
