@@ -50,7 +50,11 @@ public class Game {
 
     private void start(int operationMode){
         if(operationMode == 0){
-            //game mode
+            this.initialise();
+            while (gameOn){
+                timer.tick(currentLevel);
+                view.update(currentLevel);
+            }
         }
         else if(operationMode == 1){   //test mode
             this.initialise();

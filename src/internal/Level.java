@@ -69,17 +69,4 @@ public class Level {
     public void addThing(Thing thing){
         things.add(thing);
     }
-
-    void test(){
-        for(Field field : fields){
-            System.out.println(field.toString());
-        }
-        for(Animal animal : animals){
-            System.out.println(animal.toString());
-        }
-        for(Thing thing : things){
-            System.out.println(thing.toString());
-        }
-    }
-
 }
