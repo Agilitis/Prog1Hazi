@@ -4,6 +4,7 @@ import Graphics.Drawable;
 import Graphics.FieldView;
 import utility.Logger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -128,7 +129,7 @@ public class Field {
         return "Name: " + this.name;
     }
 
-    public Drawable getDrawable(){
+    public Drawable getDrawable() throws IOException {
         FieldView fieldView = new FieldView();
         fieldView.setCoordinates(this.coordinates);
         return fieldView;

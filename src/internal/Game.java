@@ -54,7 +54,7 @@ public class Game {
         }
         else if(operationMode == 1){   //test mode
             this.initialise();
-            currentLevel.test();
+            view.update(currentLevel);
         }
         else{
             Logger.getAnonymousLogger().info("No such operation mode! Exiting program!");

@@ -4,6 +4,8 @@ import Graphics.Drawable;
 import Graphics.PandaView;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * Ă�lltalĂˇnos panda. Nem reagĂˇl a Thingek esemĂ©nyeire. Ha nem fogjĂˇk a kezĂ©t vĂ©letlenszerĹ±en mĂˇszkĂˇl a pĂˇlyĂˇn.
  * Ha ĂĽtkĂ¶zik egy orĂˇngutĂˇnnal, az megfogja a kezĂ©t Ă©s onnantĂłl csak akkor lĂ©p ha az orĂˇngutĂˇn maga utĂˇn hĂşzza.
@@ -92,7 +94,7 @@ public class Panda extends Animal {
     }
 
     @Override
-    public Drawable getDrawable() {
+    public Drawable getDrawable() throws IOException {
         PandaView pandaView = new PandaView();
         pandaView.setCoordinates(this.coordinates);
         return pandaView;

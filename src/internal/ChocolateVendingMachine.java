@@ -4,6 +4,8 @@ import Graphics.ChocolateMachineView;
 import Graphics.Drawable;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * A játékban a csokiautómata. Véletlenszerűen kiadja a hangját, mely a szomszédos mezőkön hallatszik és a
  * pandák reagálhatnak rá.
@@ -15,7 +17,7 @@ public class ChocolateVendingMachine extends Thing {
     }
 
     @Override
-    public Drawable getDrawable() {
+    public Drawable getDrawable() throws IOException {
         ChocolateMachineView chocolateMachineView = new ChocolateMachineView();
         chocolateMachineView.setCoordinates(this.coordinates);
         return chocolateMachineView;

@@ -17,7 +17,6 @@ public abstract class Animal extends GameObject {
     }
 
     protected Animal pulledBy;
-    protected String name;
     public Animal(String name, Field field) {
         super(name, field);
     }

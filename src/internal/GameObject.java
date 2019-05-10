@@ -3,6 +3,8 @@ package internal;
 import Graphics.Drawable;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * Egy álltalános dolog a játékban. Minden ami a mezőkön tud lenni az gameObject. Absztrakt osztály.
  */
@@ -78,5 +80,5 @@ public abstract class GameObject implements ITickable {
 
     }
 
-    public abstract Drawable getDrawable();
+    public abstract Drawable getDrawable() throws IOException;
 }

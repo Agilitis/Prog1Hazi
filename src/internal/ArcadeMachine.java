@@ -4,6 +4,8 @@ import Graphics.ArcadeMachineView;
 import Graphics.Drawable;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * A játékgép. Tulajdonsága, hogy véletlenszerűen hangot ad ki, mely a szomszédos mezőkön hallatszik és a
  * pandák reagálhatnak rá.
@@ -16,7 +18,7 @@ public class ArcadeMachine extends Thing {
     }
 
     @Override
-    public Drawable getDrawable() {
+    public Drawable getDrawable() throws IOException{
         ArcadeMachineView arcadeMachineView = new ArcadeMachineView();
         arcadeMachineView.setCoordinates(this.coordinates);
         return arcadeMachineView;

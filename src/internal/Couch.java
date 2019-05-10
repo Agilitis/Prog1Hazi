@@ -4,6 +4,8 @@ import Graphics.CouchView;
 import Graphics.Drawable;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * A fotel. Ha egy álmos panda mellé lép akkor bele tud ülni.
  */
@@ -16,7 +18,7 @@ public class Couch extends Thing {
     }
 
     @Override
-    public Drawable getDrawable() {
+    public Drawable getDrawable() throws IOException {
         CouchView couchView = new CouchView();
         couchView.setCoordinates(this.coordinates);
         return couchView;

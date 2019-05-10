@@ -4,6 +4,8 @@ import Graphics.Drawable;
 import Graphics.OrangutanView;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * Olyan állat akit a játékos tud irányítani. Ha pandával ütközik megfogja és maga után húzza.
  */
@@ -104,7 +106,7 @@ public class Orangutan extends Animal {
     }
 
     @Override
-    public Drawable getDrawable() {
+    public Drawable getDrawable() throws IOException {
         OrangutanView orangutanView = new OrangutanView();
         orangutanView.setCoordinates(this.coordinates);
         return orangutanView;

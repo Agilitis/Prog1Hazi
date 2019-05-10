@@ -7,6 +7,7 @@ import internal.Thing;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class View extends JFrame {
@@ -28,14 +29,11 @@ public class View extends JFrame {
 
     public View(){
         this.setVisible(true);
-        this.setSize(1560,600);
+        this.setSize(1540,640);
         this.setTitle("PandaPlaza");
         this.setLocation(200,200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-
-
-
 
         this.add(mainPanel);
     }
@@ -44,17 +42,21 @@ public class View extends JFrame {
         ArrayList<Thing> things = level.getThings();
         ArrayList<Animal> animals = level.getAnimals();
         ArrayList<Field> fields = level.getFields();
-
-        for(Field field : fields){
-            drawables.add(field.getDrawable());
+        try {
+            for (Field field : fields) {
+                drawables.add(field.getDrawable());
+            }
+            for (Thing thing : things) {
+                drawables.add(thing.getDrawable());
+            }
+            for (Animal animal : animals) {
+                drawables.add(animal.getDrawable());
+            }
         }
-        for(Thing thing : things){
-            drawables.add(thing.getDrawable());
+        catch (IOException e){
+            System.out.println("Image cannot be loaded!");
+            e.printStackTrace();
         }
-        for(Animal animal : animals){
-            drawables.add(animal.getDrawable());
-        }
-
         mainPanel.repaint();
     }
 }

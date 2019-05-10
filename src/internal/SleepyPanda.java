@@ -4,6 +4,8 @@ import Graphics.Drawable;
 import Graphics.SleepyPandaView;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * Olyan panda aki a fotel eseményére tud reagálni.
  */
@@ -82,7 +84,7 @@ public class SleepyPanda extends Panda {
     }
 
     @Override
-    public Drawable getDrawable(){
+    public Drawable getDrawable() throws IOException {
         SleepyPandaView sleepyPandaView = new SleepyPandaView();
         sleepyPandaView.setCoordinates(this.coordinates);
         return sleepyPandaView;

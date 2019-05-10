@@ -4,6 +4,8 @@ import Graphics.Drawable;
 import Graphics.NervousPandaView;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * Olyan panda aki a játékautómata hangjára elengedi a többiek kezét. Másra nem reagál.
  */
@@ -41,7 +43,7 @@ public class NervousPanda extends Panda {
     }
 
     @Override
-    public Drawable getDrawable(){
+    public Drawable getDrawable() throws IOException {
         NervousPandaView nervousPandaView = new NervousPandaView();
         nervousPandaView.setCoordinates(this.coordinates);
         return nervousPandaView;

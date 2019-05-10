@@ -4,6 +4,8 @@ import Graphics.BigPandaView;
 import Graphics.Drawable;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * Olyan panda aki ha megijed ugrik egyet és ettől a mező nagymértékben sebződik.
  */
@@ -37,7 +39,7 @@ public class BigPanda extends Panda {
     }
 
     @Override
-    public Drawable getDrawable(){
+    public Drawable getDrawable() throws IOException {
         BigPandaView bigPandaView = new BigPandaView();
         bigPandaView.setCoordinates(this.coordinates);
         return bigPandaView;

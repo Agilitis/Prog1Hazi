@@ -4,6 +4,8 @@ import Graphics.Drawable;
 import Graphics.FinishFieldView;
 import utility.Logger;
 
+import java.io.IOException;
+
 /**
  * A célmező. Ha rálép egy állat azt az állatkertbe küldi.
  */
@@ -32,7 +34,7 @@ public class FinishField extends Field {
     }
 
     @Override
-    public Drawable getDrawable(){
+    public Drawable getDrawable() throws IOException {
         FinishFieldView finishFieldView = new FinishFieldView();
         finishFieldView.setCoordinates(this.coordinates);
         return finishFieldView;
