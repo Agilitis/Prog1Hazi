@@ -18,8 +18,8 @@ public class Orangutan extends Animal {
 
     private int stepsBeforeCatching = 0;
 
-    public Orangutan(Field field) {
-        super(field);
+    public Orangutan(String name, Field field) {
+        super(name, field);
     }
 
     public Orangutan(){}
@@ -135,6 +135,6 @@ public class Orangutan extends Animal {
 
     @Override
     public String toString(){
-        return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+        return "Name: " + this.name + " " + "Field: " + this.field;
     }
 }

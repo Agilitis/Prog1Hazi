@@ -43,12 +43,12 @@ public final class FileHandler {
 
         for (Object field : fields){
             String fieldName = ((JSONObject)field).get("name").toString();
-            boolean damagable = (int)((JSONObject)field).get("damagable") != 0;
+            boolean damagable = Integer.parseInt(((JSONObject)field).get("damagable").toString()) != 0;
             int health = Integer.parseInt (((JSONObject)field).get("damagable").toString());
             JSONArray jsonCoords = (JSONArray)((JSONObject)field).get("coords");
             int[] corrds = new int[jsonCoords.size()];
             for (int i = 0; i < jsonCoords.size(); ++i) {
-                corrds[i] = (int)jsonCoords.get(i);
+                corrds[i] = Integer.parseInt(jsonCoords.get(i).toString());
             }
             level.addField(new Field(fieldName, damagable, health, corrds));
         }
@@ -58,7 +58,7 @@ public final class FileHandler {
             JSONArray jsonCoords = (JSONArray)((JSONObject)finishField).get("coords");
             int[] corrds = new int[jsonCoords.size()];
             for (int i = 0; i < jsonCoords.size(); ++i) {
-                corrds[i] = (int)jsonCoords.get(i);
+                corrds[i] = Integer.parseInt(jsonCoords.get(i).toString());
             }
             level.addField(new FinishField(fieldName, corrds));
         }
@@ -68,7 +68,7 @@ public final class FileHandler {
             JSONArray jsonCoords = (JSONArray)((JSONObject)teleport).get("coords");
             int[] corrds = new int[jsonCoords.size()];
             for (int i = 0; i < jsonCoords.size(); ++i) {
-                corrds[i] = (int)jsonCoords.get(i);
+                corrds[i] = Integer.parseInt(jsonCoords.get(i).toString());
             }
             level.addField(new Teleport(fieldName, corrds));
         }
@@ -86,7 +86,7 @@ public final class FileHandler {
 
         for (Object teleportNeighbour : teleportNeighbours){
             String teleportName = ((JSONObject)teleportNeighbour).get("name").toString();
-            JSONArray fieldNeighbours = (JSONArray) ((JSONObject)teleportNeighbour).get("fields");
+            JSONArray fieldNeighbours = (JSONArray) ((JSONObject)teleportNeighbour).get("teleports");
             Teleport teleport = (Teleport) level.getField(teleportName);
             if(teleport != null){
                 for(Object fieldNeighbour : fieldNeighbours){

@@ -55,7 +55,10 @@ public class Field {
     private GameObject gameObject;
 
     public Field(String name, boolean damagable, int health, int[] coords) {
-
+        this.name = name;
+        this.isDamagable = damagable;
+        this.life = health;
+        this.coordinates = coords;
     }
 
     public void addNeighbour(Field neighbour) {

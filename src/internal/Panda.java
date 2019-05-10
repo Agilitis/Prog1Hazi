@@ -129,6 +129,6 @@ public class Panda extends Animal {
 
     @Override
     public String toString(){
-        return "Name: " + this.name + " " + "Field: " + this.field.getName() + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+        return "Name: " + this.name + " " + "Field: " + this.field.getName();
     }
 }

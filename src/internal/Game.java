@@ -1,13 +1,9 @@
 package internal;
 
 import Graphics.View;
-import utility.CommandInterpreter;
 import utility.FileHandler;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -53,29 +49,12 @@ public class Game {
     }
 
     private void start(int operationMode){
-        if(operationMode == 0){    //game mode
-            this.initialise();
-            players.add(new Player());
-            view.update(currentLevel);
-            while (gameOn) {
-                //timer.tick();
-
-            }
+        if(operationMode == 0){
+            //game mode
         }
         else if(operationMode == 1){   //test mode
-            currentLevel = FileHandler.loadMap("map1.json");
-            Method methodToInvoke;
-            Scanner scanner = new Scanner(System.in);
-            ArrayList<Object> parameters;
-            while(true) {    //for now
-                try {
-                    methodToInvoke = CommandInterpreter.getMethodToInvoke(scanner.nextLine());
-                    parameters = CommandInterpreter.getParameters();
-                    Objects.requireNonNull(methodToInvoke).invoke(this, parameters.get(0), parameters.get(1), parameters.get(2), parameters.get(3));
-                } catch (IllegalAccessException | InvocationTargetException | NullPointerException e) {
-                    System.out.println("Hiba a vegrehajtasban!");
-                }
-            }
+            this.initialise();
+            currentLevel.test();
         }
         else{
             Logger.getAnonymousLogger().info("No such operation mode! Exiting program!");

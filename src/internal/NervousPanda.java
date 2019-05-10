@@ -37,7 +37,7 @@ public class NervousPanda extends Panda {
 
     @Override
     public String toString(){
-        return "Name: " + this.name + " " + "Field: " + this.field + "Pull: " + this.pullThis + "PulledBy: " + this.pulledBy;
+        return "Name: " + this.name + " " + "Field: " + this.field;
     }
 
     @Override
