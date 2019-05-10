@@ -10,8 +10,8 @@ import utility.Logger;
  */
 public class ArcadeMachine extends Thing {
 
-    public ArcadeMachine(Field field) {
-        super(field);
+    public ArcadeMachine(String name, Field field) {
+        super(name, field);
         counter = 1;
     }
 

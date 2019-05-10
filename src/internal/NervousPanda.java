@@ -9,8 +9,8 @@ import utility.Logger;
  */
 public class NervousPanda extends Panda {
 
-    public NervousPanda(Field field) {
-        super(field);
+    public NervousPanda(String name, Field field) {
+        super(name, field);
     }
     public NervousPanda(){}
     /**

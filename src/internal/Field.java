@@ -54,13 +54,8 @@ public class Field {
     private boolean isBroken;
     private GameObject gameObject;
 
-    public Field(boolean isDamagable, int life) {
-        this.isDamagable = isDamagable;
-        if(life <=0){
-            setBroken(true);
-        }else{
-            this.life = life;
-        }
+    public Field(String name, boolean damagable, int health, int[] coords) {
+
     }
 
     public void addNeighbour(Field neighbour) {

@@ -28,7 +28,8 @@ public abstract class GameObject implements ITickable {
 
     protected Field field;
 
-    public GameObject(Field field) {
+    public GameObject(String name, Field field) {
+        this.name = name;
         this.field = field;
         this.field.setGameObject(this);
         this.coordinates = field.getCoordinates();

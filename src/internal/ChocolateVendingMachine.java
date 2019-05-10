@@ -10,8 +10,8 @@ import utility.Logger;
  */
 public class ChocolateVendingMachine extends Thing {
 
-    public ChocolateVendingMachine(Field field) {
-        super(field);
+    public ChocolateVendingMachine(String name, Field field) {
+        super(name, field);
     }
 
     @Override

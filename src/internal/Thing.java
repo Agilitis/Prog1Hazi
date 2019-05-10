@@ -8,8 +8,8 @@ import utility.Logger;
 public abstract class Thing extends GameObject {
     int counter;
 
-    public Thing(Field field) {
-        super(field);
+    public Thing(String name, Field field) {
+        super(name, field);
         counter = 1;
     }
     public Thing(){}

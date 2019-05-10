@@ -9,8 +9,8 @@ import utility.Logger;
  */
 public class BigPanda extends Panda {
 
-    public BigPanda(Field field) {
-        super(field);
+    public BigPanda(String name, Field field) {
+        super(name, field);
     }
     public BigPanda(){}
     /**

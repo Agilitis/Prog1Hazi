@@ -14,8 +14,8 @@ import java.util.List;
 public class Teleport extends Field {
     private ArrayList<Teleport> teleportNeighbours = new ArrayList<>();
 
-    public Teleport(boolean isDamagable, int life) {
-        super(isDamagable, life);
+    public Teleport(String name, int[] coords) {
+        super(name, false, 20, coords);
     }
 
     public Teleport(){}

@@ -8,8 +8,8 @@ import utility.Logger;
  * Olyan panda aki a fotel eseményére tud reagálni.
  */
 public class SleepyPanda extends Panda {
-    public SleepyPanda(Field field) {
-        super(field);
+    public SleepyPanda(String name, Field field) {
+        super(name, field);
     }
     public SleepyPanda(){}
     public int getStamina() {

@@ -9,8 +9,8 @@ import utility.Logger;
  */
 public class FinishField extends Field {
 
-    public FinishField(boolean isDamagable, int life) {
-        super(isDamagable, life);
+    public FinishField(String name, int[] coords) {
+        super(name, false, 20, coords);
     }
 
     /**

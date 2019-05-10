@@ -11,8 +11,8 @@ public class Couch extends Thing {
 
     private SleepyPanda restingPanda;
 
-    public Couch(Field field) {
-        super(field);
+    public Couch(String name, Field field) {
+        super(name, field);
     }
 
     @Override

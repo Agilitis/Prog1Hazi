@@ -9,8 +9,8 @@ import utility.Logger;
  * Ha ĂĽtkĂ¶zik egy orĂˇngutĂˇnnal, az megfogja a kezĂ©t Ă©s onnantĂłl csak akkor lĂ©p ha az orĂˇngutĂˇn maga utĂˇn hĂşzza.
  */
 public class Panda extends Animal {
-    public Panda(Field field) {
-        super(field);
+    public Panda(String name, Field field) {
+        super(name, field);
     }
 
     public Panda(){}
