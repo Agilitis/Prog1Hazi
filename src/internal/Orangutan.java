@@ -128,6 +128,7 @@ public class Orangutan extends Animal {
     public void move(Field moveHere){
         Logger.increaseTabulation();
         logger.log(this+".move(" + moveHere + ")");
+        Field onThis = field;
         if (canMoveAlone) {
             stepsBeforeCatching--;
             moveHere.acceptAnimal(this);

@@ -5,6 +5,8 @@ import Graphics.PandaView;
 import utility.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Ă�lltalĂˇnos panda. Nem reagĂˇl a Thingek esemĂ©nyeire. Ha nem fogjĂˇk a kezĂ©t vĂ©letlenszerĹ±en mĂˇszkĂˇl a pĂˇlyĂˇn.
