@@ -95,7 +95,7 @@ public class Game {
 
     public void leftMouseButtonPressed(int mouseX, int mouseY) {
         for(Player player : players){
-            if((Math.abs(player.getOrangutan().getCoordinates()[0] - mouseX) < 50) && (Math.abs(player.getOrangutan().getCoordinates()[1] - mouseY) < 50)){
+            if((Math.abs(player.getOrangutan().getCoordinates()[0] - mouseX) < 80) && (Math.abs(player.getOrangutan().getCoordinates()[1] - mouseY) < 80)){
                 selectedPlayer = player;
             }
         }
@@ -103,7 +103,7 @@ public class Game {
 
     public void rightMouseButtonPressed(int mouseX, int mouseY) {
         for(Field field : currentLevel.getFields()){
-            if((Math.abs(field.coordinates[0] - mouseX) < 50)&&(Math.abs(field.coordinates[1] - mouseY) < 50)){
+            if((Math.abs(field.coordinates[0] - mouseX) < 80)&&(Math.abs(field.coordinates[1] - mouseY) < 80)){
                 selectedPlayer.moveOrangutan(field);
             }
         }
