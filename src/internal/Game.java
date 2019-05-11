@@ -23,6 +23,10 @@ public class Game {
         return timer;
     }
 
+    public Player getSelectedPlayer() {
+        return selectedPlayer;
+    }
+
     public void setTimer(Timer timer) {
         this.timer = timer;
     }
