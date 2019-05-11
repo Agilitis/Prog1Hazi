@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A brokenField megjeleniteseert felelos.
+ */
 public class BrokenFieldView extends ObjectView{
     private Field field;
     public BrokenFieldView() throws IOException {

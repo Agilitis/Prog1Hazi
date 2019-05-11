@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A nervous panda megjeleniteseert felelos.
+ */
 public class NervousPandaView extends ObjectView {
     private NervousPanda nervousPanda;
     public NervousPandaView() throws IOException {

@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Az arcadeMachine megjeleniteseert felelos. Kirajzolja a kepet.
+ */
 public class ArcadeMachineView extends ObjectView{
     private ArcadeMachine arcadeMachine;
     public ArcadeMachineView() throws IOException {
