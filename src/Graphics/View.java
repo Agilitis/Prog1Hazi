@@ -1,12 +1,11 @@
 package Graphics;
 
-import internal.Animal;
-import internal.Field;
-import internal.Level;
-import internal.Thing;
+import internal.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -16,7 +15,8 @@ public class View extends JFrame {
         public void paintComponent(Graphics g){
             super.paintComponent(g);
 
-            for(Drawable drawable : drawables){
+            for(int i = 0; i < drawables.size(); i++){
+            	Drawable drawable = drawables.get(i);
                 drawable.draw(g);
             }
         }
@@ -34,6 +34,39 @@ public class View extends JFrame {
         this.setLocation(200,200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int mouseX = e.getX();
+                int mouseY = e.getY();
+                if(SwingUtilities.isLeftMouseButton(e)){
+                    Game.getInstance().leftMouseButtonPressed(mouseX, mouseY);
+                }
+                else{
+                    Game.getInstance().rightMouseButtonPressed(mouseX, mouseY);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
 
         this.add(mainPanel);
     }

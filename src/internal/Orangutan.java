@@ -107,7 +107,7 @@ public class Orangutan extends Animal {
 
     @Override
     public Drawable getDrawable() throws IOException {
-        OrangutanView orangutanView = new OrangutanView();
+        OrangutanView orangutanView = new OrangutanView(this);
         orangutanView.setCoordinates(this.coordinates);
         return orangutanView;
     }
@@ -142,5 +142,12 @@ public class Orangutan extends Animal {
     @Override
     public String toString(){
         return "Name: " + this.name + " " + "Field: " + this.field;
+    }
+
+    @Override
+    void steppedOnFinish(){
+        if(pullThis != null){
+            pullThis.goToZoo();
+        }
     }
 }

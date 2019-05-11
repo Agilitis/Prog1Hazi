@@ -22,6 +22,10 @@ public abstract class GameObject implements ITickable {
 
     protected String name;
 
+    public int[] getCoordinates() {
+        return coordinates;
+    }
+
     public GameObject(){}
 
     public void setField(Field field) {

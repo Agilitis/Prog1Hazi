@@ -65,6 +65,7 @@ public class Panda extends Animal {
             pulledBy.releaseHands();
         }
         Logger.decreaseTabulation();
+        Game.getInstance().getCurrentLevel().addToRemove(this);
     }
 
     /**
@@ -113,9 +114,12 @@ public class Panda extends Animal {
         //witch field exactly needs to be defined
         if (canMoveAlone) {
             Random rand = new Random();
-            ArrayList<Field> stepOptions = getStepOptions();
-            Field movingTo = stepOptions.get(rand.nextInt(stepOptions.size()));
-            move(movingTo);
+            if(rand.nextInt(100) < 50)
+            {
+                ArrayList<Field> stepOptions = getStepOptions();
+                Field movingTo = stepOptions.get(rand.nextInt(stepOptions.size()));
+                move(movingTo);
+            }
         }
         Logger.decreaseTabulation();
     }

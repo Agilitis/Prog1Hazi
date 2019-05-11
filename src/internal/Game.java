@@ -17,9 +17,14 @@ public class Game {
     private static boolean gameOn = true;
     private Level currentLevel; //the level everything happens on
     private View view;
+    private Player selectedPlayer;
 
     public Timer getTimer() {
         return timer;
+    }
+
+    public Player getSelectedPlayer() {
+        return selectedPlayer;
     }
 
     public void setTimer(Timer timer) {
@@ -50,10 +55,16 @@ public class Game {
 
     private void start(int operationMode){
         if(operationMode == 0){
+            final int delay = Integer.MAX_VALUE;
+            int delta = 0;
             this.initialise();
             while (gameOn){
-                timer.tick(currentLevel);
-                view.update(currentLevel);
+                if(delta == delay) {
+                    timer.tick(currentLevel);
+                    view.update(currentLevel);
+                    delta = 0;
+                }
+                delta++;
             }
         }
         else if(operationMode == 1){   //test mode
@@ -68,6 +79,9 @@ public class Game {
     private void initialise() {
         currentLevel = FileHandler.loadMap("map1.json");
         this.view = new View();
+        Orangutan o = new Orangutan("orangutan1", currentLevel.getFields().get(9));
+        players.add(new Player(o));
+        currentLevel.addAnimal(o);
     }
 
     public static Game getInstance(){
@@ -75,6 +89,23 @@ public class Game {
     }
 
     public static void main(String... args){
-        instance.start(getOperationMode());
+        instance.start(0);
+        //instance.start(getOperationMode());
+    }
+
+    public void leftMouseButtonPressed(int mouseX, int mouseY) {
+        for(Player player : players){
+            if((Math.abs(player.getOrangutan().getCoordinates()[0] - mouseX) < 80) && (Math.abs(player.getOrangutan().getCoordinates()[1] - mouseY) < 80)){
+                selectedPlayer = player;
+            }
+        }
+    }
+
+    public void rightMouseButtonPressed(int mouseX, int mouseY) {
+        for(Field field : currentLevel.getFields()){
+            if((Math.abs(field.coordinates[0] - mouseX) < 80)&&(Math.abs(field.coordinates[1] - mouseY) < 80)){
+                selectedPlayer.moveOrangutan(field);
+            }
+        }
     }
 }

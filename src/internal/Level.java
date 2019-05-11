@@ -7,16 +7,12 @@ import java.util.ArrayList;
  */
 public class Level {
     private ArrayList<Field> fields = new ArrayList<>();
-    private ArrayList<Panda> zoo = new ArrayList<>();   //for the pandas, who were sent to the zoo
+    private ArrayList<Animal> removable = new ArrayList<>();   //for the pandas, who were sent to the zoo
     private ArrayList<Animal> animals = new ArrayList<>();
     private ArrayList<Thing> things = new ArrayList<>();
 
     public ArrayList<Field> getFields() {
         return fields;
-    }
-
-    public ArrayList<Panda> getZoo() {
-        return zoo;
     }
 
     public ArrayList<Animal> getAnimals() {
@@ -68,5 +64,13 @@ public class Level {
 
     public void addThing(Thing thing){
         things.add(thing);
+    }
+
+    public void addToRemove(Animal animal){
+        removable.add(animal);
+    }
+
+    public void removeAnimals(){
+        animals.removeAll(removable);
     }
 }
