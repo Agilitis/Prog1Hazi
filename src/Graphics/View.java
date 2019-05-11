@@ -24,6 +24,7 @@ public class View extends JFrame {
             for(int i = 0; i < drawables.size(); i++){
             	Drawable drawable = drawables.get(i);
                 drawable.draw(g);
+
             }
         }
     };
@@ -95,6 +96,7 @@ public class View extends JFrame {
             for (Animal animal : animals) {
                 drawables.add(animal.getDrawable());
             }
+            drawables.add(new ScoreView(0,0));
         }
         catch (IOException e){
             System.out.println("Image cannot be loaded!");
