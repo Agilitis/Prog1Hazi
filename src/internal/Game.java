@@ -89,7 +89,8 @@ public class Game {
     }
 
     public static void main(String... args){
-        instance.start(getOperationMode());
+        instance.start(0);
+        //instance.start(getOperationMode());
     }
 
     public void leftMouseButtonPressed(int mouseX, int mouseY) {
