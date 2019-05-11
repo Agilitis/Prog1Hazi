@@ -16,7 +16,8 @@ public class View extends JFrame {
         public void paintComponent(Graphics g){
             super.paintComponent(g);
 
-            for(Drawable drawable : drawables){
+            for(int i = 0; i < drawables.size(); i++){
+            	Drawable drawable = drawables.get(i);
                 drawable.draw(g);
             }
         }
