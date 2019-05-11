@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A celmezo megjeleniteseert felelos.
+ */
 public class FinishFieldView extends ObjectView {
     private FinishField finishField;
     public FinishFieldView() throws IOException {

@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A bigPanda megjelenitesert felelos.
+ */
 public class BigPandaView extends ObjectView {
     private BigPanda bigPanda;
     public BigPandaView() throws IOException {

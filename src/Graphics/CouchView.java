@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A couch megjeleniteseert felelos.
+ */
 public class CouchView extends ObjectView {
     private Couch couch;
     public CouchView() throws IOException {

@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A field megjeleniteseert felelos.
+ */
 public class FieldView extends ObjectView{
     private Field field;
 
@@ -19,6 +22,11 @@ public class FieldView extends ObjectView{
         InputStream inputStream;
         this.image = ImageIO.read(new File("input/ObjectGraphics/field.png"));
     }
+
+    /**
+     * Kirajzolja a fieldet es berajzolja a szomszedsagokat.
+     * @param g A grafika amivel lehet rajzolni.
+     */
     @Override
     public void draw(Graphics g){
         g.drawImage(image, coordinates[0], coordinates[1], null);

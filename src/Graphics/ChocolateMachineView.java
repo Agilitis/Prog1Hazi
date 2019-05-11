@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A csokiautomata megjeleniteseert felelos.
+ */
 public class ChocolateMachineView extends ObjectView {
     ChocolateVendingMachine chocolateVendingMachine;
     public ChocolateMachineView() throws IOException {

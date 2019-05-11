@@ -9,7 +9,13 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * A fo megjelenites. Osszefogja, kezeli es megjeleniti a grafikai elemeket.
+ */
 public class View extends JFrame {
+    /**
+     * A fo panel, minden ezen jelenik meg.
+     */
     private JPanel mainPanel = new JPanel(){
         @Override
         public void paintComponent(Graphics g){
@@ -71,6 +77,10 @@ public class View extends JFrame {
         this.add(mainPanel);
     }
 
+    /**
+     * Elkeri a leveltol a benne szereplo objektumokat es mindenkitol elkeri az o grafikus megjelenitoet.
+     * @param level A kapott  level.
+     */
     public void update(Level level){
         ArrayList<Thing> things = level.getThings();
         ArrayList<Animal> animals = level.getAnimals();

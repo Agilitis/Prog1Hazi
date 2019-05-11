@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A sleepyPanda megjeleniteseert felelos.
+ */
 public class SleepyPandaView extends ObjectView {
     private SleepyPanda sleepyPanda;
     public SleepyPandaView() throws IOException {
