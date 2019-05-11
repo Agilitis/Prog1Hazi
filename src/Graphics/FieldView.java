@@ -31,6 +31,7 @@ public class FieldView extends ObjectView{
     public void draw(Graphics g){
         g.drawImage(image, coordinates[0], coordinates[1], null);
         for(int i = 0; i < field.getNeighbours().size(); i++){
+            g.setColor(Color.black);
             g.drawLine(coordinates[0] + 60, coordinates[1] + 60, field.getNeighbours().get(i).getCoordinates()[0] + 60, field.getNeighbours().get(i).getCoordinates()[1] + 60);
         }
     }
