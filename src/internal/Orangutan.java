@@ -143,4 +143,11 @@ public class Orangutan extends Animal {
     public String toString(){
         return "Name: " + this.name + " " + "Field: " + this.field;
     }
+
+    @Override
+    void steppedOnFinish(){
+        if(pullThis != null){
+            pullThis.goToZoo();
+        }
+    }
 }

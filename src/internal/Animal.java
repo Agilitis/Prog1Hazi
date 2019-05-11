@@ -132,4 +132,6 @@ public abstract class Animal extends GameObject {
     protected abstract void die();
 
     public abstract void goToZoo();
+
+    void steppedOnFinish(){}
 }

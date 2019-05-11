@@ -23,8 +23,7 @@ public class FinishField extends Field {
     public void acceptAnimal(Animal animal) {
     	Logger.increaseTabulation();
         logger.log(this + "." + "acceptAnimal(" + animal + ")");
-        logger.log("\t" + animal + ".goToZoo()");
-        animal.goToZoo();
+        animal.steppedOnFinish();
         Logger.decreaseTabulation();
     }
 

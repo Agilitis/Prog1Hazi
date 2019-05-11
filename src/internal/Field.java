@@ -109,7 +109,7 @@ public class Field {
         Logger.decreaseTabulation();
     }
 
-    ArrayList<Field> getNeighbours() {
+    public ArrayList<Field> getNeighbours() {
         return neighBours;
     }
 
@@ -134,6 +134,7 @@ public class Field {
         if(!isBroken) {
             FieldView fieldView = new FieldView();
             fieldView.setCoordinates(this.coordinates);
+            fieldView.setField(this);
             return fieldView;
         }
         else{
