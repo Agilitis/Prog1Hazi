@@ -18,7 +18,9 @@ class Player {
     private ArrayList<Object> parameters;
     private static TestCaseStore testCaseStore = new TestCaseStore();
 
-    Player(Orangutan orangutan){this.orangutan = orangutan;}
+    Player(Orangutan orangutan){
+        this.orangutan = orangutan;
+    }
 
     void doAction() {
         try {BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -49,5 +51,11 @@ class Player {
 
     public void setOrangutan(Orangutan orangutan) {
         this.orangutan = orangutan;
+    }
+
+    public void moveOrangutan(Field field) {
+        if(orangutan.getField().getNeighbours().contains(field)){
+            orangutan.move(field);
+        }
     }
 }
