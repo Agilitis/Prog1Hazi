@@ -50,10 +50,16 @@ public class Game {
 
     private void start(int operationMode){
         if(operationMode == 0){
+            final int delay = Integer.MAX_VALUE;
+            int delta = 0;
             this.initialise();
             while (gameOn){
-                timer.tick(currentLevel);
-                view.update(currentLevel);
+                if(delta == delay) {
+                    timer.tick(currentLevel);
+                    view.update(currentLevel);
+                    delta = 0;
+                }
+                delta++;
             }
         }
         else if(operationMode == 1){   //test mode

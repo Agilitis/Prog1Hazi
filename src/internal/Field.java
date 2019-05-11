@@ -1,5 +1,6 @@
 package internal;
 
+import Graphics.BrokenFieldView;
 import Graphics.Drawable;
 import Graphics.FieldView;
 import utility.Logger;
@@ -100,7 +101,7 @@ public class Field {
         if (isDamagable) {
             logger.log(this+".sufferDamageByAnimal(" + damage + ")");
             life -= damage;
-            if (life <= 1) {
+            if (life < 1) {
                 setBroken(true);
                 byAnimal.die();
             }
@@ -130,8 +131,15 @@ public class Field {
     }
 
     public Drawable getDrawable() throws IOException {
-        FieldView fieldView = new FieldView();
-        fieldView.setCoordinates(this.coordinates);
-        return fieldView;
+        if(!isBroken) {
+            FieldView fieldView = new FieldView();
+            fieldView.setCoordinates(this.coordinates);
+            return fieldView;
+        }
+        else{
+            BrokenFieldView brokenFieldView = new BrokenFieldView();
+            brokenFieldView.setCoordinates(this.coordinates);
+            return brokenFieldView;
+        }
     }
 }

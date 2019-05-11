@@ -16,5 +16,6 @@ public class Timer {
         for(Animal animal : level.getAnimals()){
             animal.tick();
         }
+        level.removeAnimals();
     }
 }

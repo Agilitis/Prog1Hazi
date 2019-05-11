@@ -5,6 +5,8 @@ import Graphics.SleepyPandaView;
 import utility.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Olyan panda aki a fotel eseményére tud reagálni.
@@ -44,6 +46,7 @@ public class SleepyPanda extends Panda {
         field.removeGameObject();
         canMoveAlone = false;
         releaseHands();
+        this.coordinates = sleepHere.getField().getCoordinates();
         Logger.decreaseTabulation();
     }
 
@@ -54,6 +57,12 @@ public class SleepyPanda extends Panda {
     public void tick() {
         if(stamina-- <= 0){
             isSleepy = true;
+        }
+        if (canMoveAlone) {
+            Random rand = new Random();
+            ArrayList<Field> stepOptions = getStepOptions();
+            Field movingTo = stepOptions.get(rand.nextInt(stepOptions.size()));
+            move(movingTo);
         }
     }
 

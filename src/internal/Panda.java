@@ -65,6 +65,7 @@ public class Panda extends Animal {
             pulledBy.releaseHands();
         }
         Logger.decreaseTabulation();
+        Game.getInstance().getCurrentLevel().addToRemove(this);
     }
 
     /**
