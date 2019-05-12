@@ -63,6 +63,7 @@ public class Game {
             long lastTime = System.currentTimeMillis();
             long target = lastTime+framedelay;
             long current;
+            JOptionPane.showMessageDialog(view.getMainPanel(), "Use LeftClick to select an orangutan then use RightClick to make a step. \nClick on the upper left corner of a field when selecting a field to step on. \nPress OK to start the game. Good Luck and Have Fun!");
             while (gameOn){
                 current = System.currentTimeMillis();
                 if(current > target) {
