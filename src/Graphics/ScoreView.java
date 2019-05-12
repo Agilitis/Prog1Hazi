@@ -3,6 +3,9 @@ package Graphics;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Kirajzolja a játékos pillanatnyi pontjait.
+ */
 public class ScoreView extends ObjectView {
 
     public ScoreView(int x,int y)
