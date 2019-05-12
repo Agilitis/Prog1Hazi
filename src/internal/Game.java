@@ -73,7 +73,7 @@ public class Game {
                 lastTime = current;
                 gameOn = currentLevel.pandasLeft();
             }
-            JOptionPane.showMessageDialog(view.getMainPanel(), "Congratulations. Your score: " + players.get(0).getScores());
+            JOptionPane.showMessageDialog(view.getMainPanel(), "Congratulations. Your score: " + players.get(0).getScore());
             view.dispose();
         }
         else if(operationMode == 1){   //test mode
