@@ -7,6 +7,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 /**
@@ -21,8 +26,26 @@ public class Player {
     private ArrayList<Object> parameters;
     private static TestCaseStore testCaseStore = new TestCaseStore();
 
+    private LocalDateTime StartDate;
+
+    /**
+     * A játékos pontjai.
+     */
+    private int score = 0;
+
+    public void reward(int value)
+    {
+        score += value;
+    }
+
+    public int getScore()
+    {
+        return score +  (int)(10000 - (LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) - StartDate.toEpochSecond(ZoneOffset.UTC))*100);
+    }
+
     Player(Orangutan orangutan){
         this.orangutan = orangutan;
+        StartDate = LocalDateTime.now();
     }
 
     void doAction() {

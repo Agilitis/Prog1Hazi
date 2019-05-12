@@ -85,6 +85,11 @@ public class Orangutan extends Animal {
      */
     @Override
     public void goToZoo() {
+        Player p = Game.getInstance().getSelectedPlayer();
+        if(p != null)
+        {
+            p.reward(1000);
+        }
     	Logger.increaseTabulation();
         field.removeGameObject();
         if(pullThis != null){
