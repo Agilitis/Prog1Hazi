@@ -73,4 +73,8 @@ public class Level {
     public void removeAnimals(){
         animals.removeAll(removable);
     }
+    
+    public boolean pandasLeft() {
+    	return animals.size() != 1;
+    }
 }

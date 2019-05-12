@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 /**
  * A Main osztaly. Ez fog ossze minden mas osztalyt es biztositja a mukodesuket.
  */
@@ -69,7 +71,10 @@ public class Game {
                     target = (current+framedelay);
                 }
                 lastTime = current;
+                gameOn = currentLevel.pandasLeft();
             }
+            JOptionPane.showMessageDialog(view.getMainPanel(), "Congratulations. Your score: " + players.get(0).getScores());
+            view.dispose();
         }
         else if(operationMode == 1){   //test mode
             this.initialise();
