@@ -3,6 +3,7 @@ package internal;
 import Graphics.View;
 import utility.FileHandler;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -55,16 +56,21 @@ public class Game {
 
     private void start(int operationMode){
         if(operationMode == 0){
-            final int delay = Integer.MAX_VALUE;
-            int delta = 0;
+            final int delay = 15;
             this.initialise();
+            int framedelay = 200;
+            int lastTime = (int)System.currentTimeMillis();
+            int target = lastTime+framedelay;
+            int current;
             while (gameOn){
-                if(delta == delay) {
-                    timer.tick(currentLevel);
+                current = (int)System.currentTimeMillis();
+                if(current > target) {
                     view.update(currentLevel);
-                    delta = 0;
+                    timer.tick(currentLevel);
+                    target = (current+framedelay);
                 }
-                delta++;
+                lastTime = current;
+
             }
         }
         else if(operationMode == 1){   //test mode

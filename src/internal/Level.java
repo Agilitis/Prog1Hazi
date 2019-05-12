@@ -3,7 +3,7 @@ package internal;
 import java.util.ArrayList;
 
 /**
- * A palya. Osszefogja a mezoket.
+ * A palya. Osszefogja a mezőket.
  */
 public class Level {
     private ArrayList<Field> fields = new ArrayList<>();

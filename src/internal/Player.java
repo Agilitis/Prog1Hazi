@@ -13,6 +13,9 @@ import java.util.ArrayList;
  * A jatekon belul a jatekos megtestesitoje. Ha a jatekos tesz valamit, ezen az osztalyon keresztul teszi.
  */
 public class Player {
+    /**
+     * Az orángután akit épp irányít a játékos.
+     */
     private Orangutan orangutan = new Orangutan();
     private Method methodToInvoke;
     private ArrayList<Object> parameters;
