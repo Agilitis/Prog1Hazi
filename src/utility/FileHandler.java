@@ -17,6 +17,11 @@ public final class FileHandler {
     private static JSONObject jsonObject;
 
 
+    /**
+     * Betölti a pályát.
+     * @param mapName A fájl útvonala
+     * @return A betöltött pálya
+     */
     @SuppressWarnings("Duplicates")
     public static Level loadMap(String mapName){
         Level level = new Level();

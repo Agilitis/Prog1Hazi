@@ -31,6 +31,8 @@ public class OrangutanView extends ObjectView{
         {
             if(this.orangutan.equals(Game.getInstance().getSelectedPlayer().getOrangutan()))
             {
+                Font f = new Font("Arial",0,16);
+                g.setFont(f);
                 g.setColor(Color.RED);
                 g.drawString("Selected",coordinates[0],coordinates[1]);
             }

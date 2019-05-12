@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 /**
  * A Main osztaly. Ez fog ossze minden mas osztalyt es biztositja a mukodesuket.
  */
@@ -55,17 +57,24 @@ public class Game {
 
     private void start(int operationMode){
         if(operationMode == 0){
-            final int delay = Integer.MAX_VALUE;
-            int delta = 0;
+            final int delay = 15;
             this.initialise();
+            int framedelay = 2000;
+            long lastTime = System.currentTimeMillis();
+            long target = lastTime+framedelay;
+            long current;
             while (gameOn){
-                if(delta == delay) {
-                    timer.tick(currentLevel);
+                current = System.currentTimeMillis();
+                if(current > target) {
                     view.update(currentLevel);
-                    delta = 0;
+                    timer.tick(currentLevel);
+                    target = (current+framedelay);
                 }
-                delta++;
+                lastTime = current;
+                gameOn = currentLevel.pandasLeft();
             }
+            JOptionPane.showMessageDialog(view.getMainPanel(), "Congratulations. Your score: " + players.get(0).getScore());
+            view.dispose();
         }
         else if(operationMode == 1){   //test mode
             this.initialise();

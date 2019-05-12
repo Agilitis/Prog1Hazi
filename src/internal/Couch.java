@@ -11,6 +11,9 @@ import java.io.IOException;
  */
 public class Couch extends Thing {
 
+    /**
+     * Az a panda amelyik pihen a kanapéban.
+     */
     private SleepyPanda restingPanda;
 
     public Couch(String name, Field field) {

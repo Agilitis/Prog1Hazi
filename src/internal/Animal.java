@@ -16,7 +16,11 @@ public abstract class Animal extends GameObject {
         this.pulledBy = pulledBy;
     }
 
+    /**
+     * Az az állat akinek fogja a kezét és az az az állat ami húzza.
+     */
     protected Animal pulledBy;
+
     public Animal(String name, Field field) {
         super(name, field);
     }
@@ -36,6 +40,9 @@ public abstract class Animal extends GameObject {
         this.pointValue = pointValue;
     }
 
+    /**
+     * A pont amit a játékos kap érte.
+     */
     private int pointValue;
 
     /**
@@ -57,6 +64,7 @@ public abstract class Animal extends GameObject {
     public String getName(){
         return this.name;
     }
+
     public Animal getPullThis() {
         return pullThis;
     }
@@ -65,12 +73,18 @@ public abstract class Animal extends GameObject {
         return canMoveAlone;
     }
 
+    /**
+     * Az az állat akinek fogja a kezét és húzza.
+     */
     Animal pullThis;
 
     void setCanMoveAlone(boolean canMoveAlone) {
         this.canMoveAlone = canMoveAlone;
 }
 
+    /**
+     * Mozoghat e egyedül. Azaz fogják e a kezét és húzzák-e.
+     */
     boolean canMoveAlone = true;
 
     /**

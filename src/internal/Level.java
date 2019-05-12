@@ -3,7 +3,7 @@ package internal;
 import java.util.ArrayList;
 
 /**
- * A palya. Osszefogja a mezoket.
+ * A palya. Osszefogja a mezőket.
  */
 public class Level {
     private ArrayList<Field> fields = new ArrayList<>();
@@ -72,5 +72,9 @@ public class Level {
 
     public void removeAnimals(){
         animals.removeAll(removable);
+    }
+    
+    public boolean pandasLeft() {
+    	return animals.size() != 1;
     }
 }

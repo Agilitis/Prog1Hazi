@@ -32,7 +32,13 @@ public class SleepyPanda extends Panda {
         isSleepy = sleepy;
     }
 
+    /**
+     * A fáradsági szintje a pandának.
+     */
     private int stamina;
+    /**
+     * Álmos e a panda?
+     */
     private boolean isSleepy = true;
 
     /**

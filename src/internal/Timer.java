@@ -12,6 +12,10 @@ public class Timer {
         //put things in tickables
     }
 
+    /**
+     * Eltelt egy időszelet így szóé mindenkinek a Timer.
+     * @param level A pálya
+     */
     void tick(Level level){
         for(Animal animal : level.getAnimals()){
             animal.tick();

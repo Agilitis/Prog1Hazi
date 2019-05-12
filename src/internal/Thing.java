@@ -14,7 +14,7 @@ public abstract class Thing extends GameObject {
     }
     public Thing(){}
     /**
-     * Minden idĹ‘egysĂ©gben tickelnek a jĂˇtĂ©kgĂ©pek, Ă©s ha a belsĹ‘ szĂˇmlĂˇlĂłjuk elĂ©ri a 0-t, akkor vĂ©grehajtjĂˇk a sajĂˇt esemĂ©nyĂĽket.
+     * Minden edőegységben tickelnek a játékgépek és ha a belső számlálójuk eléri a 0-t akkor végrehajtja a saját eseményeket.
      */
     @Override
     public void tick() {
